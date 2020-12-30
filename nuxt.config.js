@@ -94,7 +94,7 @@ export default {
         sizes: '16x16',
         href: '/favicon/favicon-16x16.png',
       },
-      { rel: 'manifest', href: '/favicon/manifest.json' },
+      { rel: 'manifest', href: '/manifest.json' },
     ],
   },
 
