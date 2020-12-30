@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <nuxt-content :document="article" />
-    <button @click="changeLang" />
+    <button @click="changeLang">TROCA</button>
   </div>
 </template>
 
@@ -16,10 +16,9 @@ export default {
     }
 
     // debugger
-    console.log(app.i18n.locale)
+    // console.log(article[1])
     return {
       article,
-      params,
     }
   },
   methods: {
