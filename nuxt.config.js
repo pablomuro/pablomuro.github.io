@@ -95,7 +95,7 @@ export default {
       },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
       {
         rel: 'apple-touch-icon',
         type: 'image/x-icon',
