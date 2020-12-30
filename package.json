@@ -16,9 +16,11 @@
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/pwa": "^3.0.2",
+    "@nuxtjs/sitemap": "^2.4.0",
     "@vue/composition-api": "^1.0.0-beta.22",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "nuxt-i18n": "^6.16.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",
