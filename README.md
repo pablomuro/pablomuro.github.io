@@ -17,4 +17,7 @@ $ npm run start
 $ npm run generate
 ```
 
+Github page send
+git subtree push --prefix dist origin website
+
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
