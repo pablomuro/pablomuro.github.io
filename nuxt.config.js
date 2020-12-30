@@ -4,7 +4,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'site',
+    title: "Pablo A. Muro Martinez's personal web site and blog",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -131,7 +131,9 @@ export default {
   i18n: {},
 
   // Sitemap module configuration (https://www.npmjs.com/package/@nuxtjs/sitemap)
-  sitemap: {},
+  sitemap: {
+    hostname: 'https://www.pablomuro.dev',
+  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
