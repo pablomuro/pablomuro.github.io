@@ -1,3 +1,5 @@
+import getRoutes from './utils/getRoutes'
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -56,6 +58,8 @@ export default {
   // Sitemap module configuration (https://www.npmjs.com/package/@nuxtjs/sitemap)
   sitemap: {
     hostname: 'https://www.pablomuro.dev',
+    // gzip: true,
+    routes: getRoutes,
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
