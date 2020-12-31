@@ -27,9 +27,18 @@
   </div>
 </template>
 
-<script>
-export default {
-  async asyncData({ $content, app }) {
+<script lang="ts">
+import Vue from 'vue'
+import { contentFunc } from '@nuxt/content/types/content'
+import { NuxtAppOptions } from '@nuxt/types'
+export default Vue.extend({
+  async asyncData({
+    $content,
+    app,
+  }: {
+    $content: contentFunc
+    app: NuxtAppOptions
+  }) {
     const articles = await $content(app.i18n.locale)
       .only(['title', 'description', 'img', 'slug', 'author'])
       .sortBy('createdAt', 'desc')
@@ -38,7 +47,7 @@ export default {
       articles,
     }
   },
-}
+})
 </script>
 
 <style class="postcss">

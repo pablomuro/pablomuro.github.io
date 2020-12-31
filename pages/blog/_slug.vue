@@ -6,8 +6,20 @@
 </template>
 
 <script lang="ts">
-export default {
-  async asyncData({ $content, params, app }) {
+import Vue from 'vue'
+import { contentFunc } from '@nuxt/content/types/content'
+import { NuxtAppOptions } from '@nuxt/types'
+type Dictionary<T> = { [key: string]: T }
+export default Vue.extend({
+  async asyncData({
+    $content,
+    params,
+    app,
+  }: {
+    $content: contentFunc
+    params: Dictionary<string>
+    app: NuxtAppOptions
+  }) {
     let article
     try {
       article = await $content(app.i18n.locale, params.slug).fetch()
@@ -33,7 +45,7 @@ export default {
       this.$nuxt.refresh()
     },
   },
-}
+})
 </script>
 <style>
 .container {
