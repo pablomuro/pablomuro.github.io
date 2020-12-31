@@ -1,6 +1,8 @@
 ---
 title: Começando no blog
-description: 'Empower your NuxtJS application with @nuxt/content module: write in a content/ directory and fetch your Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.'
+description: 'Teste de post do blog em Português.'
+tags: javascript, webdev, nuxt, blog
+cover_image: /images/cover-images/11_cover_image.jpg
 ---
 
 # Eai meu chapa

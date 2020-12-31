@@ -31,6 +31,12 @@
 import Vue from 'vue'
 import { contentFunc } from '@nuxt/content/types/content'
 import { NuxtAppOptions } from '@nuxt/types'
+import {
+  getHeadMetaTags,
+  BLOG_TITLE,
+  BLOG_DESCRIPTION,
+} from '@/utils/headUtils'
+
 export default Vue.extend({
   async asyncData({
     $content,
@@ -45,6 +51,18 @@ export default Vue.extend({
       .fetch()
     return {
       articles,
+    }
+  },
+  head() {
+    return {
+      title: BLOG_TITLE,
+      meta: [
+        ...getHeadMetaTags({
+          description: BLOG_DESCRIPTION,
+          tile: BLOG_TITLE,
+          path: this.$route.path,
+        }),
+      ],
     }
   },
 })

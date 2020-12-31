@@ -1,6 +1,8 @@
 ---
 title: Getting started on blogging
-description: 'Empower your NuxtJS application with @nuxt/content module: write in a content/ directory and fetch your Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.'
+description: 'Blog posting test.'
+tags: javascript, webdev, nuxt, blog
+cover_image: /images/cover-images/11_cover_image.jpg
 ---
 
 # Hello
@@ -12,3 +14,5 @@ Learn how to fetch your content with `$content`: https://content.nuxtjs.org/fetc
 ## Displaying content
 
 Learn how to display your Markdown content with the `<nuxt-content>` component directly in your template: https://content.nuxtjs.org/displaying.
+
+Promise<{ article: IContentDocument | IContentDocument[] }>
