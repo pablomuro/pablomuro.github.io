@@ -38,9 +38,9 @@ export default {
   i18n: {
     baseUrl: BASE_URL,
     locales: [
-      { code: 'en', iso: 'en-US', file: 'en.js' },
-      { code: 'pt-br', iso: 'pt-BR', file: 'pt-br.js' },
-      { code: 'es', iso: 'es-ES', file: 'es.js' },
+      { code: 'en', iso: 'en-US', name: 'English', file: 'en.js' },
+      { code: 'pt-br', iso: 'pt-BR', name: 'Português', file: 'pt-br.js' },
+      { code: 'es', iso: 'es-ES', name: 'Español', file: 'es.js' },
     ],
     strategy: 'no_prefix',
     langDir: 'lang/',
