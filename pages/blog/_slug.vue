@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <language-switcher />
     <nuxt-content :document="article" />
     <button @click="changeLang">TROCA -- {{ lang }}</button>
   </div>
@@ -10,10 +11,12 @@ import Vue from 'vue'
 import { contentFunc } from '@nuxt/content/types/content'
 import { NuxtAppOptions } from '@nuxt/types'
 import { getHeadMetaTags } from '@/utils/headUtils'
+import languageSwitcher from '~/components/language-switcher.vue'
 
 type Dictionary<T> = { [key: string]: T }
 
 export default Vue.extend({
+  components: { languageSwitcher },
   async asyncData({
     $content,
     params,
@@ -25,7 +28,6 @@ export default Vue.extend({
   }) {
     let article
     const lang = app.i18n.locale
-    debugger
     try {
       article = await $content(app.i18n.locale, params.slug).fetch()
     } catch (error) {
@@ -62,7 +64,7 @@ export default Vue.extend({
       const locale = lang === 'en' ? 'pt-br' : 'en'
       await this.$i18n.setLocale(locale).then(async () => {
         await this.$nuxt.refresh()
-        window.location.reload(true)
+        // window.location.reload(true)
       })
       // this.$nuxt.refresh()
       // this.$forceUpdate()

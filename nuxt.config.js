@@ -42,6 +42,7 @@ export default {
       { code: 'pt-br', iso: 'pt-BR', name: 'Português', file: 'pt-br.js' },
       { code: 'es', iso: 'es-ES', name: 'Español', file: 'es.js' },
     ],
+    lazy: true,
     strategy: 'no_prefix',
     langDir: 'lang/',
     defaultLocale: 'en',
@@ -53,6 +54,7 @@ export default {
       useCookie: true,
       cookieKey: 'i18n_redirected',
       onlyOnRoot: true,
+      // alwaysRedirect: true,
     },
   },
 
