@@ -2,8 +2,11 @@
 title: ''
 description: ''
 created: 05/07/2020
-tags: tag1, tag2
-cover_image: /images/cover-images/14_cover_image.jpg
+post_cover_image: /images/cover-images/post-cover-image.jpg
+tags:
+  - tag1
+  - tag2
+  - tag3
 ---
 
-# teste
+# template

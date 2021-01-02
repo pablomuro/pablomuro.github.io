@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <language-switcher />
-    <nuxt-content :document="article" />
+    <nuxt-content :document="post" />
     <button @click="changeLang">TROCA -- {{ lang }}</button>
+    <div>
+      {{ post.tags ? post.tags.toString() : '' }}
+    </div>
   </div>
 </template>
 
@@ -26,31 +29,31 @@ export default Vue.extend({
     params: Dictionary<string>
     app: NuxtAppOptions
   }) {
-    let article
+    let post
     const lang = app.i18n.locale
     // debugger
     try {
-      article = await $content(app.i18n.locale, params.slug).fetch()
+      post = await $content(app.i18n.locale, params.slug).fetch()
     } catch (error) {
-      article = await $content('en', params.slug).fetch()
+      post = await $content('en', params.slug).fetch()
     }
 
     return {
-      article,
+      post,
       lang,
     }
   },
 
   head() {
     return {
-      title: this.$data.article.tile,
+      title: this.$data.post.tile,
       meta: [
         ...getHeadMetaTags({
-          description: this.$data.article.description,
-          tile: this.$data.article.tile,
+          description: this.$data.post.description,
+          tile: this.$data.post.tile,
           path: this.$route.path,
-          image: this.$data.article.cover_image,
-          tags: this.$data.article.tags,
+          image: this.$data.post.post_cover_image,
+          tags: this.$data.post.tags,
         }),
       ],
     }

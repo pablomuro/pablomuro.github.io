@@ -4,17 +4,17 @@
 
     <h1 class="">Blog Posts</h1>
     <ul class="flex flex-wrap">
-      <li v-for="article of articles" :key="article.slug" class="">
+      <li v-for="post of blogPosts" :key="post.slug" class="">
         <NuxtLink
-          :to="{ name: `blog-slug___${lang}`, params: { slug: article.slug } }"
+          :to="{ name: `blog-slug___${lang}`, params: { slug: post.slug } }"
         >
-          <img v-if="article.cover_image" :src="article.cover_image" />
+          <img v-if="post.post_cover_image" :src="post.post_cover_image" />
 
           <div>
-            <h2>{{ article.title }}</h2>
+            <h2>{{ post.title }}</h2>
             <p>by Pablo A. Muro Martinez</p>
             <p>
-              {{ article.description }}
+              {{ post.description }}
             </p>
           </div>
         </NuxtLink>
@@ -60,12 +60,12 @@ export default Vue.extend({
     app: NuxtAppOptions
   }) {
     const lang = app.i18n.locale
-    const articles = await $content(lang)
-      .only(['title', 'description', 'img', 'slug', 'author'])
+    const blogPosts = await $content(lang)
+      .only(['title', 'description', 'post_cover_image', 'slug', 'author'])
       .sortBy('createdAt', 'desc')
       .fetch()
     return {
-      articles,
+      blogPosts,
       lang,
     }
   },
@@ -85,14 +85,14 @@ export default Vue.extend({
 </script>
 
 <style class="postcss">
-.article-card {
+.post-card {
   border-radius: 8px;
 }
-.article-card a {
+.post-card a {
   background-color: #fff;
   border-radius: 8px;
 }
-.article-card img div {
+.post-card img div {
   border-radius: 8px 0 0 8px;
 }
 </style>

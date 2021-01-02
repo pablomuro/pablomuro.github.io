@@ -1,8 +1,10 @@
 ---
 title: Começando no blog
 description: 'Teste de post do blog em Português.'
-tags: javascript, webdev, nuxt, blog
-cover_image: /images/cover-images/11_cover_image.jpg
+post_cover_image: /images/cover-images/post-cover-image.jpg
+tags:
+  - javascript
+  - webdev
 ---
 
 # Eai meu chapa

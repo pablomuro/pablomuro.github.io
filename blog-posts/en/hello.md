@@ -1,8 +1,12 @@
 ---
 title: Getting started on blogging
 description: 'Blog posting test.'
-tags: javascript, webdev, nuxt, blog
-cover_image: /images/cover-images/11_cover_image.jpg
+post_cover_image: /images/cover-images/post-cover-image.jpg
+tags:
+  - javascript
+  - webdev
+  - nuxt
+  - blog
 ---
 
 # Hello
