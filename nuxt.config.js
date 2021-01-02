@@ -1,5 +1,11 @@
-import getRoutes from './utils/getRoutes'
+import { getSiteXmlRoutes } from './utils/routesUtils'
 import { BASE_URL, getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
+
+const i18nLocale = [
+  { code: 'en', iso: 'en-US', name: 'English', file: 'en.js' },
+  { code: 'pt-br', iso: 'pt-BR', name: 'Português', file: 'pt-br.js' },
+  { code: 'es', iso: 'es-ES', name: 'Español', file: 'es.js' },
+]
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
@@ -9,7 +15,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/composition-api'],
+  plugins: [],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -37,13 +43,8 @@ export default {
   // I18n module configuration (https://i18n.nuxtjs.org/)
   i18n: {
     baseUrl: BASE_URL,
-    locales: [
-      { code: 'en', iso: 'en-US', name: 'English', file: 'en.js' },
-      { code: 'pt-br', iso: 'pt-BR', name: 'Português', file: 'pt-br.js' },
-      { code: 'es', iso: 'es-ES', name: 'Español', file: 'es.js' },
-    ],
+    locales: i18nLocale,
     lazy: true,
-    strategy: 'no_prefix',
     langDir: 'lang/',
     defaultLocale: 'en',
     vueI18n: {
@@ -53,16 +54,29 @@ export default {
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
-      onlyOnRoot: true,
-      // alwaysRedirect: true,
+      // onlyOnRoot: true,
+      alwaysRedirect: true,
     },
+  },
+
+  hooks: {
+    // 'content:file:beforeInsert': (document) => {
+    //   const regexp = new RegExp(
+    //     `^/(${i18nLocale.map((locale) => locale.code + '/').join('|')})`,
+    //     'gi'
+    //   )
+    //   const dir = document.dir.replace(regexp, '')
+    //   const slug = document.slug.replace(/^index/, '')
+    //   document.to = `${dir}/${slug}`
+    //   document.path = document.path.replace(regexp, '')
+    // },
   },
 
   // Sitemap module configuration (https://www.npmjs.com/package/@nuxtjs/sitemap)
   sitemap: {
     hostname: BASE_URL,
     // gzip: true,
-    routes: getRoutes,
+    routes: getSiteXmlRoutes,
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -70,7 +84,7 @@ export default {
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {
-    dir: 'blog-posts',
+    dir: './blog-posts',
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

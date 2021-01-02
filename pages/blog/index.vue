@@ -4,7 +4,21 @@
 
     <h1 class="">Blog Posts</h1>
     <ul class="flex flex-wrap">
-      <li v-for="article of articles" :key="article.slug" class="a"></li>
+      <li v-for="article of articles" :key="article.slug" class="">
+        <NuxtLink
+          :to="{ name: `blog-slug___${lang}`, params: { slug: article.slug } }"
+        >
+          <img v-if="article.cover_image" :src="article.cover_image" />
+
+          <div>
+            <h2>{{ article.title }}</h2>
+            <p>by Pablo A. Muro Martinez</p>
+            <p>
+              {{ article.description }}
+            </p>
+          </div>
+        </NuxtLink>
+      </li>
     </ul>
 
     <footer class="flex justify-center border-gray-500 border-t-2">
@@ -45,12 +59,14 @@ export default Vue.extend({
     $content: contentFunc
     app: NuxtAppOptions
   }) {
-    const articles = await $content(app.i18n.locale)
+    const lang = app.i18n.locale
+    const articles = await $content(lang)
       .only(['title', 'description', 'img', 'slug', 'author'])
       .sortBy('createdAt', 'desc')
       .fetch()
     return {
       articles,
+      lang,
     }
   },
   head() {

@@ -28,6 +28,7 @@ export default Vue.extend({
   }) {
     let article
     const lang = app.i18n.locale
+    // debugger
     try {
       article = await $content(app.i18n.locale, params.slug).fetch()
     } catch (error) {
