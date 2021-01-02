@@ -109,6 +109,11 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        hid: 'author',
+        name: 'author',
+        content: 'PAblo A. Muro Martinez',
+      },
       ...getHeadMetaTags(),
     ],
     link: [...getHeadFavicons(), { rel: 'manifest', href: '/manifest.json' }],
