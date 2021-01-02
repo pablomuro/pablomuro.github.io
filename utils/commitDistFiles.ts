@@ -18,5 +18,3 @@ const exec = promisify(child_process.exec)
     console.error(err)
   }
 })()
-
-export default function a(){}
