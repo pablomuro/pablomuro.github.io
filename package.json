@@ -21,7 +21,7 @@
     "@nuxtjs/bulma": "^1.3.0",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/sitemap": "^2.4.0",
-    "core-js": "^3.8.2",
+    "core-js": "^3.8.3",
     "nuxt": "^2.14.6",
     "nuxt-i18n": "^6.18.0"
   },
