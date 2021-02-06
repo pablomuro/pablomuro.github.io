@@ -4,14 +4,20 @@
       <img src="/icon.png" alt="logo" />
     </div>
     <div class="container">
-      <div>Pablo Muro Dev - 2020</div>
+      <div>Pablo Muro Dev - {{ year }}</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({})
+export default Vue.extend({
+  data() {
+    return {
+      year: new Date().getFullYear(),
+    }
+  },
+})
 </script>
 
 <style>

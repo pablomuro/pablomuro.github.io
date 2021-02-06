@@ -112,7 +112,7 @@ export default {
       {
         hid: 'author',
         name: 'author',
-        content: 'PAblo A. Muro Martinez',
+        content: 'Pablo A. Muro Martinez',
       },
       ...getHeadMetaTags(),
     ],
