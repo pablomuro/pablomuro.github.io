@@ -52,7 +52,7 @@ export default class DevToClient {
       }
       const result: AxiosResponse = await this.axiosDevTo.post(
         '/articles',
-        articleData
+        this.articleBody
       )
       return result.data
     } catch (error) {
