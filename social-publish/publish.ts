@@ -21,6 +21,7 @@ const linkedinClient = new LinkedinClient(
 
 async function main() {
   try {
+    // TODO - check if there is a new file to publish
     const hasNewArticle = false
     if (hasNewArticle === false) return
 
