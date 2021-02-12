@@ -60,16 +60,13 @@ export default {
   },
 
   hooks: {
-    // 'content:file:beforeInsert': (document) => {
-    //   const regexp = new RegExp(
-    //     `^/(${i18nLocale.map((locale) => locale.code + '/').join('|')})`,
-    //     'gi'
-    //   )
-    //   const dir = document.dir.replace(regexp, '')
-    //   const slug = document.slug.replace(/^index/, '')
-    //   document.to = `${dir}/${slug}`
-    //   document.path = document.path.replace(regexp, '')
-    // },
+    'content:file:beforeInsert': (document) => {
+      if (document.extension === '.md') {
+        const { minutes } = require('reading-time')(document.text)
+
+        document.readingTime = minutes
+      }
+    }
   },
 
   // Sitemap module configuration (https://www.npmjs.com/package/@nuxtjs/sitemap)
