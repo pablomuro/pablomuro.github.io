@@ -1,7 +1,8 @@
 ---
 title: Getting started on blogging
-description: 'Blog posting test.'
-post_cover_image: /images/cover-images/post-cover-image.jpg
+description: 'Description of the blog post - resume of the content in 144 characters top, to post on twitter'
+cover_image: /images/cover-images/post-cover-image.jpg
+publish_date: '12/02/2021'
 tags:
   - javascript
   - webdev
