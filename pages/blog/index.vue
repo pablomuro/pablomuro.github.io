@@ -1,28 +1,10 @@
 <template>
-  <div class="m-8">
+  <div class="container">
     <!-- <TheHeader /> -->
+    <blog-posts :blog-posts="blogPosts" :lang="lang"></blog-posts>
 
-    <h1 class="">Blog Posts</h1>
-    <ul class="flex flex-wrap">
-      <li v-for="post of blogPosts" :key="post.slug" class="">
-        <NuxtLink
-          :to="{ name: `blog-slug___${lang}`, params: { slug: post.slug } }"
-        >
-          <img v-if="post.post_cover_image" :src="post.post_cover_image" />
-
-          <div>
-            <h2>{{ post.title }}</h2>
-            <p>by Pablo A. Muro Martinez</p>
-            <p>
-              {{ post.description }}
-            </p>
-          </div>
-        </NuxtLink>
-      </li>
-    </ul>
-
-    <footer class="flex justify-center border-gray-500 border-t-2">
-      <p class="mt-4">Created by Pablo A. Muro Martinez</p>
+    <footer class="flex border-gray-500 border-t-2 mt-8">
+      <p class="mt-2">Created by Pablo A. Muro Martinez</p>
     </footer>
   </div>
 </template>
@@ -36,8 +18,10 @@ import {
   BLOG_TITLE,
   BLOG_DESCRIPTION,
 } from '@/utils/headUtils'
+import BlogPosts from '~/components/BlogPosts.vue'
 
 export default Vue.extend({
+  components: { BlogPosts },
   async asyncData({
     $content,
     app,
@@ -48,7 +32,16 @@ export default Vue.extend({
     const lang = app.i18n.locale ?? 'en'
 
     const blogPosts = await $content(lang)
-      .only(['title', 'description', 'post_cover_image', 'slug', 'author'])
+      .only([
+        'title',
+        'description',
+        'cover_image',
+        'slug',
+        'tags',
+        'publish_date',
+        'readingTime',
+        'createdAt',
+      ])
       .sortBy('createdAt', 'desc')
       .fetch()
     return {
@@ -71,15 +64,4 @@ export default Vue.extend({
 })
 </script>
 
-<style class="postcss">
-.post-card {
-  border-radius: 8px;
-}
-.post-card a {
-  background-color: #fff;
-  border-radius: 8px;
-}
-.post-card img div {
-  border-radius: 8px 0 0 8px;
-}
-</style>
+<style class="postcss" scoped></style>

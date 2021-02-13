@@ -39,6 +39,10 @@ export default {
     // https://www.npmjs.com/package/@nuxtjs/sitemap
     '@nuxtjs/sitemap',
   ],
+  tailwindcss: {
+    // add '~tailwind.config` alias
+    exposeConfig: true,
+  },
 
   // I18n module configuration (https://i18n.nuxtjs.org/)
   i18n: {
@@ -66,7 +70,7 @@ export default {
 
         document.readingTime = minutes
       }
-    }
+    },
   },
 
   // Sitemap module configuration (https://www.npmjs.com/package/@nuxtjs/sitemap)

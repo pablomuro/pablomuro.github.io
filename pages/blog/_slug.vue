@@ -31,7 +31,6 @@ export default Vue.extend({
   }) {
     let post
     const lang = app.i18n.locale
-    // debugger
     try {
       post = await $content(app.i18n.locale, params.slug).fetch()
     } catch (error) {
@@ -52,7 +51,7 @@ export default Vue.extend({
           description: this.$data.post.description,
           tile: this.$data.post.tile,
           path: this.$route.path,
-          image: this.$data.post.post_cover_image,
+          image: this.$data.post.cover_image,
           tags: this.$data.post.tags,
         }),
       ],
@@ -60,6 +59,7 @@ export default Vue.extend({
   },
   methods: {
     formatDate(date: string): string {
+      // new Date(ano, mês, dia, hora, minuto, segundo, milissegundo);
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(date).toLocaleDateString('en', options)
     },

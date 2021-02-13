@@ -1,20 +1,20 @@
 <template>
-  <span>{{ readingTime }} {{ $t('min-read') }}</span>
+  <span>{{ readingTimeFn }} {{ $t('min-read') }}</span>
 </template>
 
 <script>
 export default {
   name: 'ReadingTime',
   props: {
-    readingTimeMinutes: {
+    readingTime: {
       type: Number,
-      default: 0,
+      default: 1,
     },
   },
   computed: {
-    readingTime() {
-      let minutes = 0
-      minutes = this.readingTimeMinutes
+    readingTimeFn() {
+      let minutes = 1
+      minutes = this.readingTime > 1 ? this.readingTime : 1
       return minutes
     },
   },
