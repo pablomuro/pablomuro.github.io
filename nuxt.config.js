@@ -12,7 +12,7 @@ export default {
   target: 'static',
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [],
+  css: ['@/assets/text-schema.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [],
@@ -40,7 +40,6 @@ export default {
     '@nuxtjs/sitemap',
   ],
   tailwindcss: {
-    // add '~tailwind.config` alias
     exposeConfig: true,
   },
 
@@ -91,6 +90,7 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     postcss: {
+      plugins: {},
       preset: {
         features: {
           customProperties: false,

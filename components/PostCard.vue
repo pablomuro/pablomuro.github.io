@@ -9,9 +9,9 @@
       class="w-full"
     />
     <div class="px-6 py-4 pb-2 flex-grow">
-      <div class="font-bold text-xl mb-3">
+      <h1 class="font-bold text-xl mb-3">
         {{ post.title }}
-      </div>
+      </h1>
       <p class="text-gray-700 text-left">
         {{ post.description }}
       </p>
@@ -69,15 +69,22 @@ export default {
 </script>
 <style class="postcss" scoped>
 .card {
+  .card-title {
+    color: rgb(41, 41, 41);
+  }
+
+  .card-description {
+  }
+
   &:hover {
     @apply shadow-2xl;
   }
 }
 
 .badge {
-  @apply inline-block bg-red-600 rounded-full px-2 py-px text-xs font-semibold text-gray-700 text-white;
+  @apply inline-block bg-indigo-200 rounded-full px-2 py-px text-xs font-semibold text-gray-700 text-white;
   &:hover {
-    @apply bg-red-500;
+    @apply bg-indigo-300;
   }
 }
 </style>
