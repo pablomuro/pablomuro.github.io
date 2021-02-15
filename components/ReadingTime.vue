@@ -15,7 +15,7 @@ export default {
     readingTimeFn() {
       let minutes = 1
       minutes = this.readingTime > 1 ? this.readingTime : 1
-      return minutes
+      return Math.round(minutes)
     },
   },
 }
