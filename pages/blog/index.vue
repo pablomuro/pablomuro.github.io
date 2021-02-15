@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
+  <main class="container">
     <!-- <TheHeader /> -->
     <blog-posts :blog-posts="blogPosts" :lang="lang"></blog-posts>
 
     <footer class="flex border-gray-500 border-t-2 mt-8">
       <p class="mt-2">Created by Pablo A. Muro Martinez</p>
     </footer>
-  </div>
+  </main>
 </template>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <div
+  <article
     class="container mt-6 mx-auto max-w-md min-h-full rounded overflow-hidden flex flex-col"
   >
     <img
@@ -11,7 +11,7 @@
 
     <div class="px-10 pb-2 flex-grow">
       <h1 class="post-title mb-2">{{ post.title }}</h1>
-      <div class="text-sm mb-8">
+      <div class="post-info text-sm mb-8">
         <time class="text-center">{{ formatDate(post.createdAt) }}</time>
         •
         <reading-time :reading-time="post.readingTime"></reading-time>
@@ -22,7 +22,7 @@
         {{ post.tags ? post.tags.toString() : '' }}
       </div>
     </div>
-  </div>
+  </article>
 </template>
 
 <script lang="ts">
@@ -95,9 +95,8 @@ export default Vue.extend({
 .post-title {
   margin-top: 30px;
 }
-.post-subtitle {
-  color: rgb (117, 117, 117);
-  font-size: 22px;
+.post-info {
+  font-style: italic;
 }
 
 .post-cover {
