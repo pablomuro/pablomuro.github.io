@@ -1,7 +1,6 @@
 ---
-title: ''
-description: ''
-created: 05/07/2020
+title:
+description:
 cover_image: /images/cover-images/post-cover-image.jpg
 tags:
   - tag1
