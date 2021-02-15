@@ -1,0 +1,39 @@
+$font-family: Quicksand, sans-serif;
+
+html,
+body {
+  font-family: $font-family;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Montserrat, sans-serif;
+  // font-weight: 700;
+}
+
+h1 {
+  color: rgb(41, 41, 41);
+  margin-top: 0.6em;
+  margin-bottom: -0.27em;
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 1.65em;
+  margin: 0.25em 0;
+  margin-bottom: 0.4em;
+  line-height: 1.2em;
+  font-weight: 700;
+}
+
+p {
+  font-size: 22px;
+  line-height: 1.4285em;
+  color: #444443;
+  margin-top: 0;
+  margin-bottom: 1.24em;
+}

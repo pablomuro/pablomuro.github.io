@@ -64,4 +64,14 @@ export default Vue.extend({
 })
 </script>
 
-<style class="postcss" scoped></style>
+<style lang="scss" scoped>
+.container {
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 960px;
+}
+</style>

@@ -9,12 +9,12 @@
       class="w-full"
     />
     <div class="px-6 py-4 pb-2 flex-grow">
-      <h1 class="font-bold text-xl mb-3">
+      <h1 class="card-title font-bold mt-2">
         {{ post.title }}
       </h1>
-      <p class="text-gray-700 text-left">
+      <h2 class="card-description text-left mt-6">
         {{ post.description }}
-      </p>
+      </h2>
     </div>
     <footer class="px-6 py-4">
       <div class="text-sm">
@@ -33,9 +33,10 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 import ReadingTime from '~/components/ReadingTime.vue'
 
-export default {
+export default Vue.extend({
   name: 'PostCard',
   components: { ReadingTime },
   props: {
@@ -65,20 +66,21 @@ export default {
       return new Date(dateString).toLocaleDateString(this.lang, options)
     },
   },
-}
+})
 </script>
-<style class="postcss" scoped>
+<style lang="postcss" scoped>
 .card {
-  .card-title {
-    color: rgb(41, 41, 41);
-  }
-
-  .card-description {
-  }
-
   &:hover {
     @apply shadow-2xl;
   }
+}
+.card-title {
+  color: rgb(41, 41, 41);
+  font-size: 22px;
+}
+.card-description {
+  color: rgb(117, 117, 117);
+  line-height: 20px;
 }
 
 .badge {

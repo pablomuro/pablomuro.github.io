@@ -20,20 +20,20 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style lang="scss" scoped>
 .container {
   margin: 0 auto;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   flex-direction: column;
+  min-height: 90vh;
 }
 
 .logo {
   width: 50px;
-  height: 100%;
+  height: 5vh;
   margin-left: 2%;
   margin-top: 2%;
 }

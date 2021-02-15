@@ -1,10 +1,26 @@
 <template>
-  <div class="container">
-    <language-switcher />
-    <nuxt-content :document="post" />
-    <button @click="changeLang">TROCA -- {{ lang }}</button>
-    <div>
-      {{ post.tags ? post.tags.toString() : '' }}
+  <div
+    class="container mt-6 mx-auto max-w-md min-h-full rounded overflow-hidden flex flex-col"
+  >
+    <img
+      v-if="post.cover_image"
+      :src="post.cover_image"
+      alt="post-cover-image"
+      class="w-full post-cover"
+    />
+
+    <div class="px-10 pb-2 flex-grow">
+      <h1 class="post-title mb-2">{{ post.title }}</h1>
+      <div class="text-sm mb-8">
+        <time class="text-center">{{ formatDate(post.createdAt) }}</time>
+        •
+        <reading-time :reading-time="post.readingTime"></reading-time>
+      </div>
+      <nuxt-content :document="post" />
+      <!-- <button @click="changeLang">TROCA -- {{ lang }}</button> -->
+      <div>
+        {{ post.tags ? post.tags.toString() : '' }}
+      </div>
     </div>
   </div>
 </template>
@@ -14,12 +30,10 @@ import Vue from 'vue'
 import { contentFunc } from '@nuxt/content/types/content'
 import { NuxtAppOptions } from '@nuxt/types'
 import { getHeadMetaTags } from '@/utils/headUtils'
-import languageSwitcher from '~/components/language-switcher.vue'
 
 type Dictionary<T> = { [key: string]: T }
 
 export default Vue.extend({
-  components: { languageSwitcher },
   async asyncData({
     $content,
     params,
@@ -77,15 +91,28 @@ export default Vue.extend({
   },
 })
 </script>
-<style>
+<style lang="scss" scoped>
+.post-title {
+  margin-top: 30px;
+}
+.post-subtitle {
+  color: rgb (117, 117, 117);
+  font-size: 22px;
+}
+
+.post-cover {
+  max-width: calc(100% + 60px);
+  max-height: 432px;
+}
 .container {
-  margin: 0 auto;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   flex-direction: column;
+  max-width: 960px;
+
+  box-shadow: 2px 2px 10px 0 hsla(0, 0%, 40%, 0.5);
 }
 
 .logo {

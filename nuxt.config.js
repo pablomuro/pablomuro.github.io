@@ -12,7 +12,7 @@ export default {
   target: 'static',
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['@/assets/text-schema.scss'],
+  css: ['@/assets/sass/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [],
