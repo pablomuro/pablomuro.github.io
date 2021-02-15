@@ -12,7 +12,7 @@ export default {
   target: 'static',
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['@/assets/sass/main.scss'],
+  css: ['@/assets/sass/main.scss', '@/assets/sass/tailwind.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [],
@@ -85,6 +85,12 @@ export default {
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {
     dir: './blog-posts',
+    markdown: {
+      prism: {
+        theme: 'prism-themes/themes/prism-dracula.css',
+      },
+      remarkPlugins: ['remark-emoji'],
+    },
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
