@@ -35,7 +35,3 @@ export default {
   },
 }
 </script>
-<style class="postcss" scoped>
-.card {
-}
-</style>

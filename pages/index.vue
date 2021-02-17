@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="logo">
-      <img src="/icon.png" alt="logo" />
-    </div>
+    <site-header />
     <div class="container">
       <div>Pablo Muro Dev - {{ year }}</div>
     </div>
@@ -11,7 +9,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import SiteHeader from '~/components/SiteHeader.vue'
+
 export default Vue.extend({
+  components: { SiteHeader },
   data() {
     return {
       year: new Date().getFullYear(),
@@ -28,7 +29,7 @@ export default Vue.extend({
   align-items: center;
   text-align: center;
   flex-direction: column;
-  min-height: 90vh;
+  min-height: 80vh;
 }
 
 .logo {

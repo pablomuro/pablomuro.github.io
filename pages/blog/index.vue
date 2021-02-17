@@ -1,17 +1,19 @@
 <template>
-  <main class="container">
-    <!-- <TheHeader /> -->
-    <blog-posts :blog-posts="blogPosts" :lang="lang"></blog-posts>
+  <div>
+    <site-header />
+    <main class="container">
+      <blog-posts :blog-posts="blogPosts" :lang="lang"></blog-posts>
 
-    <footer class="flex border-gray-500 border-t-2 mt-8">
-      <p class="mt-2">Created by Pablo A. Muro Martinez</p>
-    </footer>
-  </main>
+      <footer class="flex border-gray-500 border-t-2 mt-8">
+        <p class="mt-2">Created by Pablo A. Muro Martinez</p>
+      </footer>
+    </main>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { contentFunc } from '@nuxt/content/types/content'
+import { contentFunc, IContentDocument } from '@nuxt/content/types/content'
 import { NuxtAppOptions } from '@nuxt/types'
 import {
   getHeadMetaTags,
@@ -19,9 +21,10 @@ import {
   BLOG_DESCRIPTION,
 } from '@/utils/headUtils'
 import BlogPosts from '~/components/BlogPosts.vue'
+import SiteHeader from '~/components/SiteHeader.vue'
 
 export default Vue.extend({
-  components: { BlogPosts },
+  components: { BlogPosts, SiteHeader },
   async asyncData({
     $content,
     app,
@@ -31,7 +34,7 @@ export default Vue.extend({
   }) {
     const lang = app.i18n.locale ?? 'en'
 
-    const blogPosts = await $content(lang)
+    let blogPosts: IContentDocument | IContentDocument[] = await $content(lang)
       .only([
         'title',
         'description',
@@ -44,6 +47,9 @@ export default Vue.extend({
       ])
       .sortBy('createdAt', 'desc')
       .fetch()
+    if (!Array.isArray(blogPosts)) {
+      blogPosts = [blogPosts]
+    }
     return {
       blogPosts,
       lang,
@@ -67,7 +73,6 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .container {
   margin: 0 auto;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

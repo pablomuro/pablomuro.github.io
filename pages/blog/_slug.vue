@@ -1,28 +1,32 @@
 <template>
-  <article
-    class="container mt-6 mx-auto max-w-md min-h-full rounded overflow-hidden flex flex-col"
-  >
-    <img
-      v-if="post.cover_image"
-      :src="post.cover_image"
-      alt="post-cover-image"
-      class="w-full post-cover"
-    />
+  <main>
+    <site-header />
+    <article
+      class="container -mt-5 mx-auto max-w-md min-h-full rounded overflow-hidden flex flex-col"
+    >
+      <img
+        v-if="post.cover_image"
+        :src="post.cover_image"
+        alt="post-cover-image"
+        class="w-full post-cover"
+      />
 
-    <div class="px-10 pb-2 flex-grow">
-      <h1 class="post-title mb-2">{{ post.title }}</h1>
-      <div class="post-info text-sm mb-8">
-        <time class="text-center">{{ formatDate(post.createdAt) }}</time>
-        •
-        <reading-time :reading-time="post.readingTime"></reading-time>
+      <div class="px-10 pb-2 flex-grow">
+        <header>
+          <h1 class="post-title mb-2 mt-8">{{ post.title }}</h1>
+        </header>
+        <div class="post-info text-sm mb-8 flex flex-wrap justify-between">
+          <div>
+            <time class="text-center">{{ formatDate(post.createdAt) }}</time>
+            •
+            <reading-time :reading-time="post.readingTime"></reading-time>
+          </div>
+          <tags :tags="post.tags"></tags>
+        </div>
+        <nuxt-content :document="post" />
       </div>
-      <nuxt-content :document="post" />
-      <!-- <button @click="changeLang">TROCA -- {{ lang }}</button> -->
-      <div>
-        {{ post.tags ? post.tags.toString() : '' }}
-      </div>
-    </div>
-  </article>
+    </article>
+  </main>
 </template>
 
 <script lang="ts">
@@ -31,9 +35,13 @@ import { contentFunc } from '@nuxt/content/types/content'
 import { NuxtAppOptions } from '@nuxt/types'
 import { getHeadMetaTags } from '@/utils/headUtils'
 
+import Tags from '~/components/Tags.vue'
+import SiteHeader from '~/components/SiteHeader.vue'
+
 type Dictionary<T> = { [key: string]: T }
 
 export default Vue.extend({
+  components: { Tags, SiteHeader },
   async asyncData({
     $content,
     params,
@@ -48,6 +56,7 @@ export default Vue.extend({
     try {
       post = await $content(app.i18n.locale, params.slug).fetch()
     } catch (error) {
+      // TODO - 404 pega o EN ou manda pra pagina desconhecida ??
       post = await $content('en', params.slug).fetch()
     }
 
@@ -92,9 +101,6 @@ export default Vue.extend({
 })
 </script>
 <style lang="scss" scoped>
-.post-title {
-  margin-top: 30px;
-}
 .post-info {
   font-style: italic;
 }
@@ -112,12 +118,5 @@ export default Vue.extend({
   max-width: 960px;
 
   box-shadow: 2px 2px 10px 0 hsla(0, 0%, 40%, 0.5);
-}
-
-.logo {
-  width: 50px;
-  height: 100%;
-  margin-left: 2%;
-  margin-top: 2%;
 }
 </style>

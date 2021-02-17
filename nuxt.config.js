@@ -15,7 +15,7 @@ export default {
   css: ['@/assets/sass/main.scss', '@/assets/sass/tailwind.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: ['@/plugins/vue-flag-icon.ts'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -103,6 +103,7 @@ export default {
         },
       },
     },
+    transpile: ['vue-flag-icon'],
     extend(config, ctx) {
       if (ctx.isDev) {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
