@@ -82,6 +82,17 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
+  /* Layout Transitions */
+  layoutTransition: {
+    name: 'layout',
+    mode: 'out-in',
+  },
+  /* Page Transitions */
+  pageTransition: {
+    name: 'page',
+    mode: 'out-in',
+  },
+
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {
     dir: './blog-posts',

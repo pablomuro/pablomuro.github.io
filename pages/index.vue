@@ -21,6 +21,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .container {
   text-align: center;
+  justify-content: center;
   min-height: 80vh;
 }
 </style>

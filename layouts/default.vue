@@ -13,11 +13,6 @@ import SiteFooter from '~/components/SiteFooter.vue'
 
 export default Vue.extend({
   components: { SiteHeader, SiteFooter },
-  data() {
-    return {
-      year: new Date().getFullYear(),
-    }
-  },
 })
 </script>
 
