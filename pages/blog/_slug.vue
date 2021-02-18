@@ -9,7 +9,7 @@
       class="w-full post-cover"
     />
 
-    <div class="px-10 pb-2 flex-grow">
+    <div class="px-10 pb-2 flex-grow w-full">
       <header>
         <h1 class="post-title mb-2 mt-8">{{ post.title }}</h1>
       </header>
@@ -81,17 +81,6 @@ export default Vue.extend({
       // new Date(ano, mês, dia, hora, minuto, segundo, milissegundo);
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(date).toLocaleDateString('en', options)
-    },
-    async changeLang(): Promise<void> {
-      const lang = this.$i18n.locale
-      const locale = lang === 'en' ? 'pt-br' : 'en'
-      await this.$i18n.setLocale(locale).then(async () => {
-        await this.$nuxt.refresh()
-        // window.location.reload(true)
-      })
-      // this.$nuxt.refresh()
-      // this.$forceUpdate()
-      // window.location.reload(true)
     },
   },
 })
