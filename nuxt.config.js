@@ -12,7 +12,7 @@ export default {
   target: 'static',
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['@/assets/sass/main.scss', '@/assets/sass/tailwind.css'],
+  css: ['@/assets/sass/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: ['@/plugins/vue-flag-icon.ts'],
@@ -41,6 +41,8 @@ export default {
   ],
   tailwindcss: {
     exposeConfig: true,
+    cssPath: '~/assets/sass/tailwind.css',
+    configPath: 'tailwind.config.js',
   },
 
   // I18n module configuration (https://i18n.nuxtjs.org/)
@@ -107,7 +109,9 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     postcss: {
-      plugins: {},
+      plugins: {
+        'postcss-nested': {},
+      },
       preset: {
         features: {
           customProperties: false,
@@ -136,5 +140,9 @@ export default {
       ...getHeadMetaTags(),
     ],
     link: [...getHeadFavicons(), { rel: 'manifest', href: '/manifest.json' }],
+  },
+
+  webpack: {
+    ignored: '/node_modules/',
   },
 }
