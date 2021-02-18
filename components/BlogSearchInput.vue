@@ -26,7 +26,7 @@
           :key="post.slug"
           tabindex="0"
           role="option"
-          class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 cursor-pointer hover:text-white hover:bg-indigo-600 focus:outline-none focus:text-white focus:bg-indigo-600"
+          class="text-gray-900 select-none relative py-2 pl-3 pr-9 cursor-pointer hover:text-white hover:bg-indigo-600 focus:outline-none focus:text-white focus:bg-indigo-600"
         >
           <div class="flex items-center space-x-3">
             <NuxtLink
@@ -36,8 +36,6 @@
             </NuxtLink>
           </div>
         </li>
-
-        <!-- More options... -->
       </ul>
     </div>
   </div>
