@@ -6,7 +6,7 @@
       v-if="post.cover_image"
       :src="post.cover_image"
       alt="post-cover-image"
-      class="w-full card-cover"
+      class="w-full h-52 object-cover object-center"
     />
     <div class="px-6 py-4 pb-2 flex-grow">
       <h1 class="card-title mt-2">
@@ -68,9 +68,6 @@ export default Vue.extend({
 })
 </script>
 <style lang="scss" scoped>
-.card-cover {
-  max-height: 200px;
-}
 .card-title {
   font-size: 22px;
 }

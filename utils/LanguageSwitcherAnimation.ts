@@ -65,7 +65,7 @@ export class LanguageSwitcherAnimation {
     this.languageName.style.maxHeight = '100%'
     this.selectArrows.style.maxHeight = '100%'
 
-    this.languageButton.classList.add('pr-10')
+    this.languageButton.classList.add('_pr-10')
 
     this.hoverTransition.restart()
   }
@@ -76,7 +76,7 @@ export class LanguageSwitcherAnimation {
 
   animateLeave(): void {
     this.languageButton.blur()
-    this.languageButton.classList.remove('pr-10')
+    this.languageButton.classList.remove('_pr-10')
 
     this.selectArrows.style.maxWidth = '0'
 

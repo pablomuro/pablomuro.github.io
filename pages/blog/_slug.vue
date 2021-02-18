@@ -6,7 +6,7 @@
       v-if="post.cover_image"
       :src="post.cover_image"
       alt="post-cover-image"
-      class="w-full post-cover"
+      class="w-full max-h-96 object-cover object-center"
     />
 
     <div class="px-10 pb-2 flex-grow w-full">
@@ -91,7 +91,6 @@ export default Vue.extend({
 }
 
 .post-cover {
-  max-width: calc(100% + 60px);
   max-height: 432px;
 }
 .container {
