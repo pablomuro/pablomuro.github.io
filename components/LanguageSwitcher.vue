@@ -101,7 +101,7 @@ export default Vue.extend({
       return this.$i18n.locales
     },
     selectedLocale(): any {
-      return this.$i18n.localeProperties
+      return { ...this.$i18n.localeProperties }
     },
     filterLocales(): any {
       if (this.$i18n.locales) {
@@ -180,9 +180,15 @@ export default Vue.extend({
     async select(locale: any) {
       this.isOpen = false
 
-      await this.$i18n.setLocale(locale.code).then(async () => {
-        await this.$nuxt.refresh()
-      })
+      await this.$i18n.setLocale(locale.code)
+      this.recomputeLanguage()
+      this.closeDropdown()
+    },
+    recomputeLanguage() {
+      const _this = this as any
+      _this._computedWatchers.selectedLocale.run()
+      _this._computedWatchers.filterLocales.run()
+      this.$forceUpdate()
     },
     getCoutry(locale: any): string {
       try {
