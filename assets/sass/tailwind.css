@@ -1,39 +1,42 @@
+:root {
+  --default-color: #292929;
+  --default-color-light: #757575;
+  --default-color-dark: #f3f3f3;
+}
+
 @tailwind base;
 @tailwind components;
-
-:root {
-  /* TODO - decidir cores */
-}
-
-.nuxt-content-highlight {
-  @apply relative;
-
-  &.filename {
-    @apply absolute right-0 text-gray-600 font-light z-10 mr-2 mt-1 text-sm;
-  }
-}
-.custom-select {
-  @apply cursor-pointer relative w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-left;
-  &:focus {
-    @apply outline-none border-blue-300;
-  }
-}
-
-.custom-select-li {
-  @apply text-gray-900 select-none relative py-2 pl-3 cursor-pointer;
-
-  &:focus {
-    @apply outline-none text-white bg-indigo-600;
-  }
-  &:hover {
-    @apply text-white bg-indigo-600;
-  }
-}
-
-@screen sm {
-  .custom-select {
-    @apply text-sm leading-5;
-  }
-}
-
 @tailwind utilities;
+
+@layer components {
+  .nuxt-content-highlight {
+    @apply relative;
+
+    &.filename {
+      @apply absolute right-0 text-gray-600 font-light z-10 mr-2 mt-1 text-sm;
+    }
+  }
+  .custom-select {
+    @apply cursor-pointer relative w-full rounded-md border border-gray-500 bg-white px-3 py-2 text-left;
+    &:focus {
+      @apply outline-none border-blue-300;
+    }
+  }
+
+  .custom-select-li {
+    @apply text-gray-900 select-none relative py-2 pl-3 cursor-pointer;
+
+    &:focus {
+      @apply outline-none text-white bg-indigo-600;
+    }
+    &:hover {
+      @apply text-white bg-indigo-600;
+    }
+  }
+
+  @screen sm {
+    .custom-select {
+      @apply text-sm leading-5;
+    }
+  }
+}

@@ -40,9 +40,9 @@ export default {
     '@nuxtjs/sitemap',
   ],
   tailwindcss: {
-    exposeConfig: true,
-    cssPath: '~/assets/sass/tailwind.css',
-    configPath: 'tailwind.config.js',
+    exposeConfig: false,
+    cssPath: '@/assets/sass/tailwind.css',
+    configPath: './tailwind.config.js',
   },
 
   // I18n module configuration (https://i18n.nuxtjs.org/)
