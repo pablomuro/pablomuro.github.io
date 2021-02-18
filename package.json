@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt-ts",
+    "dev": "nuxt-ts --max_old_space_size=4096 --optimize_for_size",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
     "generate:commit": "nuxt-ts generate;git add dist/* ; git commit -m '[bot] automated commit dist'",
