@@ -1,6 +1,44 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+/* @import 'tailwindcss/'; */
+
+:root {
+  /* TODO - decidir cores */
+}
+
 .nuxt-content-highlight {
   @apply relative;
 }
 .nuxt-content-highlight .filename {
   @apply absolute right-0 text-gray-600 font-light z-10 mr-2 mt-1 text-sm;
+}
+
+.custom-select {
+  @apply cursor-pointer relative w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-left;
+}
+
+.custom-select.pr-10 {
+  @apply pr-10;
+}
+
+.custom-select:focus {
+  @apply outline-none border-blue-300;
+}
+
+.custom-select-li {
+  @apply text-gray-900 select-none relative py-2 pl-3 cursor-pointer;
+}
+
+.custom-select-li:focus {
+  @apply outline-none text-white bg-indigo-600;
+}
+
+.custom-select-li:hover {
+  @apply text-white bg-indigo-600;
+}
+
+@screen sm {
+  .custom-select {
+    @apply text-sm leading-5;
+  }
 }
