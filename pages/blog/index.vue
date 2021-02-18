@@ -1,12 +1,7 @@
 <template>
   <div>
-    <site-header />
-    <main class="container">
+    <main>
       <blog-posts :blog-posts="blogPosts" :lang="lang"></blog-posts>
-
-      <footer class="flex border-gray-500 border-t-2 mt-8">
-        <p class="mt-2">Created by Pablo A. Muro Martinez</p>
-      </footer>
     </main>
   </div>
 </template>
@@ -21,10 +16,9 @@ import {
   BLOG_DESCRIPTION,
 } from '@/utils/headUtils'
 import BlogPosts from '~/components/BlogPosts.vue'
-import SiteHeader from '~/components/SiteHeader.vue'
 
 export default Vue.extend({
-  components: { BlogPosts, SiteHeader },
+  components: { BlogPosts },
   async asyncData({
     $content,
     app,
@@ -70,13 +64,4 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped>
-.container {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  max-width: 960px;
-}
-</style>
+<style lang="scss" scoped></style>

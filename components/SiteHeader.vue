@@ -16,8 +16,9 @@
           <a href="http://www.google.com" target="_blank">Curriclo</a>
         </nav>
       </div>
+      <BlogSearchInput :lang="lang" class="mt-5 sm:mt-0" />
 
-      <language-switcher />
+      <language-switcher class="mt-5 sm:mt-0" />
     </header>
     <div class="header-border"></div>
   </div>
@@ -26,17 +27,18 @@
 <script lang="ts">
 import Vue from 'vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
+import BlogSearchInput from './BlogSearchInput.vue'
 
 export default Vue.extend({
-  name: 'Header',
-  components: { LanguageSwitcher },
+  name: 'SiteHeader',
+  components: { LanguageSwitcher, BlogSearchInput },
   data() {
     return {
       lang: 'en',
       cvHref: '',
     }
   },
-  mounted() {
+  created() {
     this.lang = this.$i18n.locale ?? 'en'
   },
 })

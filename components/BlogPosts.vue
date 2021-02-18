@@ -5,7 +5,7 @@
     <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
       <NuxtLink
         v-for="post of blogPosts"
-        :key="post.slug + Date.now()"
+        :key="post.slug"
         :to="{ name: `blog-slug___${lang}`, params: { slug: post.slug } }"
         class="has-text-dark"
       >
