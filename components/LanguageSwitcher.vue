@@ -48,7 +48,7 @@
         role="listbox"
         aria-labelledby="listbox-label"
         aria-activedescendant="listbox-item-3"
-        class="max-h-56 rounded-md py-1 text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
+        class="max-h-56 rounded-md text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
       >
         <li
           v-for="locale in filterLocales"
@@ -84,6 +84,7 @@ interface IData {
   isOpen: boolean
   isHover: boolean
   buttonTransitions: ILanguageSwitcherAnimation
+  currentLocale: string
 }
 
 export default Vue.extend({
@@ -97,6 +98,7 @@ export default Vue.extend({
       isHover: false,
       // @ts-ignore
       buttonTransitions: {},
+      currentLocale: this.$i18n.defaultLocale ?? 'en',
     }
   },
   computed: {
@@ -104,12 +106,15 @@ export default Vue.extend({
       return this.$i18n.locales
     },
     selectedLocale(): any {
-      return { ...this.$i18n.localeProperties }
+      const currentLocale = this.currentLocale
+      return { ...this.$i18n.localeProperties, currentLocale }
     },
-    filterLocales(): any {
-      if (this.$i18n.locales) {
+    filterLocales(): Array<unknown> {
+      if (this.currentLocale && this.$i18n.locales) {
         return this.$i18n.locales.filter((locale: any) => {
+          // @ts-ignore
           if (locale && this.selectedLocale) {
+            // @ts-ignore
             return locale.code !== this.selectedLocale.code
           }
 
@@ -157,14 +162,16 @@ export default Vue.extend({
       this.isOpen = false
 
       await this.$i18n.setLocale(locale.code)
-      this.recomputeLanguage()
+      this.currentLocale = locale.code
+
+      await this.recomputeLanguage()
       this.closeDropdown()
     },
-    recomputeLanguage() {
+    async recomputeLanguage() {
       const _this = this as any
       _this._computedWatchers.selectedLocale.run()
       _this._computedWatchers.filterLocales.run()
-      this.$forceUpdate()
+      await this.$nextTick()
     },
     getCoutry(locale: any): string {
       try {
