@@ -1,18 +1,22 @@
 <template>
-  <div v-if="isBlogPage" class="relative">
+  <div
+    v-if="isBlogPage"
+    :v-click-outside="closeDropdown"
+    class="relative w-full sm:w-auto"
+  >
     <span class="inline-block w-full rounded-md shadow-sm">
       <input
         v-model="searchQuery"
         type="search"
         autocomplete="off"
         placeholder="Search Posts"
-        class="custom-select"
+        class="custom-select w-full"
       />
     </span>
 
     <div
-      v-show="hasData"
-      class="absolute mt-1 w-full rounded-md bg-white shadow-lg"
+      v-show="isOpen"
+      class="absolute mt-1 w-full rounded-md bg-white shadow-lg z-10"
     >
       <ul
         tabindex="-1"
@@ -45,15 +49,20 @@
 import { IContentDocument } from '@nuxt/content/types/content'
 import Vue from 'vue'
 
+// @ts-ignore
+import ClickOutside from 'vue-click-outside'
+
 interface IData {
   searchQuery: string
   blogPosts: IContentDocument[]
-  isBlogPage: boolean
-  hasData: boolean
+  isOpen: boolean
 }
 
 export default Vue.extend({
   name: 'BlogSearchInput',
+  directives: {
+    ClickOutside,
+  },
   props: {
     lang: {
       type: String,
@@ -64,15 +73,21 @@ export default Vue.extend({
     return {
       searchQuery: '',
       blogPosts: [],
-      isBlogPage: false,
-      hasData: false,
+      isOpen: false,
     }
+  },
+  computed: {
+    isBlogPage(): boolean {
+      let lang = this.lang
+      lang = lang !== 'en' ? `${lang}/` : ''
+      return this.$route.fullPath === `/${lang}blog`
+    },
   },
   watch: {
     async searchQuery(searchQuery) {
       if (!searchQuery) {
         this.blogPosts = []
-        this.hasData = false
+        this.isOpen = false
         return
       }
 
@@ -90,13 +105,14 @@ export default Vue.extend({
       }
 
       this.blogPosts = blogPosts
-      this.hasData = blogPosts.length >= 1
+      this.isOpen = blogPosts.length >= 1
     },
   },
-  created() {
-    let lang = this.lang
-    lang = lang !== 'en' ? `${lang}/` : ''
-    this.isBlogPage = this.$route.fullPath === `/${lang}blog`
+  methods: {
+    closeDropdown() {
+      this.isOpen = false
+      this.searchQuery = ''
+    },
   },
 })
 </script>

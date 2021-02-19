@@ -1,6 +1,10 @@
 <template>
-  <div v-click-outside="closeDropdown" class="relative">
-    <span class="inline-block w-full rounded-md shadow-sm">
+  <div v-click-outside="closeDropdown" class="relative w-max">
+    <span
+      class="inline-block rounded-md shadow-sm"
+      @mouseenter="mouseEnter"
+      @mouseleave="mouseLeave"
+    >
       <button
         ref="languageButton"
         type="button"
@@ -9,8 +13,6 @@
         aria-labelledby="listbox-label"
         class="custom-select"
         @click="openDropdown"
-        @mouseenter="mouseEnter"
-        @mouseleave="mouseLeave"
       >
         <div class="flex items-center space-x-3">
           <flag :iso="getCoutry(selectedLocale)" :squared="true" />
@@ -136,7 +138,7 @@ export default Vue.extend({
   methods: {
     openDropdown() {
       this.isOpen = !this.isOpen
-      if (!this.isHover) {
+      if (this.isOpen) {
         this.mouseEnter()
       }
     },

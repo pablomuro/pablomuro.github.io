@@ -40,7 +40,7 @@ export class LanguageSwitcherAnimation {
       [this.languageName, this.selectArrows],
       transitionTime,
       {
-        'max-width': '70px',
+        'max-width': '100px',
         'margin-left': '0.75rem',
       }
     )
@@ -53,12 +53,12 @@ export class LanguageSwitcherAnimation {
       }
     )
 
-    languageName.style.maxWidth = '0'
-    languageName.style.maxHeight = '0'
+    languageName.style.maxWidth = '0px'
+    languageName.style.maxHeight = '0px'
 
-    selectArrows.style.margin = '0'
-    selectArrows.style.maxWidth = '0'
-    selectArrows.style.maxHeight = '0'
+    selectArrows.style.margin = '0px'
+    selectArrows.style.maxWidth = '0px'
+    selectArrows.style.maxHeight = '0px'
   }
 
   animateHover(): void {
@@ -78,11 +78,11 @@ export class LanguageSwitcherAnimation {
     this.languageButton.blur()
     this.languageButton.classList.remove('pr-10')
 
-    this.selectArrows.style.maxWidth = '0'
+    this.selectArrows.style.maxWidth = '0px'
 
     this.leaveTransition.restart()
 
-    this.languageName.style.maxHeight = '0'
+    this.languageName.style.maxHeight = '0px'
   }
 
   isLeaveActive(): boolean {

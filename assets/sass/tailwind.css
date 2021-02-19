@@ -17,9 +17,9 @@
     }
   }
   .custom-select {
-    @apply cursor-pointer relative w-full rounded-md border border-gray-500 bg-white px-3 py-2 text-left;
+    @apply cursor-pointer relative rounded-md border border-gray-300 bg-white px-3 py-2 text-left;
     &:focus {
-      @apply outline-none border-blue-300;
+      @apply outline-none ring-1 ring-default-300;
     }
   }
 
@@ -27,10 +27,10 @@
     @apply text-gray-900 select-none relative py-2 pl-3 cursor-pointer;
 
     &:focus {
-      @apply outline-none text-white bg-indigo-600;
+      @apply outline-none text-white bg-default-400;
     }
     &:hover {
-      @apply text-white bg-indigo-600;
+      @apply text-white bg-default-400;
     }
   }
 

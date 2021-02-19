@@ -12,17 +12,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'blue-gray': colors.blueGray,
-        default: {
-          DEFAULT: 'var(--default-color)',
-          light: 'var(--default-color-light)',
-          dark: 'var(--default-color-dark)',
-        },
-        brand: {
-          light: '#3fbaeb',
-          DEFAULT: '#0fa9e6',
-          dark: '#0c87b8',
-        },
+        default: colors.blueGray,
       },
     },
   },

@@ -1,25 +1,33 @@
 <template>
   <div>
-    <header class="flex flex-wrap justify-between m-8 items-center">
-      <div class="flex items-center">
-        <nuxt-link
-          :to="localePath('/')"
-          class="inline-flex pr-3 border-r border-black mr-3 items-center"
+    <transition name="page">
+      <header
+        class="flex flex-col sm:flex-row justify-between m-8 xl:ml-16 xl:mr-64 items-center"
+      >
+        <div class="flex items-center">
+          <nuxt-link
+            :to="localePath('/')"
+            class="inline-flex pr-3 border-r border-black mr-3 items-center"
+          >
+            <div class="logo">
+              <img src="/icon.png" alt="logo" />
+            </div>
+            <p class="m-0 ml-3">PabloMuro</p>
+          </nuxt-link>
+          <nav class="inline-flex space-x-3">
+            <nuxt-link :to="localePath('/blog')">Blog</nuxt-link>
+            <a href="http://www.google.com" target="_blank">Curriclo</a>
+          </nav>
+        </div>
+        <div
+          class="flex flex-wrap justify-between items-end flex-col sm:flex-row w-full sm:w-auto sm:space-x-3"
         >
-          <div class="logo">
-            <img src="/icon.png" alt="logo" />
-          </div>
-          <p class="m-0 ml-3">PabloMuro</p>
-        </nuxt-link>
-        <nav class="inline-flex space-x-3">
-          <nuxt-link :to="localePath('/blog')">Blog</nuxt-link>
-          <a href="http://www.google.com" target="_blank">Curriclo</a>
-        </nav>
-      </div>
-      <blog-search-input :lang="lang" class="mt-5 sm:mt-0" />
+          <blog-search-input :lang="this.$i18n.locale" class="mt-5 sm:mt-0" />
 
-      <language-switcher class="mt-5 sm:mt-0" />
-    </header>
+          <language-switcher class="mt-5 sm:mt-0" />
+        </div>
+      </header>
+    </transition>
     <div class="header-border"></div>
   </div>
 </template>
