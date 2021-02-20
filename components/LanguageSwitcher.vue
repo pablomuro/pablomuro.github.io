@@ -1,7 +1,7 @@
 <template>
   <div v-click-outside="closeDropdown" class="relative w-max">
     <span
-      class="inline-block rounded-md shadow-sm"
+      class="language-box inline-block rounded-md shadow-sm"
       @mouseenter="mouseEnter"
       @mouseleave="mouseLeave"
     >
@@ -11,18 +11,21 @@
         aria-haspopup="listbox"
         aria-expanded="true"
         aria-labelledby="listbox-label"
-        class="custom-select"
+        class="language-btn custom-select"
         @click="openDropdown"
       >
         <div class="flex items-center space-x-3">
           <flag :iso="getCoutry(selectedLocale)" :squared="true" />
-          <span ref="languageName" class="overflow-clip overflow-hidden">
+          <span
+            ref="languageName"
+            class="language-name overflow-clip overflow-hidden"
+          >
             {{ selectedLocale.name }}
           </span>
         </div>
         <span
           ref="selectArrows"
-          class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
+          class="arrows absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
         >
           <svg
             class="h-5 w-5 text-gray-400"
@@ -77,16 +80,14 @@
 import Vue from 'vue'
 // @ts-ignore
 import ClickOutside from 'vue-click-outside'
-import {
-  LanguageSwitcherAnimation,
-  ILanguageSwitcherAnimation,
-} from '@/utils/LanguageSwitcherAnimation.ts'
 
 interface IData {
   isOpen: boolean
   isHover: boolean
-  buttonTransitions: ILanguageSwitcherAnimation
   currentLocale: string
+  languageName: HTMLElement | null
+  selectArrows: HTMLElement | null
+  languageButton: HTMLElement | null
 }
 
 export default Vue.extend({
@@ -98,9 +99,10 @@ export default Vue.extend({
     return {
       isOpen: false,
       isHover: false,
-      // @ts-ignore
-      buttonTransitions: {},
       currentLocale: this.$i18n.defaultLocale ?? 'en',
+      languageName: null,
+      selectArrows: null,
+      languageButton: null,
     }
   },
   computed: {
@@ -128,12 +130,13 @@ export default Vue.extend({
     },
   },
   mounted() {
-    const { languageName, selectArrows, languageButton } = this.$refs as any
-    this.buttonTransitions = new LanguageSwitcherAnimation({
-      languageName,
-      selectArrows,
-      languageButton,
-    })
+    const { languageName, selectArrows, languageButton } = this.$refs as {
+      [key: string]: HTMLElement
+    }
+
+    this.languageName = languageName
+    this.selectArrows = selectArrows
+    this.languageButton = languageButton
   },
   methods: {
     openDropdown() {
@@ -150,15 +153,18 @@ export default Vue.extend({
     },
     mouseEnter() {
       this.isHover = true
-      if (this.isOpen || this.buttonTransitions.isHoverActive()) return
-      this.buttonTransitions.animateHover()
     },
     mouseLeave() {
-      if (this.isOpen || this.buttonTransitions.isLeaveActive()) return
+      if (this.isOpen) {
+        this.keepOpen(true)
+        return
+      }
+
+      this.keepOpen(false)
+
+      this.languageButton?.blur()
 
       this.isHover = false
-
-      this.buttonTransitions.animateLeave()
     },
     async select(locale: any) {
       this.isOpen = false
@@ -183,16 +189,66 @@ export default Vue.extend({
         return locale.code
       }
     },
+    keepOpen(keep: boolean): void {
+      const style = {
+        maxWidth: '100px',
+        maxHeight: '100%',
+        marginLeft: '0.75rem',
+        paddingRight: '2.5rem',
+      }
+      const {
+        maxWidth = '',
+        maxHeight = '',
+        marginLeft = '',
+        paddingRight = '',
+      } = keep === true ? style : {}
+
+      if (this.languageName && this.selectArrows && this.languageButton) {
+        ;[this.languageName, this.selectArrows].forEach((el) => {
+          el.style.maxWidth = maxWidth
+          el.style.maxHeight = maxHeight
+          el.style.marginLeft = marginLeft
+        })
+        this.languageButton.style.paddingRight = paddingRight
+      }
+    },
   },
 })
 </script>
 
-<style languave="scss" scoped>
+<style languave="postcss" scoped>
 .flag-icon {
   width: 20px !important;
   height: 20px;
   border-radius: 100%;
   background-size: cover;
   background-repeat: round;
+}
+
+.language-box {
+  &:hover {
+    .language-name,
+    .arrows {
+      max-width: 100px;
+      max-height: 100%;
+      margin-left: 0.75rem;
+    }
+    .language-btn {
+      padding-right: 2.5rem;
+    }
+  }
+  .language-name,
+  .arrows {
+    max-width: 0px;
+    margin-left: 0px;
+    transition: max-width 0.5s ease-in-out, margin-left 0.6s ease-in-out,
+      max-height 0.6s ease-in-out;
+  }
+  .language-name {
+    max-height: 0px;
+  }
+  .language-btn {
+    transition: padding-right 0.5s ease-in-out;
+  }
 }
 </style>
