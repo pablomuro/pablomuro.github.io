@@ -4,6 +4,7 @@
   --default-color-dark: #f3f3f3;
 }
 
+/*! @import */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,12 +13,12 @@
   .nuxt-content-highlight {
     @apply relative;
 
-    &.filename {
-      @apply absolute right-0 text-gray-600 font-light z-10 mr-2 mt-1 text-sm;
+    .filename {
+      @apply absolute right-0 text-gray-100 font-light z-10 mr-2 mt-1 text-sm;
     }
   }
   .custom-select {
-    @apply cursor-pointer relative rounded-md border border-gray-300 bg-white px-3 py-2 text-left;
+    @apply cursor-pointer relative rounded-md border border-default-300 bg-white px-3 py-2 text-left;
     &:focus {
       @apply outline-none ring-1 ring-default-300;
     }

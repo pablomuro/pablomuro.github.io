@@ -25,6 +25,7 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/svg',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -100,7 +101,7 @@ export default {
     dir: './blog-posts',
     markdown: {
       prism: {
-        theme: 'prism-themes/themes/prism-dracula.css',
+        theme: 'dracula-prism/dist/css/dracula-prism.min.css',
       },
       remarkPlugins: ['remark-emoji'],
     },
@@ -120,11 +121,11 @@ export default {
       },
     },
     transpile: ['vue-flag-icon'],
-    extend(config, ctx) {
-      if (ctx.isDev) {
-        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
-      }
-    },
+    // extend(config, ctx) {
+    //   if (ctx.isDev) {
+    //     config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+    //   }
+    // },
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)

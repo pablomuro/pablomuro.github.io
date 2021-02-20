@@ -1,16 +1,20 @@
 <template>
   <div
-    v-if="isBlogPage"
-    :v-click-outside="closeDropdown"
+    v-show="isBlogPage"
+    v-click-outside="closeDropdown"
     class="relative w-full sm:w-auto"
   >
     <span class="inline-block w-full rounded-md shadow-sm">
+      <SearchIcon
+        class="block absolute z-10 h-4 mt-3 ml-3 fill-current text-default-400 transition-colors duration-300 ease-linear"
+      />
+
       <input
         v-model="searchQuery"
         type="search"
         autocomplete="off"
         placeholder="Search Posts"
-        class="custom-select w-full"
+        class="custom-select w-full pl-10"
       />
     </span>
 
@@ -46,11 +50,13 @@
 </template>
 
 <script lang="ts">
-import { IContentDocument } from '@nuxt/content/types/content'
 import Vue from 'vue'
-
+import { IContentDocument } from '@nuxt/content/types/content'
 // @ts-ignore
 import ClickOutside from 'vue-click-outside'
+
+// @ts-ignore
+import SearchIcon from '~/assets/icons/search.svg?inline'
 
 interface IData {
   searchQuery: string
@@ -60,6 +66,7 @@ interface IData {
 
 export default Vue.extend({
   name: 'BlogSearchInput',
+  components: { SearchIcon },
   directives: {
     ClickOutside,
   },
