@@ -11,21 +11,21 @@
         aria-haspopup="listbox"
         aria-expanded="true"
         aria-labelledby="listbox-label"
-        class="language-btn custom-select"
+        class="language-btn custom-select pr-0"
         @click="openDropdown"
       >
         <div class="flex items-center space-x-3">
           <flag :iso="getCoutry(selectedLocale)" :squared="true" />
           <span
             ref="languageName"
-            class="language-name overflow-clip overflow-hidden"
+            class="language-name overflow-clip overflow-hidden max-w-0 max-h-0 ml-0"
           >
             {{ selectedLocale.name }}
           </span>
         </div>
         <span
           ref="selectArrows"
-          class="arrows absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
+          class="arrows absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none max-w-0 ml-0"
         >
           <svg
             class="h-5 w-5 text-gray-400"
@@ -190,26 +190,16 @@ export default Vue.extend({
       }
     },
     keepOpen(keep: boolean): void {
-      const style = {
-        maxWidth: '100px',
-        maxHeight: '100%',
-        marginLeft: '0.75rem',
-        paddingRight: '2.5rem',
-      }
-      const {
-        maxWidth = '',
-        maxHeight = '',
-        marginLeft = '',
-        paddingRight = '',
-      } = keep === true ? style : {}
+      const maxWidth = keep === true ? '100px' : ''
+      const classOperation = keep === true ? 'add' : 'remove'
 
       if (this.languageName && this.selectArrows && this.languageButton) {
-        ;[this.languageName, this.selectArrows].forEach((el) => {
-          el.style.maxWidth = maxWidth
-          el.style.maxHeight = maxHeight
-          el.style.marginLeft = marginLeft
-        })
-        this.languageButton.style.paddingRight = paddingRight
+        this.languageName.style.maxWidth = maxWidth
+        this.selectArrows.style.maxWidth = maxWidth
+
+        this.languageName.classList[classOperation]('max-h-full', 'ml-3')
+        this.selectArrows.classList[classOperation]('max-h-full', 'ml-3')
+        this.languageButton.classList[classOperation]('pr-10')
       }
     },
   },
@@ -229,26 +219,22 @@ export default Vue.extend({
   &:hover {
     .language-name,
     .arrows {
+      @apply max-h-full ml-3;
       max-width: 100px;
-      max-height: 100%;
-      margin-left: 0.75rem;
     }
     .language-btn {
-      padding-right: 2.5rem;
+      @apply pr-10;
     }
   }
-  .language-name,
-  .arrows {
-    max-width: 0px;
-    margin-left: 0px;
+  .language-name {
     transition: max-width 0.5s ease-in-out, margin-left 0.6s ease-in-out,
       max-height 0.6s ease-in-out;
   }
-  .language-name {
-    max-height: 0px;
+  .arrows {
+    transition: max-width 0.6s ease, max-height 0.3s ease;
   }
   .language-btn {
-    transition: padding-right 0.5s ease-in-out;
+    transition: padding-right 0.6s ease-in-out;
   }
 }
 </style>
