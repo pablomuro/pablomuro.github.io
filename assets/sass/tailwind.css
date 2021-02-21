@@ -5,6 +5,27 @@
 }
 
 /*! @import */
+:root {
+  --theme-color: #0a0a23;
+  --headers-color: #292929;
+  --paragraph-color: #444443;
+  --subtitle-color: #757575;
+  --flash-white: #f3f3f3;
+  --gray-line: rgba(61, 61, 61, 0.1);
+
+  --header-bg-size: 3.125rem;
+  --header-margin-top: calc(var(--header-bg-size) * -1);
+
+  --gray80: #2a2a40;
+  --gray75: #3b3b4f;
+  --gray45: #858591;
+  --gray15: #d0d0d5;
+  --gray10: #dfdfe2;
+  --gray05: #eeeef0;
+  --gray00: #fff;
+  --blue-dark: #002ead;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -12,11 +12,10 @@ h4,
 h5,
 h6 {
   font-family: Montserrat, sans-serif;
-  // font-weight: 700;
+  color: var(--headers-color);
 }
 
 h1 {
-  color: rgb(41, 41, 41);
   margin-top: 0.6em;
   margin-bottom: -0.27em;
   font-size: 32px;
@@ -32,7 +31,7 @@ h2 {
 p {
   font-size: 22px;
   line-height: 1.4285em;
-  color: #444443;
+  color: var(--paragraph-color);
   margin-top: 0;
   margin-bottom: 1.37em;
 }

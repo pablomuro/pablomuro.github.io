@@ -12,7 +12,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        default: colors.blueGray,
+        default: { ...colors.blueGray, tag: '#3b3b4f' },
       },
     },
   },

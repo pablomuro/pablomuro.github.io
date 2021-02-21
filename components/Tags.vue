@@ -3,7 +3,7 @@
     <span
       v-for="tag of tags"
       :key="tag"
-      class="mr-2 inline-block bg-indigo-200 rounded-full px-2 py-px text-xs font-semibold text-gray-500 hover:bg-indigo-300"
+      class="mr-2 inline-block bg-gray-300 rounded-full px-2 py-px text-xs font-semibold text-gray-600 hover:bg-default-tag hover:text-gray-100"
       >#{{ tag }}</span
     >
   </span>
