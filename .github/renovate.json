@@ -1,0 +1,10 @@
+{
+  "extends": ["config:base", "group:all"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor"],
+      "automerge": true,
+      "rangeStrategy": "replace"
+    }
+  ]
+}
