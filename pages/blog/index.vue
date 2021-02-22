@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <main>
-      <blog-posts :blog-posts="blogPosts" :lang="lang"></blog-posts>
-    </main>
-  </div>
+  <page>
+    <template #title>Blog Posts</template>
+
+    <blog-posts :blog-posts="blogPosts" :lang="lang" class="mt-8" />
+  </page>
 </template>
 
 <script lang="ts">
@@ -15,10 +15,8 @@ import {
   BLOG_TITLE,
   BLOG_DESCRIPTION,
 } from '@/utils/headUtils'
-import BlogPosts from '~/components/BlogPosts.vue'
 
 export default Vue.extend({
-  components: { BlogPosts },
   async asyncData({
     $content,
     app,

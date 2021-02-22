@@ -1,9 +1,8 @@
 <template>
-  <div>
-    <div>
-      <div>Pablo Muro Dev - {{ year }}</div>
-    </div>
-  </div>
+  <page>
+    <template #title>Home</template>
+    <div class="name">Pablo Muro Dev - {{ year }}</div>
+  </page>
 </template>
 
 <script lang="ts">
@@ -19,9 +18,11 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.container {
+.name {
   text-align: center;
-  justify-content: center;
   min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 </style>

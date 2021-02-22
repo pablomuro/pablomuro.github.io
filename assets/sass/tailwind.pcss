@@ -16,6 +16,10 @@
   --header-bg-size: 3.125rem;
   --header-margin-top: calc(var(--header-bg-size) * -1);
 
+  --lime: lime;
+  --magenta: magenta;
+  --cyan: cyan;
+
   --gray80: #2a2a40;
   --gray75: #3b3b4f;
   --gray45: #858591;
@@ -39,14 +43,15 @@
     }
   }
   .custom-select {
-    @apply cursor-pointer relative rounded-md border border-default-300 bg-white px-3 py-2 text-left;
-    &:focus {
+    @apply cursor-pointer relative rounded-md border border-default-300 bg-white px-2 py-2 text-left;
+    &:focus,
+    &:focus-within {
       @apply outline-none ring-1 ring-default-300;
     }
   }
 
   .custom-select-li {
-    @apply text-gray-900 select-none relative py-2 pl-3 cursor-pointer;
+    @apply text-gray-900 select-none relative py-2 pl-2 cursor-pointer;
 
     &:focus {
       @apply outline-none text-white bg-default-400;
@@ -58,7 +63,11 @@
 
   @screen sm {
     .custom-select {
-      @apply text-sm leading-5;
+      @apply text-sm leading-5 px-3 py-2;
+
+      .custom-select-li {
+        @apply pl-3;
+      }
     }
   }
 }

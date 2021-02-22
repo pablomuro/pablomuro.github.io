@@ -10,11 +10,16 @@ module.exports = {
   ],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
-    extend: {
-      colors: {
-        default: { ...colors.blueGray, tag: '#3b3b4f' },
-      },
+    colors: {
+      default: { ...colors.blueGray, tag: '#3b3b4f' },
+      transparent: 'transparent',
+      current: 'currentColor',
+
+      black: colors.black,
+      white: colors.white,
+      gray: colors.coolGray,
     },
+    extend: {},
   },
   variants: {
     extend: {},

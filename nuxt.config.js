@@ -18,7 +18,10 @@ export default {
   plugins: ['@/plugins/vue-flag-icon.ts'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
-  components: true,
+  components: [
+    '~/components', // shortcut to { path: '~/components' }
+    { path: '~/layout/' },
+  ],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
@@ -42,7 +45,7 @@ export default {
   ],
   tailwindcss: {
     exposeConfig: false,
-    cssPath: '@/assets/sass/tailwind.css',
+    cssPath: '@/assets/sass/tailwind.pcss',
     configPath: './tailwind.config.js',
   },
 

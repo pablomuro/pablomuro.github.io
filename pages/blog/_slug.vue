@@ -1,29 +1,31 @@
 <template>
-  <article
-    class="-mt-5 mx-auto max-w-md min-h-full rounded overflow-hidden flex flex-col"
-  >
-    <img
-      v-if="post.cover_image"
-      :src="post.cover_image"
-      alt="post-cover-image"
-      class="w-full max-h-96 object-cover object-center"
-    />
+  <page class="">
+    <article
+      class="-mt-8 mx-auto max-w-full min-h-full rounded overflow-hidden flex flex-col card-shadow"
+    >
+      <img
+        v-if="post.cover_image"
+        :src="post.cover_image"
+        alt="post-cover-image"
+        class="w-full max-h-96 object-cover object-center"
+      />
 
-    <div class="px-10 pb-2 flex-grow w-full">
-      <header>
-        <h1 class="post-title mb-2 mt-8">{{ post.title }}</h1>
-      </header>
-      <div class="post-info text-sm mb-8 flex flex-wrap justify-between">
-        <div>
-          <time class="text-center">{{ formatDate(post.createdAt) }}</time>
-          •
-          <reading-time :reading-time="post.readingTime"></reading-time>
+      <div class="px-4 sm:px-10 pb-2 flex-grow w-full">
+        <header>
+          <h1 class="post-title mb-2 mt-8">{{ post.title }}</h1>
+        </header>
+        <div class="post-info text-sm mb-8 flex flex-wrap justify-between">
+          <div>
+            <time class="text-center">{{ formatDate(post.createdAt) }}</time>
+            •
+            <reading-time :reading-time="post.readingTime"></reading-time>
+          </div>
+          <tags :tags="post.tags"></tags>
         </div>
-        <tags :tags="post.tags"></tags>
+        <nuxt-content :document="post" />
       </div>
-      <nuxt-content :document="post" />
-    </div>
-  </article>
+    </article>
+  </page>
 </template>
 
 <script lang="ts">
@@ -93,7 +95,7 @@ export default Vue.extend({
 .post-cover {
   max-height: 432px;
 }
-.container {
+.card-shadow {
   min-height: 100vh;
 
   box-shadow: 2px 2px 10px 0 hsla(0, 0%, 40%, 0.5);

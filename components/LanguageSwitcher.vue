@@ -1,7 +1,7 @@
 <template>
-  <div v-click-outside="closeDropdown" class="relative w-max">
+  <div v-click-outside="closeDropdown" class="relative w-max language-box">
     <span
-      class="language-box inline-block rounded-md shadow-sm"
+      class="inline-block rounded-md shadow-sm"
       @mouseenter="mouseEnter"
       @mouseleave="mouseLeave"
     >
@@ -11,10 +11,10 @@
         aria-haspopup="listbox"
         aria-expanded="true"
         aria-labelledby="listbox-label"
-        class="language-btn custom-select pr-0"
+        class="language-btn custom-select"
         @click="openDropdown"
       >
-        <div class="flex items-center space-x-3">
+        <div class="flex items-center">
           <flag :iso="getCoutry(selectedLocale)" :squared="true" />
           <span
             ref="languageName"
@@ -25,7 +25,7 @@
         </div>
         <span
           ref="selectArrows"
-          class="arrows absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none max-w-0 ml-0"
+          class="arrows absolute inset-y-0 right-0 flex items-center pointer-events-none max-w-0 ml-0"
         >
           <svg
             class="h-5 w-5 text-gray-400"
@@ -46,7 +46,7 @@
 
     <div
       v-show="isOpen"
-      class="absolute mt-1 w-full rounded-md bg-white shadow-lg"
+      class="absolute mt-1 w-full rounded-md bg-white shadow-lg z-20"
     >
       <ul
         tabindex="-1"

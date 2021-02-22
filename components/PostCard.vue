@@ -32,12 +32,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import ReadingTime from '~/components/ReadingTime.vue'
-import Tags from '~/components/Tags.vue'
 
 export default Vue.extend({
   name: 'PostCard',
-  components: { ReadingTime, Tags },
   props: {
     lang: {
       type: String,

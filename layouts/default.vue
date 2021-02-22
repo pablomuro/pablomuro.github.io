@@ -1,19 +1,17 @@
 <template>
   <div>
     <site-header />
-    <Nuxt class="container" />
+    <main>
+      <Nuxt />
+    </main>
     <site-footer />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import SiteHeader from '~/components/SiteHeader.vue'
-import SiteFooter from '~/components/SiteFooter.vue'
 
-export default Vue.extend({
-  components: { SiteHeader, SiteFooter },
-})
+export default Vue.extend({})
 </script>
 
 <style lang="scss" scoped></style>

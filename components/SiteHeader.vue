@@ -2,7 +2,7 @@
   <div>
     <transition name="page">
       <header
-        class="flex flex-col sm:flex-row justify-between m-8 xl:ml-16 xl:mr-64 items-center"
+        class="flex flex-col sm:flex-row justify-between m-4 sm:m-8 xl:ml-16 xl:mr-64"
       >
         <div class="flex items-center">
           <nuxt-link
@@ -14,32 +14,29 @@
             </div>
             <p class="m-0 ml-3">PabloMuro</p>
           </nuxt-link>
-          <nav class="inline-flex space-x-3">
+          <nav class="inline-flex space-x-3 items-center">
             <nuxt-link :to="localePath('/blog')">Blog</nuxt-link>
             <a href="http://www.google.com" target="_blank">Curriclo</a>
           </nav>
         </div>
         <div
-          class="flex flex-wrap justify-between items-end flex-col sm:flex-row w-full sm:w-auto sm:space-x-3"
+          class="flex flex-wrap justify-between items-center flex-row w-full sm:w-auto sm:space-x-3 mt-4 mb-2 sm:my-0"
         >
-          <blog-search-input :lang="this.$i18n.locale" class="mt-5 sm:mt-0" />
+          <blog-search-input :lang="this.$i18n.locale" class="" />
 
-          <language-switcher class="mt-5 sm:mt-0" />
+          <language-switcher class="" />
         </div>
       </header>
     </transition>
-    <div class="header-border"></div>
+    <div class="header-bg"></div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import LanguageSwitcher from './LanguageSwitcher.vue'
-import BlogSearchInput from './BlogSearchInput.vue'
 
 export default Vue.extend({
   name: 'SiteHeader',
-  components: { LanguageSwitcher, BlogSearchInput },
   data() {
     return {
       lang: 'en',
@@ -63,7 +60,8 @@ header {
     text-decoration: underline;
   }
 }
-.header-border {
-  border-bottom: 50px solid black;
+.header-bg {
+  height: var(--header-bg-size);
+  z-index: -1;
 }
 </style>
