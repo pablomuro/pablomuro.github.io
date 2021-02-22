@@ -32,3 +32,21 @@
   src: local(''),
     url('../fonts/Quicksand/static/Quicksand-Bold.ttf') format('truetype');
 }
+
+// FiraCode font-faces
+
+@font-face {
+  font-family: 'FiraCode';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+    url('../fonts/FiraCode/static/FiraCode-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'FiraCode';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+    url('../fonts/FiraCode/static/FiraCode-Bold.ttf') format('truetype');
+}
