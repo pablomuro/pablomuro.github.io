@@ -1,3 +1,4 @@
+import { MetaInfo } from 'vue-meta';
 // ADD i18n???
 export const BASE_URL = 'https://www.pablomuro.dev'
 
@@ -7,7 +8,7 @@ const DEFAULT_CARD_IMG = '/icon.png'
 
 export const BLOG_TITLE = "Pablo Muro's Web Dev and computer stuff blog"
 export const BLOG_DESCRIPTION =
-  'Blog for abordar temas sobre desenvolviment web with Javascript and computer science basis, algorithms and data structures'
+  'Blog for abordar temas sobre desenvolvimento web with Javascript and computer science basis, algorithms and data structures'
 
 export const getHeadMetaTags = (data: any) => {
   const {
@@ -234,4 +235,36 @@ export const getHeadFavicons = () => {
       href: '/favicon/favicon-16x16.png',
     },
   ]
+}
+
+export function getHtmlHead(): MetaInfo {
+  // @ts-ignore
+  const { post = null } = this.$data
+  // @ts-ignore
+  const { path = null } = this.$route
+
+  if (post != null && path) {
+    return {
+      title: post.tile,
+      meta: [
+        ...getHeadMetaTags({
+          description: post.description,
+          tile: post.tile,
+          path,
+          image: post.coverImage,
+          tags: post.tags,
+        }),
+      ],
+    }
+  }
+  return {
+    title: BLOG_TITLE,
+    meta: [
+      ...getHeadMetaTags({
+        description: BLOG_DESCRIPTION,
+        tile: BLOG_TITLE,
+        path,
+      }),
+    ],
+  }
 }

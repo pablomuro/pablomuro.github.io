@@ -7,12 +7,16 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { getHtmlHead } from '~/utils/headUtils'
 
 export default Vue.extend({
   data() {
     return {
       year: new Date().getFullYear(),
     }
+  },
+  head() {
+    return { ...getHtmlHead.bind(this) }
   },
 })
 </script>

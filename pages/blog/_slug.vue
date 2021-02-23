@@ -39,7 +39,7 @@
 import Vue from 'vue'
 import { contentFunc, IContentDocument } from '@nuxt/content/types/content'
 import { NuxtAppOptions } from '@nuxt/types'
-import { getHeadMetaTags } from '@/utils/headUtils'
+import { getHtmlHead } from '@/utils/headUtils'
 
 import Tags from '~/components/Tags.vue'
 
@@ -80,18 +80,7 @@ export default Vue.extend({
   },
 
   head() {
-    return {
-      title: this.$data.post.tile,
-      meta: [
-        ...getHeadMetaTags({
-          description: this.$data.post.description,
-          tile: this.$data.post.tile,
-          path: this.$route.path,
-          image: this.$data.post.coverImage,
-          tags: this.$data.post.tags,
-        }),
-      ],
-    }
+    return { ...getHtmlHead.bind(this) }
   },
 })
 </script>

@@ -9,11 +9,7 @@
 import Vue from 'vue'
 import { contentFunc, IContentDocument } from '@nuxt/content/types/content'
 import { NuxtAppOptions } from '@nuxt/types'
-import {
-  getHeadMetaTags,
-  BLOG_TITLE,
-  BLOG_DESCRIPTION,
-} from '@/utils/headUtils'
+import { getHtmlHead } from '@/utils/headUtils'
 
 export default Vue.extend({
   async asyncData({
@@ -47,16 +43,7 @@ export default Vue.extend({
     }
   },
   head() {
-    return {
-      title: BLOG_TITLE,
-      meta: [
-        ...getHeadMetaTags({
-          description: BLOG_DESCRIPTION,
-          tile: BLOG_TITLE,
-          path: this.$route.path,
-        }),
-      ],
-    }
+    return { ...getHtmlHead.bind(this) }
   },
 })
 </script>
