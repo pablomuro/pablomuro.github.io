@@ -3,8 +3,8 @@
     class="max-w-md min-h-full rounded overflow-hidden shadow-md flex flex-col hover:shadow-2xl mb-4"
   >
     <img
-      v-if="post.cover_image"
-      :src="post.cover_image"
+      v-if="post.coverImage"
+      :src="post.coverImage"
       alt="post-cover-image"
       class="w-full h-52 object-cover object-center"
     />

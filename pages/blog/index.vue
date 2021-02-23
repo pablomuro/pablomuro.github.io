@@ -30,7 +30,7 @@ export default Vue.extend({
       .only([
         'title',
         'description',
-        'cover_image',
+        'coverImage',
         'slug',
         'tags',
         'publish_date',
