@@ -1,33 +1,22 @@
 import { $content } from '@nuxt/content'
+import nuxtConfig, { i18nLocale } from '../nuxt.config'
 
-export const getNuxtRoutes = () => {
+export const getSiteXmlRoutes = () => {
   const routes: string[] = []
-  const languages = ['en', 'pt-br', 'es']
-  languages.forEach(async (language) => {
-    const posts: any = await $content(language).fetch()
+  const defaultLocale = nuxtConfig.i18n.defaultLocale
+
+  i18nLocale.forEach(async (locale) => {
+    const posts: any = await $content(locale.code).fetch()
+    const languageSlug =
+      locale.code !== defaultLocale ? `${locale.code}/blog` : 'blog'
     if (typeof posts === typeof []) {
       for (const post of posts) {
-        routes.push(`blog/${language}/${post.slug}`)
+        routes.push(`${languageSlug}/${post.slug}`)
       }
     } else {
-      routes.push(`blog/${language}/${posts.slug}`)
+      routes.push(`${languageSlug}/${posts.slug}`)
     }
   })
-
-  return routes
-}
-
-export const getSiteXmlRoutes = async () => {
-  const routes: string[] = []
-
-  const posts: any = await $content('en').fetch()
-  if (typeof posts === typeof []) {
-    for (const post of posts) {
-      routes.push(`blog/${post.slug}`)
-    }
-  } else {
-    routes.push(`blog/${posts.slug}`)
-  }
 
   return routes
 }

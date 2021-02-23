@@ -16,7 +16,9 @@
         </header>
         <div class="post-info text-sm mb-4 flex flex-wrap justify-between">
           <div>
-            <time class="text-center">{{ formatDate(post.createdAt) }}</time>
+            <time class="text-center">{{
+              i18nFormatDate(post.createdAt)
+            }}</time>
             •
             <reading-time :reading-time="post.readingTime"></reading-time>
           </div>
@@ -55,15 +57,16 @@ export default Vue.extend({
     app: NuxtAppOptions
   }) {
     let post
-    const lang = app.i18n.locale
+    let lang = app.i18n.locale
     try {
-      post = await $content(app.i18n.locale, params.slug).fetch()
+      post = await $content(lang, params.slug).fetch()
     } catch (error) {
       // TODO - 404 pega o EN ou manda pra pagina desconhecida ??
-      post = await $content('en', params.slug).fetch()
+      lang = app.i18n.fallbackLocale.toString()
+      post = await $content(app.i18n.fallbackLocale, params.slug).fetch()
     }
 
-    const [prev = null, next = null] = (await $content(app.i18n.locale)
+    const [prev = null, next = null] = (await $content(lang)
       .only(['title', 'slug'])
       .sortBy('createdAt', 'desc')
       .surround(params.slug)
@@ -90,13 +93,6 @@ export default Vue.extend({
         }),
       ],
     }
-  },
-  methods: {
-    formatDate(date: string): string {
-      // new Date(ano, mês, dia, hora, minuto, segundo, milissegundo);
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('en', options)
-    },
   },
 })
 </script>

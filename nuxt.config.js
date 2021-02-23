@@ -1,7 +1,7 @@
 import { getSiteXmlRoutes } from './utils/routesUtils'
 import { BASE_URL, getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
 
-const i18nLocale = [
+export const i18nLocale = [
   { code: 'en', iso: 'en-US', name: 'English', file: 'en.js' },
   { code: 'pt-br', iso: 'pt-BR', name: 'Português', file: 'pt-br.js' },
   { code: 'es', iso: 'es-ES', name: 'Español', file: 'es.js' },
@@ -15,7 +15,7 @@ export default {
   css: ['@/assets/sass/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/vue-flag-icon.ts'],
+  plugins: ['@/plugins/vue-flag-icon.ts', '@/plugins/i18n-format-date.ts'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: [
@@ -33,16 +33,16 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://go.nuxtjs.dev/bootstrap
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     // https://i18n.nuxtjs.org/
     'nuxt-i18n',
-    // https://www.npmjs.com/package/@nuxtjs/sitemap
-    '@nuxtjs/sitemap',
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
+
     '@nuxtjs/fontawesome',
+    // SITEMAP MUST BE ON THE END - https://www.npmjs.com/package/@nuxtjs/sitemap
+    '@nuxtjs/sitemap',
   ],
   tailwindcss: {
     exposeConfig: false,

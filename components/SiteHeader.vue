@@ -39,12 +39,8 @@ export default Vue.extend({
   name: 'SiteHeader',
   data() {
     return {
-      lang: 'en',
       cvHref: '',
     }
-  },
-  created() {
-    this.lang = this.$i18n.locale ?? 'en'
   },
 })
 </script>

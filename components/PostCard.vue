@@ -19,7 +19,7 @@
     <footer class="px-6 py-4">
       <div class="text-sm">
         <time class="text-center mr-3 border-r pr-3">{{
-          formatDate(post.createdAt)
+          i18nFormatDate(post.createdAt)
         }}</time>
         <reading-time :reading-time="post.readingTime"></reading-time>
       </div>
@@ -45,21 +45,6 @@ export default Vue.extend({
       default: () => {
         return {}
       },
-    },
-  },
-  methods: {
-    formatDate(dateString: string | undefined): string {
-      if (dateString === undefined) return ''
-
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-
-      if (dateString.includes('/')) {
-        const [day, month, year] = dateString.split('/').map((el) => Number(el))
-
-        return new Date(year, month, day).toLocaleDateString(this.lang, options)
-      }
-
-      return new Date(dateString).toLocaleDateString(this.lang, options)
     },
   },
 })

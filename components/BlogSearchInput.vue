@@ -14,7 +14,7 @@
           v-model="searchQuery"
           type="search"
           autocomplete="off"
-          placeholder="Search Posts"
+          :placeholder="$t('blog-search-placeholder')"
           class="search-input max-w-0 max-h-0 sm:max-w-full sm:max-h-full sm:ml-3 focus:outline-none"
         />
       </span>
@@ -92,7 +92,7 @@ export default Vue.extend({
   computed: {
     isBlogPage(): boolean {
       let lang = this.lang
-      lang = lang !== 'en' ? `${lang}/` : ''
+      lang = lang !== this.$i18n.defaultLocale ? `${lang}/` : ''
       return this.$route.fullPath.includes(`/${lang}blog`)
     },
   },
@@ -104,7 +104,7 @@ export default Vue.extend({
         return
       }
 
-      const lang = this.$i18n.locale ?? 'en'
+      const lang = this.$i18n.locale ?? this.$i18n.defaultLocale
 
       let blogPosts:
         | IContentDocument

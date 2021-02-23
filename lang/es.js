@@ -1,4 +1,14 @@
+const blogPage = {
+  'blog-title': 'Entradas del Blog',
+}
+
+const blogSearchComponent = {
+  'blog-search-placeholder': 'Buscar entradas',
+}
+
 export default {
-  welcome: 'Ola que ta',
-  'min-read': 'min de lectura',
+  welcome: 'Welcome',
+  'min-read': 'min read',
+  ...blogPage,
+  ...blogSearchComponent,
 }

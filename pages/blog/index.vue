@@ -1,7 +1,6 @@
 <template>
   <page>
-    <template #title>Blog Posts</template>
-
+    <template #title> {{ $t('blog-title') }}</template>
     <blog-posts :blog-posts="blogPosts" :lang="lang" class="mt-8" />
   </page>
 </template>
@@ -24,7 +23,7 @@ export default Vue.extend({
     $content: contentFunc
     app: NuxtAppOptions
   }) {
-    const lang = app.i18n.locale ?? 'en'
+    const lang = app.i18n.locale ?? app.i18n.defaultLocale
 
     let blogPosts: IContentDocument | IContentDocument[] = await $content(lang)
       .only([
