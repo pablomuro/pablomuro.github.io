@@ -42,11 +42,30 @@ export default {
     'nuxt-i18n',
     // https://www.npmjs.com/package/@nuxtjs/sitemap
     '@nuxtjs/sitemap',
+    '@nuxtjs/fontawesome',
   ],
   tailwindcss: {
     exposeConfig: false,
     cssPath: '@/assets/sass/tailwind.pcss',
     configPath: './tailwind.config.js',
+  },
+  fontawesome: {
+    component: 'fa',
+    icons: {
+      solid: ['faHeart', 'faEnvelope', 'faFile'],
+      regular: [],
+      light: [],
+      duotone: [],
+      brands: [
+        'faJsSquare',
+        'faNode',
+        'faVuejs',
+        'faGithubSquare',
+        'faLinkedin',
+        'faInstagramSquare',
+        'faTwitterSquare',
+      ],
+    },
   },
 
   // I18n module configuration (https://i18n.nuxtjs.org/)

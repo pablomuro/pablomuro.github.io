@@ -1,20 +1,20 @@
 <template>
-  <page class="">
+  <page>
     <article
-      class="-mt-8 mx-auto max-w-full min-h-full rounded overflow-hidden flex flex-col card-shadow"
+      class="-mt-8 mx-auto max-w-full min-h-full rounded overflow-hidden flex flex-col card-shadow bg-white"
     >
       <img
-        v-if="post.cover_image"
-        :src="post.cover_image"
+        v-if="post.coverImage"
+        :src="post.coverImage"
         alt="post-cover-image"
         class="w-full max-h-96 object-cover object-center"
       />
 
-      <div class="px-4 sm:px-10 pb-2 flex-grow w-full">
+      <div class="px-4 sm:px-10 pb-8 flex-grow w-full">
         <header>
           <h1 class="post-title mb-2 mt-8">{{ post.title }}</h1>
         </header>
-        <div class="post-info text-sm mb-8 flex flex-wrap justify-between">
+        <div class="post-info text-sm mb-4 flex flex-wrap justify-between">
           <div>
             <time class="text-center">{{ formatDate(post.createdAt) }}</time>
             •
@@ -22,15 +22,20 @@
           </div>
           <tags :tags="post.tags"></tags>
         </div>
+        <div class="post-info text-sm mb-8 flex flex-wrap justify-between">
+          Posted from: {{ post.postedFrom }}
+        </div>
         <nuxt-content :document="post" />
       </div>
     </article>
+
+    <prev-next :prev="prev" :next="next" :lang="lang" />
   </page>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { contentFunc } from '@nuxt/content/types/content'
+import { contentFunc, IContentDocument } from '@nuxt/content/types/content'
 import { NuxtAppOptions } from '@nuxt/types'
 import { getHeadMetaTags } from '@/utils/headUtils'
 
@@ -58,8 +63,16 @@ export default Vue.extend({
       post = await $content('en', params.slug).fetch()
     }
 
+    const [prev = null, next = null] = (await $content(app.i18n.locale)
+      .only(['title', 'slug'])
+      .sortBy('createdAt', 'desc')
+      .surround(params.slug)
+      .fetch()) as Array<IContentDocument>
+
     return {
       post,
+      prev,
+      next,
       lang,
     }
   },
@@ -72,7 +85,7 @@ export default Vue.extend({
           description: this.$data.post.description,
           tile: this.$data.post.tile,
           path: this.$route.path,
-          image: this.$data.post.cover_image,
+          image: this.$data.post.coverImage,
           tags: this.$data.post.tags,
         }),
       ],
