@@ -82,7 +82,6 @@ export default {
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
-      // onlyOnRoot: true,
       alwaysRedirect: true,
     },
   },
@@ -100,7 +99,7 @@ export default {
   // Sitemap module configuration (https://www.npmjs.com/package/@nuxtjs/sitemap)
   sitemap: {
     hostname: BASE_URL,
-    // gzip: true,
+    gzip: true,
     routes: getSiteXmlRoutes,
   },
 
@@ -143,11 +142,11 @@ export default {
       },
     },
     transpile: ['vue-flag-icon'],
-    // extend(config, ctx) {
-    //   if (ctx.isDev) {
-    //     config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
-    //   }
-    // },
+    extend(config, ctx) {
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+      }
+    },
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
