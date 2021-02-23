@@ -61,9 +61,8 @@ export default Vue.extend({
     try {
       post = await $content(lang, params.slug).fetch()
     } catch (error) {
-      // TODO - 404 pega o EN ou manda pra pagina desconhecida ??
-      lang = app.i18n.fallbackLocale.toString()
-      post = await $content(app.i18n.fallbackLocale, params.slug).fetch()
+      lang = app.i18n.defaultLocale as string
+      post = await $content(lang, params.slug).fetch()
     }
 
     const [prev = null, next = null] = (await $content(lang)
