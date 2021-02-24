@@ -7,18 +7,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { contentFunc, IContentDocument } from '@nuxt/content/types/content'
-import { NuxtAppOptions } from '@nuxt/types'
+import { IContentDocument } from '@nuxt/content/types/content'
 import { getHtmlHead } from '@/utils/headUtils'
 
 export default Vue.extend({
-  async asyncData({
-    $content,
-    app,
-  }: {
-    $content: contentFunc
-    app: NuxtAppOptions
-  }) {
+  async asyncData({ $content, app }) {
     const lang = app.i18n.locale ?? app.i18n.defaultLocale
 
     let blogPosts: IContentDocument | IContentDocument[] = await $content(lang)
