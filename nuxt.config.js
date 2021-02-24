@@ -52,7 +52,7 @@ export default {
   fontawesome: {
     component: 'fa',
     icons: {
-      solid: ['faHeart', 'faEnvelope', 'faFile'],
+      solid: ['faHeart', 'faEnvelope', 'faFile', 'faChevronLeft'],
       regular: [],
       light: [],
       duotone: [],
@@ -83,6 +83,7 @@ export default {
       useCookie: true,
       cookieKey: 'i18n_redirected',
       alwaysRedirect: true,
+      onlyOnRoot: true,
     },
   },
 
