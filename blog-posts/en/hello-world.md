@@ -1,7 +1,7 @@
 ---
 title: Hello World - Why I'm starting blogging
 description: The motives that drive me to start blogging
-coverImage: /images/cover-images/cover-hello-world.jpg
+coverImage: ~/assets/images/cover-images/cover-hello-world.jpg
 postedFrom: Brasília, Brazil 🇧🇷
 tags:
   - programming life

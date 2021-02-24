@@ -10,7 +10,7 @@
             class="inline-flex pr-3 border-r border-black mr-3 items-center"
           >
             <div class="logo">
-              <img src="/icon.png" alt="logo" />
+              <img src="~/assets/images/icon.png" alt="logo" />
             </div>
             <p class="m-0 ml-3">PabloMuro</p>
           </nuxt-link>

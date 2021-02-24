@@ -1,7 +1,7 @@
 ---
 title: Getting started on blogging
 description: 'Description of the blog post - resume of the content in 144 characters top, to post on twitter'
-coverImage: /images/cover-images/post-cover-image.jpg
+coverImage: ~/assets/images/cover-images/post-cover-image.jpg
 postedFrom: Brasília, Brazil 🇧🇷
 publish_date: '12/02/2021'
 tags:

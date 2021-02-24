@@ -1,7 +1,7 @@
 ---
 title:
 description:
-cover_image: /images/cover-images/post-cover-image.jpg
+cover_image: ~/assets/images/cover-images/post-cover-image.jpg
 postedFrom: Brasília, Brazil 🇧🇷
 tags:
   - tag1
