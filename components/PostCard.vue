@@ -24,7 +24,7 @@
         <reading-time :reading-time="post.readingTime"></reading-time>
       </div>
       <div class="pt-3">
-        <tags :tags="post.tags"></tags>
+        <tags :tags="post.tags" />
       </div>
     </footer>
   </div>

@@ -12,11 +12,8 @@
 </template>
 
 <script lang="ts">
-import PostCard from '~/components/PostCard.vue'
-
 export default {
   name: 'BlogPosts',
-  components: { PostCard },
   props: {
     lang: {
       type: String,
