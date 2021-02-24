@@ -1,17 +1,21 @@
 <template>
-  <div
+  <article
     class="max-w-md min-h-full rounded overflow-hidden shadow-md flex flex-col hover:shadow-2xl mb-4"
   >
-    <img
-      v-if="post.coverImage"
-      :src="post.coverImage"
-      alt="post-cover-image"
-      class="w-full h-52 object-cover object-center"
-    />
+    <figure>
+      <img
+        v-if="post.coverImage"
+        :src="post.coverImage"
+        alt="post-cover-image"
+        class="w-full h-52 object-cover object-center"
+      />
+    </figure>
     <div class="px-6 py-4 pb-2 flex-grow">
-      <h1 class="card-title mt-2">
-        {{ post.title }}
-      </h1>
+      <header>
+        <h1 class="card-title mt-2">
+          {{ post.title }}
+        </h1>
+      </header>
       <p class="card-description text-left mt-6 mb-2">
         {{ post.description }}
       </p>
@@ -27,7 +31,7 @@
         <tags :tags="post.tags" />
       </div>
     </footer>
-  </div>
+  </article>
 </template>
 
 <script lang="ts">

@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <section>
     <page-title>
       <slot name="title"></slot>
     </page-title>
     <div class="page-container relative z-10">
       <slot></slot>
     </div>
-  </div>
+  </section>
 </template>
 <script lang="ts">
 import Vue from 'vue'

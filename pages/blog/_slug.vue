@@ -3,30 +3,33 @@
     <article
       class="-mt-8 mx-auto max-w-full min-h-full rounded overflow-hidden flex flex-col card-shadow bg-white"
     >
-      <img
-        v-if="post.coverImage"
-        :src="post.coverImage"
-        alt="post-cover-image"
-        class="w-full max-h-96 object-cover object-center"
-      />
+      <figure>
+        <img
+          v-if="post.coverImage"
+          :src="post.coverImage"
+          alt="post-cover-image"
+          class="w-full max-h-96 object-cover object-center"
+        />
+      </figure>
 
       <div class="px-4 sm:px-10 pb-8 flex-grow w-full">
         <header>
           <h1 class="post-title mb-2 mt-8">{{ post.title }}</h1>
-        </header>
-        <div class="post-info text-sm mb-4 flex flex-wrap justify-between">
-          <div>
-            <time class="text-center">{{
-              i18nFormatDate(post.createdAt)
-            }}</time>
-            •
-            <reading-time :reading-time="post.readingTime"></reading-time>
+
+          <div class="post-info text-sm mb-4 flex flex-wrap justify-between">
+            <div>
+              <time class="text-center" :datetime="post.createdAt">{{
+                i18nFormatDate(post.createdAt)
+              }}</time>
+              •
+              <reading-time :reading-time="post.readingTime"></reading-time>
+            </div>
+            <tags :tags="post.tags"></tags>
           </div>
-          <tags :tags="post.tags"></tags>
-        </div>
-        <div class="post-info text-sm mb-8 flex flex-wrap justify-between">
-          Posted from: {{ post.postedFrom }}
-        </div>
+          <div class="post-info text-sm mb-8 flex flex-wrap justify-between">
+            Posted from: {{ post.postedFrom }}
+          </div>
+        </header>
         <nuxt-content :document="post" />
       </div>
     </article>
