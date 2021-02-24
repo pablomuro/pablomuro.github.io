@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="site-body min-h-screen flex flex-col justify-between">
     <site-header />
-    <main>
+    <main class="flex-grow">
       <Nuxt />
     </main>
     <site-footer />

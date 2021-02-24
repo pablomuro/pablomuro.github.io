@@ -24,9 +24,6 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .name {
   text-align: center;
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-top: 20vh;
 }
 </style>

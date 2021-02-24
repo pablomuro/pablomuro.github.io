@@ -2,7 +2,7 @@
   <div>
     <transition name="page">
       <header
-        class="flex flex-col sm:flex-row justify-between m-4 sm:m-8 xl:ml-16 xl:mr-64"
+        class="flex flex-col sm:flex-row justify-between p-4 sm:p-8 xl:pl-16 xl:pr-64"
       >
         <div class="flex items-center">
           <nuxt-link
