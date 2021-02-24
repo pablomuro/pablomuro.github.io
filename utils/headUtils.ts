@@ -250,11 +250,12 @@ export function getHtmlHead(this: Vue): any {
     }
   }
 
-  const title: TranslateResult = this.$i18n.t('root-meta-title')
+  let title: TranslateResult = this.$i18n.t('root-meta-title')
   let description: TranslateResult = this.$i18n.t('root-meta-description')
 
   if (this.$route.fullPath !== '/') {
-    description = description.toString().replace('|', 'Blog |')
+    title = title.toString().replace('|', 'Blog |')
+    description = this.$i18n.t('blog-meta-description')
   }
 
   return {
