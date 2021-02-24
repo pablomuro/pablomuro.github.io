@@ -1,14 +1,9 @@
-import { MetaInfo } from 'vue-meta';
-// ADD i18n???
+import Vue from 'vue'
+import { TranslateResult } from 'vue-i18n'
 export const BASE_URL = 'https://www.pablomuro.dev'
 
-export const ROOT_TITLE = "Pablo A. Muro Martinez's personal web site and blog"
-export const ROOT_DESCRIPTION = 'Personal and Portfolio website, with a blog'
+// TODO - imagem default de todos os cards, FAZER IMAGEM DEFAULT DO SITE
 const DEFAULT_CARD_IMG = '/icon.png'
-
-export const BLOG_TITLE = "Pablo Muro's Web Dev and computer stuff blog"
-export const BLOG_DESCRIPTION =
-  'Blog for abordar temas sobre desenvolvimento web with Javascript and computer science basis, algorithms and data structures'
 
 export const getHeadMetaTags = (data: any) => {
   const {
@@ -77,7 +72,7 @@ function createOtherMetaTags({
     {
       hid: 'description',
       name: 'description',
-      content: description ?? ROOT_DESCRIPTION,
+      content: description,
     },
     {
       hid: 'keywords',
@@ -103,8 +98,8 @@ function createOpenGraphMetaTags({
   path,
   img,
 }: {
-  description: string | null
-  title: string | null
+  description: string
+  title: string
   post: string | null
   path: string | null
   img: string | null
@@ -123,12 +118,12 @@ function createOpenGraphMetaTags({
     {
       hid: 'og:title',
       property: 'og:title',
-      content: title ?? ROOT_TITLE,
+      content: title,
     },
     {
       hid: 'og:description',
       property: 'og:description',
-      content: description ?? ROOT_DESCRIPTION,
+      content: description,
     },
     {
       hid: 'og:image',
@@ -237,33 +232,38 @@ export const getHeadFavicons = () => {
   ]
 }
 
-export function getHtmlHead(): MetaInfo {
-  // @ts-ignore
+export function getHtmlHead(this: Vue): any {
   const { post = null } = this.$data
-  // @ts-ignore
-  const { path = null } = this.$route
 
-  if (post != null && path) {
+  if (post != null) {
     return {
-      title: post.tile,
+      title: post.title,
       meta: [
         ...getHeadMetaTags({
           description: post.description,
-          tile: post.tile,
-          path,
+          title: post.title,
+          path: this.$route,
           image: post.coverImage,
           tags: post.tags,
         }),
       ],
     }
   }
+
+  const title: TranslateResult = this.$i18n.t('root-meta-title')
+  let description: TranslateResult = this.$i18n.t('root-meta-description')
+
+  if (this.$route.fullPath !== '/') {
+    description = description.toString().replace('|', 'Blog |')
+  }
+
   return {
-    title: BLOG_TITLE,
+    title: title.toString(),
     meta: [
       ...getHeadMetaTags({
-        description: BLOG_DESCRIPTION,
-        tile: BLOG_TITLE,
-        path,
+        description,
+        title,
+        path: this.$route,
       }),
     ],
   }

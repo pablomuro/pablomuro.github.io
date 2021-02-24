@@ -16,7 +16,7 @@ export default Vue.extend({
     }
   },
   head() {
-    return { ...getHtmlHead.bind(this) }
+    return { ...getHtmlHead.call(this) }
   },
 })
 </script>
