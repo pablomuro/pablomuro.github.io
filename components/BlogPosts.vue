@@ -17,7 +17,7 @@ export default {
   props: {
     lang: {
       type: String,
-      default: 'en',
+      required: true,
     },
     blogPosts: {
       type: Array,

@@ -79,7 +79,7 @@ export default Vue.extend({
   props: {
     lang: {
       type: String,
-      default: 'en',
+      required: true,
     },
   },
   data(): IData {

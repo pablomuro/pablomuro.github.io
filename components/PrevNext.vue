@@ -34,7 +34,7 @@ export default Vue.extend({
     },
     lang: {
       type: String,
-      default: 'en',
+      required: true,
     },
   },
 })
