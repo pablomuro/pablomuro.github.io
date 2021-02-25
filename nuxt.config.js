@@ -10,6 +10,7 @@ export const i18nLocale = [
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
+  modern: true,
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['@/assets/sass/main.scss'],
@@ -80,7 +81,7 @@ export default {
     vueI18n: {
       fallbackLocale: 'en',
     },
-    seo: true,
+    seo: false, // initialize on the default layout
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
