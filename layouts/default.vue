@@ -12,6 +12,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  middleware: ['i18nMiddleware'],
   head() {
     return this.$nuxtI18nHead({ addSeoAttributes: true, addDirAttribute: true })
   },

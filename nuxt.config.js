@@ -10,12 +10,18 @@ export const i18nLocale = [
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
+  ssr: false,
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/vue-flag-icon.ts', '@/plugins/i18n-format-date.ts', '@/plugins/vue-lazysizes.client.ts'],
+  plugins: [
+    '@/plugins/vue-flag-icon.ts',
+    '@/plugins/i18n-format-date.ts',
+    '@/plugins/vue-lazysizes.client.ts',
+    '@/plugins/i18n-guard.ts'
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: [
@@ -42,7 +48,10 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
 
+    'cookie-universal-nuxt',
+
     '@nuxtjs/fontawesome',
+
     // SITEMAP MUST BE ON THE END - https://www.npmjs.com/package/@nuxtjs/sitemap
     '@nuxtjs/sitemap',
   ],
@@ -70,6 +79,8 @@ export default {
     },
   },
 
+
+
   // I18n module configuration (https://i18n.nuxtjs.org/)
   i18n: {
     baseUrl: BASE_URL,
@@ -81,12 +92,7 @@ export default {
       fallbackLocale: 'en',
     },
     seo: false, // initialize on the default layout
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      alwaysRedirect: true,
-      onlyOnRoot: true,
-    },
+    detectBrowserLanguage: false,
   },
 
   optimizedImages: {

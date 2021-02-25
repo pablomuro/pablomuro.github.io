@@ -78,6 +78,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import I18nGuardInterface from '~/plugins/i18n-guard'
 // @ts-ignore
 import ClickOutside from 'vue-click-outside'
 
@@ -150,6 +151,7 @@ export default Vue.extend({
       if (this.isHover) {
         this.mouseLeave()
       }
+      this.recomputeLanguage()
     },
     mouseEnter() {
       this.isHover = true
@@ -170,6 +172,11 @@ export default Vue.extend({
       this.isOpen = false
 
       await this.$i18n.setLocale(locale.code)
+
+      this.$i18nGuard.setLocaleCookie(locale.code)
+
+      this.$cookies.set(this.$config.cookieI18n, locale.code)
+
       this.currentLocale = locale.code
 
       await this.recomputeLanguage()
