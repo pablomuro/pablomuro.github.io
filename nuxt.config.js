@@ -10,10 +10,9 @@ export const i18nLocale = [
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
-  modern: true,
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['@/assets/sass/main.scss'],
+  css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: ['@/plugins/vue-flag-icon.ts', '@/plugins/i18n-format-date.ts', '@/plugins/vue-lazysizes.client.ts'],
@@ -49,7 +48,7 @@ export default {
   ],
   tailwindcss: {
     exposeConfig: false,
-    cssPath: '@/assets/sass/tailwind.pcss',
+    cssPath: '@/assets/sass/main.pcss',
     configPath: './tailwind.config.js',
   },
   fontawesome: {
