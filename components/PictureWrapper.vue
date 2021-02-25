@@ -1,16 +1,20 @@
 <template>
   <picture class="picture">
     <source
-      :srcset="require(`@/assets/images/${src}?webp`)"
+      :data-srcset="require(`@/assets/images/${src}?webp`)"
       type="image/webp"
       class="source"
     />
     <source
-      :srcset="require(`@/assets/images/${src}`)"
+      :data-srcset="require(`@/assets/images/${src}`)"
       :type="`image/${imgtype}`"
       class="source"
     />
-    <img :src="require(`@/assets/images/${src}`)" :alt="alt" class="img" />
+    <img
+      :data-src="require(`@/assets/images/${src}`)"
+      :alt="alt"
+      class="img lazyload"
+    />
   </picture>
 </template>
 <script lang="ts">

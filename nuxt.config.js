@@ -15,7 +15,7 @@ export default {
   css: ['@/assets/sass/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/vue-flag-icon.ts', '@/plugins/i18n-format-date.ts'],
+  plugins: ['@/plugins/vue-flag-icon.ts', '@/plugins/i18n-format-date.ts', '@/plugins/vue-lazysizes.client.ts'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: [
@@ -151,9 +151,13 @@ export default {
       },
     },
     transpile: ['vue-flag-icon'],
-    extend(config, ctx) {
-      if (ctx.isDev) {
-        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+    extend(config, { isDev, isClient, loaders: { vue } }) {
+      if (isDev) {
+        config.devtool = isClient ? 'source-map' : 'inline-source-map'
+      }
+      if (isClient) {
+        vue.transformAssetUrls.img = ['data-src', 'src']
+        vue.transformAssetUrls.source = ['data-srcset', 'srcset']
       }
     },
   },

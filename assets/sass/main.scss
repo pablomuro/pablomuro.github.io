@@ -65,3 +65,12 @@ body {
 .layout-leave-active {
   opacity: 0;
 }
+
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+.lazyloaded {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
