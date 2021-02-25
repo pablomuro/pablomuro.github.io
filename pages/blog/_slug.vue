@@ -4,22 +4,10 @@
       class="-mt-8 mx-auto max-w-full min-h-full rounded overflow-hidden flex flex-col card-shadow bg-white"
     >
       <figure>
-        <picture>
-          <source
-            :srcset="
-              require(`@/assets/images/cover-images/${post.coverImage}?webp`)
-            "
-            type="image/webp"
-          />
-          <source
-            :srcset="require(`@/assets/images/cover-images/${post.coverImage}`)"
-            type="image/jpeg"
-          />
-          <img
-            :src="require(`@/assets/images/cover-images/${post.coverImage}`)"
-            alt="post-cover-image"
-          />
-        </picture>
+        <picture-wrapper
+          :src="`cover-images/${post.coverImage}`"
+          alt="Post comer image"
+        />
       </figure>
 
       <div class="px-4 sm:px-10 pb-8 flex-grow w-full">
@@ -111,8 +99,8 @@ export default Vue.extend({
   box-shadow: 2px 2px 10px 0 hsla(0, 0%, 40%, 0.5);
 }
 
-picture source,
-img {
+.picture::v-deep .source,
+.picture::v-deep .img {
   @apply w-full max-h-96 object-cover object-center;
 }
 </style>

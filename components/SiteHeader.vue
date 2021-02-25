@@ -10,14 +10,7 @@
             class="inline-flex pr-3 border-r border-black mr-3 items-center"
           >
             <div class="logo">
-              <picture class="w-full max-h-96 object-cover object-center">
-                <source
-                  srcset="~/assets/images/icon.png?webp"
-                  type="image/webp"
-                />
-                <source srcset="~/assets/images/icon.png" type="image/png" />
-                <img src="~/assets/images/icon.png" alt="logo" />
-              </picture>
+              <picture-wrapper src="icon.png" alt="logo" />
             </div>
             <p class="m-0 ml-3">PabloMuro</p>
           </nuxt-link>

@@ -3,22 +3,10 @@
     class="max-w-md min-h-full rounded overflow-hidden shadow-md flex flex-col hover:shadow-2xl mb-4"
   >
     <figure>
-      <picture>
-        <source
-          :srcset="
-            require(`@/assets/images/cover-images/${post.coverImage}?webp`)
-          "
-          type="image/webp"
-        />
-        <source
-          :srcset="require(`@/assets/images/cover-images/${post.coverImage}`)"
-          type="image/jpeg"
-        />
-        <img
-          :src="require(`@/assets/images/cover-images/${post.coverImage}`)"
-          alt="post-cover-image"
-        />
-      </picture>
+      <picture-wrapper
+        :src="`cover-images/${post.coverImage}`"
+        alt="Post comer image"
+      />
     </figure>
     <div class="px-6 py-4 pb-2 flex-grow">
       <header>
@@ -73,8 +61,8 @@ export default Vue.extend({
   font-size: 20px;
 }
 
-picture source,
-img {
+.picture::v-deep .source,
+.picture::v-deep .img {
   @apply w-full h-52 object-cover object-center;
 }
 </style>
