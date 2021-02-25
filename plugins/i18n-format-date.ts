@@ -9,7 +9,7 @@ if (!Vue.prototype.i18nFormatDate) {
         if (dateString === undefined) return ''
 
         const lang = this.$i18n.locale ?? this.$i18n.defaultLocale
-        const options = { year: 'numeric', month: 'long', day: 'numeric' }
+        const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' }
 
         if (dateString.includes('/')) {
           const [day, month, year] = dateString

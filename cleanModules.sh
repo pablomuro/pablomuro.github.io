@@ -6,6 +6,6 @@ rm -rf  node_modules
 
 cd $DIR
 
-npm audit fix --force
+npm audit fix
 
 exit 0
