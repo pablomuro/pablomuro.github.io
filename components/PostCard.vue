@@ -3,12 +3,22 @@
     class="max-w-md min-h-full rounded overflow-hidden shadow-md flex flex-col hover:shadow-2xl mb-4"
   >
     <figure>
-      <img
-        v-if="post.coverImage"
-        :src="post.coverImage"
-        alt="post-cover-image"
-        class="w-full h-52 object-cover object-center"
-      />
+      <picture>
+        <source
+          :srcset="
+            require(`@/assets/images/cover-images/${post.coverImage}?webp`)
+          "
+          type="image/webp"
+        />
+        <source
+          :srcset="require(`@/assets/images/cover-images/${post.coverImage}`)"
+          type="image/jpeg"
+        />
+        <img
+          :src="require(`@/assets/images/cover-images/${post.coverImage}`)"
+          alt="post-cover-image"
+        />
+      </picture>
     </figure>
     <div class="px-6 py-4 pb-2 flex-grow">
       <header>
@@ -53,7 +63,7 @@ export default Vue.extend({
   },
 })
 </script>
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .card-title {
   font-size: 22px;
 }
@@ -61,5 +71,10 @@ export default Vue.extend({
   color: rgb(117, 117, 117);
   line-height: 20px;
   font-size: 20px;
+}
+
+picture source,
+img {
+  @apply w-full h-52 object-cover object-center;
 }
 </style>

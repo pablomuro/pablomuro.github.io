@@ -28,7 +28,9 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
+    '@aceforth/nuxt-optimized-images',
     '@nuxtjs/svg',
+
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -85,6 +87,12 @@ export default {
       alwaysRedirect: true,
       onlyOnRoot: true,
     },
+  },
+
+  optimizedImages: {
+    handleImages: ['jpeg', 'png', 'webp', 'gif'],
+    optimizeImages: true,
+    optimizeImagesInDev: true
   },
 
   hooks: {
