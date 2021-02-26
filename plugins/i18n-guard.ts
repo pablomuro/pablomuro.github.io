@@ -57,7 +57,6 @@ const i18nGuardPlugin: Plugin = ({ app }, inject) => {
     }
 
     if (locale !== i18n.locale) {
-      console.log('switchLocalePath')
       await i18n.setLocale(locale)
       app.switchLocalePath(locale)
       return true
