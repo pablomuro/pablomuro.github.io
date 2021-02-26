@@ -1,9 +1,8 @@
 import { $content } from '@nuxt/content'
-import nuxtConfig, { i18nLocale } from '../nuxt.config'
+import { defaultLocale, i18nLocale } from '../nuxt.default.config'
 
 export const getSiteXmlRoutes = () => {
   const routes: string[] = []
-  const defaultLocale = nuxtConfig.i18n.defaultLocale
 
   i18nLocale.forEach(async (locale) => {
     const posts: any = await $content(locale.code).fetch()

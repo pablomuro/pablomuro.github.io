@@ -1,11 +1,6 @@
 import { getSiteXmlRoutes } from './utils/routesUtils'
 import { BASE_URL, getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
-
-export const i18nLocale = [
-  { code: 'en', iso: 'en-US', name: 'English', file: 'en.js' },
-  { code: 'pt-br', iso: 'pt-BR', name: 'Português', file: 'pt-br.js' },
-  { code: 'es', iso: 'es-ES', name: 'Español', file: 'es.js' },
-]
+import { defaultLocale, i18nLocale } from './nuxt.default.config'
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
@@ -88,9 +83,9 @@ export default {
     locales: i18nLocale,
     lazy: true,
     langDir: 'lang/',
-    defaultLocale: 'en',
+    defaultLocale: defaultLocale,
     vueI18n: {
-      fallbackLocale: 'en',
+      fallbackLocale: defaultLocale,
     },
     seo: false, // initialize on the default layout
     detectBrowserLanguage: false,
@@ -159,6 +154,7 @@ export default {
       },
     },
     transpile: ['vue-flag-icon'],
+
     extend(config, { isDev, isClient, loaders: { vue } }) {
       if (isDev) {
         config.devtool = isClient ? 'source-map' : 'inline-source-map'
