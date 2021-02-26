@@ -80,16 +80,17 @@
 <script lang="ts">
 import Vue from 'vue'
 import I18nGuardInterface from '~/plugins/i18n-guard'
+import { NuxtVueI18n } from 'nuxt-i18n'
 // @ts-ignore
 import ClickOutside from 'vue-click-outside'
 
 interface IData {
   isOpen: boolean
   isHover: boolean
-  currentLocale: string
   languageName: HTMLElement | null
   selectArrows: HTMLElement | null
   languageButton: HTMLElement | null
+  selectedLocale: NuxtVueI18n.Options.LocaleObject
 }
 
 export default Vue.extend({
@@ -101,34 +102,22 @@ export default Vue.extend({
     return {
       isOpen: false,
       isHover: false,
-      currentLocale: this.$i18n.defaultLocale as string,
       languageName: null,
       selectArrows: null,
       languageButton: null,
+      selectedLocale: { ...this.$i18n.localeProperties },
     }
   },
   computed: {
-    locales(): any {
-      return this.$i18n.locales
-    },
-    selectedLocale(): any {
-      const currentLocale = this.currentLocale
-      return { ...this.$i18n.localeProperties, currentLocale }
-    },
     filterLocales(): Array<unknown> {
-      if (this.currentLocale && this.$i18n.locales) {
-        return this.$i18n.locales.filter((locale: any) => {
-          // @ts-ignore
-          if (locale && this.selectedLocale) {
-            // @ts-ignore
-            return locale.code !== this.selectedLocale.code
-          }
+      if (!this.$i18n.locales) return []
+      return this.$i18n.locales.filter((locale: any) => {
+        if (locale && this.selectedLocale) {
+          return locale.code !== this.selectedLocale.code
+        }
 
-          return false
-        })
-      }
-
-      return []
+        return false
+      })
     },
   },
   mounted() {
@@ -152,7 +141,6 @@ export default Vue.extend({
       if (this.isHover) {
         this.mouseLeave()
       }
-      this.recomputeLanguage()
     },
     mouseEnter() {
       this.isHover = true
@@ -174,21 +162,13 @@ export default Vue.extend({
 
       this.closeDropdown()
 
+      this.selectedLocale = { ...locale }
+
       await this.$i18n.waitForPendingLocaleChange()
 
       await this.$i18n.setLocale(locale.code)
 
       this.$i18nGuard.setLocaleCookie(locale.code)
-
-      this.currentLocale = locale.code
-
-      await this.recomputeLanguage()
-    },
-    async recomputeLanguage() {
-      const _this = this as any
-      _this._computedWatchers.selectedLocale.run()
-      _this._computedWatchers.filterLocales.run()
-      await this.$nextTick()
     },
     getCoutry(locale: any): string {
       try {
