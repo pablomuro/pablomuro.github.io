@@ -11,8 +11,8 @@ import { IContentDocument } from '@nuxt/content/types/content'
 import { getHtmlHead } from '@/utils/headUtils'
 
 export default Vue.extend({
-  async asyncData({ $content, app }) {
-    const lang = app.i18n.locale ?? app.i18n.defaultLocale
+  async asyncData({ $content, app: { $i18nGuard } }) {
+    const lang: string = $i18nGuard.getLocale()
 
     let blogPosts: IContentDocument | IContentDocument[] = await $content(lang)
       .only([

@@ -38,31 +38,17 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { contentFunc, IContentDocument } from '@nuxt/content/types/content'
-import { NuxtAppOptions } from '@nuxt/types'
+import { IContentDocument } from '@nuxt/content/types/content'
 import { getHtmlHead } from '@/utils/headUtils'
 
-import Tags from '~/components/Tags.vue'
-
-type Dictionary<T> = { [key: string]: T }
-
 export default Vue.extend({
-  components: { Tags },
-  async asyncData({
-    $content,
-    params,
-    app,
-  }: {
-    $content: contentFunc
-    params: Dictionary<string>
-    app: NuxtAppOptions
-  }) {
+  async asyncData({ $content, params, app: { $i18nGuard, i18n } }) {
+    let lang: string = $i18nGuard.getLocale()
     let post
-    let lang = app.i18n.locale
     try {
       post = await $content(lang, params.slug).fetch()
     } catch (error) {
-      lang = app.i18n.defaultLocale as string
+      lang = i18n.defaultLocale as string
       post = await $content(lang, params.slug).fetch()
     }
 
