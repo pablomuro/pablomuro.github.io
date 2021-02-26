@@ -1,8 +1,8 @@
 import { Context } from '@nuxt/types'
 
 export default ({ app }: Context) => {
-  app.nuxt.defaultTransition.beforeEnter = () => {
-    app.i18n.finalizePendingLocaleChange()
+  app.nuxt.defaultTransition.beforeEnter = async () => {
+    await app.i18n.finalizePendingLocaleChange()
   }
 
   if (!app.router) return

@@ -56,21 +56,20 @@
         class="max-h-56 rounded-md text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
       >
         <li
+          v-for="locale in filterLocales"
+          id="listbox-item-0"
+          :key="locale.code"
           tabindex="0"
           role="option"
           class="custom-select-li"
-          v-for="locale in filterLocales"
-          :key="locale.code"
-          @click="select(locale)"
+          @click.once.stop.prevent="select(locale)"
         >
-          <nuxt-link :to="switchLocalePath(locale.code)">
-            <div class="flex items-center space-x-3">
-              <flag :iso="getCoutry(locale)" :squared="true" />
-              <span class="block truncate font-normal">
-                {{ locale.name }}
-              </span>
-            </div>
-          </nuxt-link>
+          <div class="flex items-center space-x-3">
+            <flag :iso="getCoutry(locale)" :squared="true" />
+            <span class="block truncate font-normal">
+              {{ locale.name }}
+            </span>
+          </div>
         </li>
       </ul>
     </div>
@@ -162,13 +161,12 @@ export default Vue.extend({
 
       this.closeDropdown()
 
+      await this.$i18nGuard.setLocale(locale.code)
+
       this.selectedLocale = { ...locale }
 
-      await this.$i18n.waitForPendingLocaleChange()
-
-      await this.$i18n.setLocale(locale.code)
-
-      this.$i18nGuard.setLocaleCookie(locale.code)
+      this.$router.push(this.switchLocalePath(locale.code))
+      return
     },
     getCoutry(locale: any): string {
       try {
