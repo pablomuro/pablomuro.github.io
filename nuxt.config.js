@@ -17,10 +17,11 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/vue-flag-icon.ts',
-    '@/plugins/i18n-format-date.ts',
-    '@/plugins/vue-lazysizes.client.ts',
-    '@/plugins/i18n-guard.ts'
+    '@/plugins/vue-flag-icon',
+    '@/plugins/i18n-format-date',
+    '@/plugins/vue-lazysizes.client',
+    '@/plugins/i18n-guard',
+    '@/plugins/i18n-route'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -93,6 +94,7 @@ export default {
     },
     seo: false, // initialize on the default layout
     detectBrowserLanguage: false,
+    skipSettingLocaleOnNavigate: true,
   },
 
   optimizedImages: {

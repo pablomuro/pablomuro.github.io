@@ -56,20 +56,21 @@
         class="max-h-56 rounded-md text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
       >
         <li
-          v-for="locale in filterLocales"
-          id="listbox-item-0"
-          :key="locale.code"
           tabindex="0"
           role="option"
           class="custom-select-li"
-          @click.once.stop.prevent="select(locale)"
+          v-for="locale in filterLocales"
+          :key="locale.code"
+          @click="select(locale)"
         >
-          <div class="flex items-center space-x-3">
-            <flag :iso="getCoutry(locale)" :squared="true" />
-            <span class="block truncate font-normal">
-              {{ locale.name }}
-            </span>
-          </div>
+          <nuxt-link :to="switchLocalePath(locale.code)">
+            <div class="flex items-center space-x-3">
+              <flag :iso="getCoutry(locale)" :squared="true" />
+              <span class="block truncate font-normal">
+                {{ locale.name }}
+              </span>
+            </div>
+          </nuxt-link>
         </li>
       </ul>
     </div>
@@ -100,7 +101,7 @@ export default Vue.extend({
     return {
       isOpen: false,
       isHover: false,
-      currentLocale: this.$i18n.defaultLocale ?? 'en',
+      currentLocale: this.$i18n.defaultLocale as string,
       languageName: null,
       selectArrows: null,
       languageButton: null,
@@ -171,16 +172,17 @@ export default Vue.extend({
     async select(locale: any) {
       this.isOpen = false
 
+      this.closeDropdown()
+
+      await this.$i18n.waitForPendingLocaleChange()
+
       await this.$i18n.setLocale(locale.code)
 
       this.$i18nGuard.setLocaleCookie(locale.code)
 
-      this.$cookies.set(this.$config.cookieI18n, locale.code)
-
       this.currentLocale = locale.code
 
       await this.recomputeLanguage()
-      this.closeDropdown()
     },
     async recomputeLanguage() {
       const _this = this as any

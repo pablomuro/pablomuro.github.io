@@ -8,7 +8,6 @@ export interface I18nGuardInterface {
   setLocaleCookie: (locale: string) => void
 }
 
-
 declare module 'vue/types/vue' {
   interface Vue {
     $i18nGuard: I18nGuardInterface
