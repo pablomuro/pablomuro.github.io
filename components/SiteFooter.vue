@@ -1,63 +1,46 @@
 <template>
-  <footer
-    class="flex items-center justify-center border-gray-500 border-t-2 mt-10"
-  >
-    <div class="container flex flex-col items-center">
-      <div class="space-y-3">
-        <div>
-          <code class="language-html"
-            ><span class="token tag"
-              ><span class="token tag"
-                ><span class="token punctuation">&lt;</span>created-by</span
-              >
-              <span class="token attr-name">me</span
-              ><span class="token attr-value"
-                ><span class="token punctuation attr-equals">=</span
-                ><span class="token punctuation">"</span
-                ><span class="text-white quicksand font-bold"
-                  >Pablo A. Muro Martinez</span
-                ><span class="token punctuation">"</span></span
-              ><span class="token punctuation">/&gt;</span></span
-            >
-          </code>
+  <footer class="relative mt-32">
+    <div
+      class="created-by relative -mt-8 p-5 w-1/3 mx-auto text-center rounded-md"
+    >
+      <code class="language-html"
+        ><span class="token tag"
+          ><span class="token tag"
+            ><span class="token punctuation">&lt;</span>created-by</span
+          >
+          <span class="token attr-name">me</span
+          ><span class="token attr-value"
+            ><span class="token punctuation attr-equals">=</span
+            ><span class="token punctuation">"</span
+            ><span class="my-name quicksand font-bold">{{ name }}</span
+            ><span class="token punctuation">"</span></span
+          ><span class="token punctuation">/&gt;</span></span
+        >
+      </code>
+    </div>
+    <div class="flex items-center justify-center mt-2">
+      <div class="container flex flex-col items-center mt-3 space-y-3">
+        <div class="social space-x-2 text-black">
+          <a :href="emailLink" target="_blank" rel="noopener noreferrer">
+            <fa :icon="['fas', 'envelope']" />
+          </a>
+          <a :href="githubLink" target="_blank" rel="noopener noreferrer">
+            <fa :icon="['fab', 'github']" />
+          </a>
+          <a :href="linkedinLink" target="_blank" rel="noopener noreferrer">
+            <fa :icon="['fab', 'linkedin']" />
+          </a>
+          <a :href="instagramLink" target="_blank" rel="noopener noreferrer">
+            <fa :icon="['fab', 'instagram']" />
+          </a>
+          <a :href="twitterLink" target="_blank" rel="noopener noreferrer">
+            <fa :icon="['fab', 'twitter']" />
+          </a>
+          <a :href="resumeLink" target="_blank" rel="noopener noreferrer">
+            <fa :icon="['fas', 'file']" />
+          </a>
         </div>
-        <div>
-          <code class="language-js"
-            ><span class="token keyword">new</span>
-            <span class="token class-name">BlogStack</span
-            ><span class="token string">(</span
-            ><span class="token punctuation">{</span
-            ><fa icon="heart" :style="{ color: 'red' }" /><span
-              class="token punctuation"
-              >,</span
-            >
-            <fa
-              :icon="['fab', 'js-square']"
-              :style="{ color: '#F7DF1E' }"
-            /><span class="token punctuation">,</span>
-            <fa :icon="['fab', 'node']" :style="{ color: '#339933' }" /><span
-              class="token punctuation"
-              >,</span
-            >
-            <fa :icon="['fab', 'vuejs']" :style="{ color: '#4FC08D' }" /><span
-              class="token punctuation"
-              >,</span
-            >
-            <nuxt-js
-              class="svg-inline--fa"
-              :style="{ fill: '#00C58E', width: '1rem', height: '1rem' }"
-            /><span class="token punctuation">}</span
-            ><span class="token string">)</span>
-          </code>
-        </div>
-        <div class="social">
-          <fa :icon="['fas', 'envelope']" />
-          <fa :icon="['fab', 'github-square']" />
-          <fa :icon="['fab', 'linkedin']" />
-          <fa :icon="['fab', 'instagram-square']" />
-          <fa :icon="['fab', 'twitter-square']" />
-          <fa :icon="['fas', 'file']" />
-        </div>
+        <div class="my-2">Copyright © {{ year }} {{ brand }}</div>
       </div>
     </div>
   </footer>
@@ -71,20 +54,50 @@ import NuxtJs from '~/assets/icons/nuxt-js.svg?inline'
 export default Vue.extend({
   name: 'SiteFooter',
   components: { NuxtJs },
+  data() {
+    return {
+      name: this.$config.myData.fullName,
+      brand: this.$config.myData.brand,
+      emailLink: `mailto:${this.$config.myData.email}`,
+      linkedinLink: this.$config.myData.linkedin,
+      githubLink: this.$config.myData.github,
+      instagramLink: this.$config.myData.instagram,
+      twitterLink: this.$config.myData.twitter,
+      year: new Date().getFullYear(),
+    }
+  },
+  computed: {
+    resumeLink(): string {
+      return `/resumes/pablo-resume-${this.$i18nGuard.getLocale()}.pdf`
+    },
+  },
 })
 </script>
 
 <style lang="scss" scoped>
 footer {
-  height: 15.625rem;
-  background-color: #222;
+  height: 150px;
+  background-color: var(--flash-white);
+
+  .created-by {
+    background-color: var(--bg-color);
+    background-color: #000;
+  }
 
   code {
     background-color: inherit;
+    .my-name {
+      color: var(--flash-white);
+    }
   }
 
-  .social svg path {
-    fill: var(--flash-white);
+  .social svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    path {
+      fill: var(--flash-white);
+      fill: #292929;
+    }
   }
 
   .social svg:hover path {

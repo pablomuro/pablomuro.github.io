@@ -12,11 +12,11 @@
             <div class="logo">
               <picture-wrapper src="icon.png" alt="logo" />
             </div>
-            <p class="m-0 ml-3">PabloMuro</p>
+            <p class="m-0 ml-3">{{ brand }}</p>
           </nuxt-link>
           <nav class="inline-flex space-x-3 items-center">
             <nuxt-link :to="localePath('/blog')">Blog</nuxt-link>
-            <a href="http://www.google.com" target="_blank">Curriclo</a>
+            <a :href="resumeLink" target="_blank"> $t('resume') </a>
           </nav>
         </div>
         <div
@@ -39,8 +39,14 @@ export default Vue.extend({
   name: 'SiteHeader',
   data() {
     return {
+      brand: this.$config.myData.brand,
       cvHref: '',
     }
+  },
+  computed: {
+    resumeLink(): string {
+      return `/resumes/pablo-resume-${this.$i18nGuard.getLocale()}.pdf`
+    },
   },
 })
 </script>

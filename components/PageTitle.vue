@@ -35,6 +35,9 @@ export default Vue.extend({
         text-shadow: 0.7px 0px 1px rgb(255, 0, 255),
           -0.7px 0px 1px rgb(0, 255, 255);
       }
+      .title {
+        // color: var(--bg-text-color);
+      }
     }
   }
 
@@ -42,7 +45,6 @@ export default Vue.extend({
     height: 0.125rem;
     width: 100%;
     background-color: var(--gray-line);
-    // margin-top: calc(var(--header-bg-size) / 2);
   }
 }
 </style>
