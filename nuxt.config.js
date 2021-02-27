@@ -1,11 +1,16 @@
 import { getSiteXmlRoutes } from './utils/routesUtils'
 import { BASE_URL, getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
 import { defaultLocale, i18nLocale } from './nuxt.default.config'
+import myData from './myData.json'
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
   ssr: false,
+
+  publicRuntimeConfig: {
+    myData: { ...myData }
+  },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
@@ -53,7 +58,7 @@ export default {
   ],
   tailwindcss: {
     exposeConfig: false,
-    cssPath: '@/assets/sass/main.pcss',
+    cssPath: '@/assets/sass/main.scss',
     configPath: './tailwind.config.js',
   },
   fontawesome: {
@@ -67,10 +72,10 @@ export default {
         'faJsSquare',
         'faNode',
         'faVuejs',
-        'faGithubSquare',
         'faLinkedin',
-        'faInstagramSquare',
-        'faTwitterSquare',
+        'faGithub',
+        'faInstagram',
+        'faTwitter',
       ],
     },
   },
@@ -143,7 +148,9 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     standalone: true,
+    analyze: true,
     postcss: {
+      syntax: 'postcss-scss',
       plugins: {
         'postcss-nested': {},
       },
@@ -174,11 +181,11 @@ export default {
       {
         hid: 'author',
         name: 'author',
-        content: 'Pablo A. Muro Martinez',
+        content: myData.fullName,
       },
       ...getHeadMetaTags(),
     ],
-    link: [...getHeadFavicons(), { rel: 'manifest', href: '/manifest.json' }],
+    link: [...getHeadFavicons()],
   },
 
   webpack: {
