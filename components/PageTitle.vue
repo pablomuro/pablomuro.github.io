@@ -35,9 +35,6 @@ export default Vue.extend({
         text-shadow: 0.7px 0px 1px rgb(255, 0, 255),
           -0.7px 0px 1px rgb(0, 255, 255);
       }
-      .title {
-        // color: var(--bg-text-color);
-      }
     }
   }
 
