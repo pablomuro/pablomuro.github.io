@@ -16,7 +16,7 @@
           </nuxt-link>
           <nav class="inline-flex space-x-3 items-center">
             <nuxt-link :to="localePath('/blog')">Blog</nuxt-link>
-            <a :href="resumeLink" target="_blank"> $t('resume') </a>
+            <a :href="resumeLink" target="_blank"> {{ $t('resume') }} </a>
           </nav>
         </div>
         <div

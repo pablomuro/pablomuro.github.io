@@ -9,6 +9,11 @@ const metaTags = {
     'Articles about Javascript, Web Development, Developer Lifestyle, and Computer Science - basics, algorithms, and data structures',
 }
 
+const siteHeader = {
+  resume: 'Resume'
+}
+
+// === Pages ===
 const blogPage = {
   'blog-title': 'Blog Posts',
 }
@@ -19,15 +24,21 @@ const TagPage = {
   'tag-posts-not-found': '😢 No posts found with this tag',
 }
 
+// === Componentes ===
 const blogSearchComponent = {
   'blog-search-placeholder': 'Search posts',
 }
 
-export default {
-  welcome: 'Welcome',
+const readingTimeComponent = {
   'min-read': 'min read',
+}
+
+// === export ===
+export default {
   ...metaTags,
+  ...siteHeader,
   ...TagPage,
   ...blogPage,
   ...blogSearchComponent,
+  ...readingTimeComponent
 }

@@ -9,6 +9,11 @@ const metaTags = {
     'Artigos sobre Javascript, Desenvolvimento Web, Estilo de Vida Dev e Ciência da Computação - noções básicas, algoritmos e estruturas de dados',
 }
 
+const siteHeader = {
+  resume: 'Currículo'
+}
+
+// === Pages =
 const blogPage = {
   'blog-title': 'Posts do Blog',
 }
@@ -19,15 +24,21 @@ const TagPage = {
   'tag-posts-not-found': '😢 Nenhuma postagem encontrada com esta tag',
 }
 
+// === Componentes ===
 const blogSearchComponent = {
   'blog-search-placeholder': 'Buscar postagens',
 }
 
-export default {
-  welcome: 'eai manolo',
+const readingTimeComponent = {
   'min-read': 'min de leitura',
+}
+
+// === export ===
+export default {
   ...metaTags,
+  ...siteHeader,
   ...TagPage,
   ...blogPage,
   ...blogSearchComponent,
+  ...readingTimeComponent
 }
