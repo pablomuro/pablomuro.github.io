@@ -1,33 +1,19 @@
 :root {
-  --default-color: #292929;
-  --default-color-light: #757575;
-  --default-color-dark: #f3f3f3;
-}
+  // Theme Colors
+  --theme-100: hsl(0, 0%, 96%);
+  --theme-200: hsl(0, 0%, 86%);
+  --theme-300: hsl(0, 0%, 66%);
+  --theme-400: hsl(0, 0%, 46%);
+  --theme-500: hsl(0, 0%, 26%);
+  --theme-600: hsl(0, 0%, 16%);
+  --theme-700: hsl(0, 0%, 6%);
+  --p-color: #444443; // hsl(60, 1%, 26%)
 
-:root {
-  --theme-color: #0a0a23;
-  --headers-color: #292929;
-  --paragraph-color: #444443;
-  --subtitle-color: #757575;
-  --flash-white: #f3f3f3;
-  --gray-line: rgba(61, 61, 61, 0.1);
+  --lime: hsl(120, 100%, 50%); // lime
+  --magenta: hsl(300, 100%, 50%); // magenta
+  --cyan: hsl(180, 100%, 50%); // cyan
 
+  // Header
   --header-bg-size: 3.125rem;
   --header-margin-top: calc(var(--header-bg-size) * -1);
-
-  --lime: lime;
-  --magenta: magenta;
-  --cyan: cyan;
-
-  --gray80: #2a2a40;
-  --gray75: #3b3b4f;
-  --gray45: #858591;
-  --gray15: #d0d0d5;
-  --gray10: #dfdfe2;
-  --gray05: #eeeef0;
-
-  --material-white: #f5f5f6;
-  --medium-gray: #e1e2e1;
-  --bg-color: #424242;
-  --bg-text-color: white;
 }

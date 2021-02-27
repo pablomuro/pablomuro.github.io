@@ -1,7 +1,7 @@
 <template>
-  <footer class="relative mt-32">
+  <footer class="relative mt-32 bg-theme-100">
     <div
-      class="created-by relative -mt-8 p-5 w-1/3 mx-auto text-center rounded-md"
+      class="created-by bg-theme-600 relative -mt-8 p-5 w-1/3 mx-auto text-center rounded-md"
     >
       <code class="language-html"
         ><span class="token tag"
@@ -12,7 +12,7 @@
           ><span class="token attr-value"
             ><span class="token punctuation attr-equals">=</span
             ><span class="token punctuation">"</span
-            ><span class="my-name quicksand font-bold">{{ name }}</span
+            ><span class="text-theme-100 quicksand font-bold">{{ name }}</span
             ><span class="token punctuation">"</span></span
           ><span class="token punctuation">/&gt;</span></span
         >
@@ -77,31 +77,23 @@ export default Vue.extend({
 <style lang="scss" scoped>
 footer {
   height: 150px;
-  background-color: var(--flash-white);
-
-  .created-by {
-    background-color: var(--bg-color);
-    background-color: #000;
-  }
 
   code {
     background-color: inherit;
-    .my-name {
-      color: var(--flash-white);
-    }
   }
 
-  .social svg {
-    width: 1.25rem;
-    height: 1.25rem;
-    path {
-      fill: var(--flash-white);
-      fill: #292929;
+  .social {
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      path {
+        @apply fill-current text-theme-600;
+      }
     }
-  }
 
-  .social svg:hover path {
-    fill: gray;
+    svg:hover path {
+      @apply fill-current text-theme-400;
+    }
   }
 }
 </style>

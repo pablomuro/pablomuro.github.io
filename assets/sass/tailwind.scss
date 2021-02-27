@@ -11,10 +11,10 @@
     }
   }
   .custom-select {
-    @apply cursor-pointer relative rounded-md border border-default-300 bg-white px-2 py-2 text-left;
+    @apply cursor-pointer relative rounded-md border border-theme-200 bg-white px-2 py-2 text-left;
     &:focus,
     &:focus-within {
-      @apply outline-none ring-1 ring-default-300;
+      @apply outline-none ring-1 ring-theme-200;
     }
   }
 
@@ -22,10 +22,10 @@
     @apply text-gray-900 select-none relative py-2 pl-2 cursor-pointer block;
 
     &:focus {
-      @apply outline-none text-white bg-default-400;
+      @apply outline-none text-white bg-theme-400;
     }
     &:hover {
-      @apply text-white bg-default-400;
+      @apply text-white bg-theme-400;
     }
   }
 

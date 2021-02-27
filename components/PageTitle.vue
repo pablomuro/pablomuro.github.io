@@ -1,5 +1,7 @@
 <template>
-  <div class="relative header-bg mt-0 margin-title-bg flex items-center">
+  <div
+    class="relative header-bg bg-theme-100 mt-0 margin-title-bg flex items-center"
+  >
     <div class="title-box ml-4 sm:ml-8 xl:ml-16">
       <h1 class="my-0 font-bold text-xl">
         <span class="terminal fira-code">></span
@@ -7,7 +9,7 @@
       </h1>
     </div>
 
-    <div class="header-line"></div>
+    <div class="header-line bg-theme-500 opacity-10"></div>
   </div>
 </template>
 
@@ -41,7 +43,7 @@ export default Vue.extend({
   .header-line {
     height: 0.125rem;
     width: 100%;
-    background-color: var(--gray-line);
+    // background-color: var(--gray-line);
   }
 }
 </style>

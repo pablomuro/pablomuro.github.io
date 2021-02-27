@@ -14,7 +14,7 @@
           {{ post.title }}
         </h1>
       </header>
-      <p class="card-description text-left mt-6 mb-2">
+      <p class="card-description text-theme-400 text-left mt-6 mb-2">
         {{ post.description }}
       </p>
     </div>
@@ -56,7 +56,6 @@ export default Vue.extend({
   font-size: 22px;
 }
 .card-description {
-  color: rgb(117, 117, 117);
   line-height: 20px;
   font-size: 20px;
 }

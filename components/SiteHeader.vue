@@ -7,7 +7,7 @@
         <div class="flex items-center">
           <nuxt-link
             :to="localePath('/')"
-            class="inline-flex pr-3 border-r border-black mr-3 items-center"
+            class="inline-flex pr-3 border-r border-black mr-3 items-center hover:underline"
           >
             <div class="logo">
               <picture-wrapper src="icon.png" alt="logo" />
@@ -15,8 +15,12 @@
             <p class="m-0 ml-3">{{ brand }}</p>
           </nuxt-link>
           <nav class="inline-flex space-x-3 items-center">
-            <nuxt-link :to="localePath('/blog')">Blog</nuxt-link>
-            <a :href="resumeLink" target="_blank"> {{ $t('resume') }} </a>
+            <nuxt-link :to="localePath('/blog')" class="hover:underline"
+              >Blog</nuxt-link
+            >
+            <a :href="resumeLink" class="hover:underline" target="_blank">
+              {{ $t('resume') }}
+            </a>
           </nav>
         </div>
         <div
@@ -28,7 +32,7 @@
         </div>
       </header>
     </transition>
-    <div class="header-bg"></div>
+    <div class="header-bg bg-theme-100"></div>
   </div>
 </template>
 
@@ -63,7 +67,6 @@ header {
   }
 }
 .header-bg {
-  height: var(--header-bg-size);
   z-index: -1;
 }
 </style>
