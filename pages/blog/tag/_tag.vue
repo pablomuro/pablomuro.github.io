@@ -4,10 +4,7 @@
     <NuxtLink
       :to="localePath('/blog')"
       class="flex items-baseline space-x-3 hover:underline mt-8"
-      ><fa
-        :icon="['fa', 'chevron-left']"
-        class="fill-current text-default-600"
-      />
+      ><fa :icon="['fa', 'chevron-left']" class="fill-current text-theme-500" />
       <p class="hover:underline">{{ $t('tag-back-all-posts') }}</p>
     </NuxtLink>
     <template v-if="blogPosts.length">
