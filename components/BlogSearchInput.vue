@@ -7,7 +7,7 @@
     >
       <span class="flex items-center w-full rounded-md shadow-sm custom-select">
         <search-icon
-          class="block z-10 h-4 m-0.5 sm:m-0 fill-current text-default-400 transition-colors duration-300 ease-linear"
+          class="block z-10 h-4 m-0.5 sm:m-0 fill-current text-theme-300 transition-colors duration-300 ease-linear"
         />
 
         <input
