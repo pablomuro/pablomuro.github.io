@@ -1,6 +1,6 @@
 import { Middleware } from '@nuxt/types'
 
-const i18nMiddleware: Middleware = async ({ app: { $i18nGuard }, from, route }) => {
+const customMiddleware: Middleware = async ({ app: { $i18nGuard, store }, from, route }) => {
   if (process.server) return
 
   if (from.name == route.name) {
@@ -12,6 +12,8 @@ const i18nMiddleware: Middleware = async ({ app: { $i18nGuard }, from, route }) 
     await $i18nGuard.guard()
   }
 
+  store?.dispatch('pages/clearTitle')
+
 }
 
-export default i18nMiddleware
+export default customMiddleware
