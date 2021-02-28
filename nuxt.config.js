@@ -65,7 +65,7 @@ export default {
     component: 'fa',
     icons: {
       solid: ['faHeart', 'faEnvelope', 'faFile', 'faChevronLeft'],
-      regular: [],
+      regular: ['faComment'],
       light: [],
       duotone: [],
       brands: [
