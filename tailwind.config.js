@@ -32,7 +32,11 @@ module.exports = {
         p: 'var(--p-color)'
       },
     },
-    extend: {},
+    extend: {
+      fontSize: {
+        inherit: 'inherit'
+      }
+    },
   },
   variants: {
     extend: {},
