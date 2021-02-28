@@ -1,6 +1,5 @@
 <template>
-  <page>
-    <template #title> {{ $t('tag-page-title') }} {{ tag }}</template>
+  <page :page-title="`${$t('blog-title')} ${tag}`">
     <NuxtLink
       :to="localePath('/blog')"
       class="flex items-baseline space-x-3 hover:underline mt-8"

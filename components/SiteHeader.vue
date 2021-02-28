@@ -32,7 +32,7 @@
         </div>
       </header>
     </transition>
-    <div class="header-bg bg-theme-100"></div>
+    <page-title />
   </div>
 </template>
 
@@ -65,8 +65,5 @@ header {
   .nuxt-link-exact-active {
     text-decoration: underline;
   }
-}
-.header-bg {
-  z-index: -1;
 }
 </style>

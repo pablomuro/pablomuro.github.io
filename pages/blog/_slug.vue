@@ -1,5 +1,5 @@
 <template>
-  <page>
+  <page page-title="">
     <article
       class="-mt-8 mx-auto max-w-full min-h-full rounded overflow-hidden flex flex-col card-shadow bg-white"
     >

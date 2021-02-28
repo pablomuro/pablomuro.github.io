@@ -1,7 +1,7 @@
 <template>
   <div class="site-body min-h-screen flex flex-col justify-between">
     <site-header />
-    <main class="flex-grow">
+    <main class="items-stretch">
       <Nuxt />
     </main>
     <site-footer />
@@ -12,7 +12,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  middleware: ['i18nMiddleware'],
+  middleware: ['custom-middleware'],
   head() {
     return this.$nuxtI18nHead({ addSeoAttributes: true, addDirAttribute: true })
   },

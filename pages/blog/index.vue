@@ -1,6 +1,5 @@
 <template>
-  <page>
-    <template #title> {{ $t('blog-title') }}</template>
+  <page :page-title="$t('blog-title')">
     <blog-posts :blog-posts="blogPosts" :lang="lang" class="mt-8" />
   </page>
 </template>
