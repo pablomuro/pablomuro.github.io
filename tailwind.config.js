@@ -1,15 +1,22 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  purge: [
-    './**/*.vue',
-    'plugins/**/*.ts',
-    'nuxt.config.js',
-    'blog-posts/**/*.md',
-    'content/**/*.md', // TODO - add future blog posts folder
-  ],
-  darkMode: 'media', // or 'media' or 'class'
+  purge: {
+    content: ['./**/*.vue',
+      'plugins/**/*.ts',
+      'nuxt.config.js',
+      'blog-posts/**/*.md',
+      'content/**/*.md', // TODO - add future blog posts folder
+    ],
+    options: {
+      safelist: ['dark-mode'],
+      keyframes: true,
+      fontFace: true,
+    },
+  },
+  darkMode: 'class',
   theme: {
+    darkSelector: '.dark-mode',
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
@@ -39,7 +46,11 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    backgroundColor: ["dark", "dark-hover", "dark-group-hover", "dark-even", "dark-odd", "hover", "responsive"],
+    borderColor: ["dark", "dark-focus", "dark-focus-within", "hover", "responsive"],
+    textColor: ["dark", "dark-hover", "dark-active", "hover", "responsive"],
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-dark-mode')()
+  ],
 }

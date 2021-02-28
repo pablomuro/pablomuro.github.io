@@ -1,5 +1,5 @@
 <template>
-  <footer class="relative mt-24 sm:mt-32 bg-theme-100">
+  <footer class="relative mt-24 sm:mt-32 bg-theme-100 dark:bg-theme-700">
     <div
       class="created-by bg-theme-600 relative -mt-4 sm:-mt-8 mx-auto text-center rounded-md p-2 sm:p-5 w-4/5 sm:w-1/3 text-xs sm:text-inherit"
     >
@@ -70,7 +70,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 footer {
   height: 100px;
 
@@ -83,12 +83,12 @@ footer {
       @apply w-4 h-4;
 
       path {
-        @apply fill-current text-theme-600;
+        @apply fill-current text-theme-600 dark:text-theme-300;
       }
     }
 
     svg:hover path {
-      @apply fill-current text-theme-400;
+      @apply fill-current text-theme-400 dark:text-theme-200;
     }
   }
 }

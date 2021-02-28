@@ -1,0 +1,27 @@
+@layer base {
+  body {
+    @apply bg-white dark:bg-gray-800 text-theme-600 dark:text-theme-100;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-theme-600 dark:text-theme-200;
+  }
+
+  p {
+    @apply text-theme-p dark:text-theme-200;
+  }
+
+  input {
+    background-color: inherit;
+  }
+
+  ::placeholder {
+    @apply dark:text-theme-200;
+    color: red;
+  }
+}

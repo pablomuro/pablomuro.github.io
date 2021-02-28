@@ -55,7 +55,6 @@ export default Vue.extend({
   }
 
   .avatar {
-    background-color: #fff;
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: auto 90%;

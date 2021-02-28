@@ -7,7 +7,7 @@
         <div class="flex items-center">
           <nuxt-link
             :to="localePath('/')"
-            class="inline-flex pr-3 border-r border-black mr-3 items-center hover:underline"
+            class="inline-flex pr-3 border-r border-black dark:border-gray-600 mr-3 items-center hover:underline"
           >
             <div class="logo">
               <picture-wrapper src="icon.png" alt="logo" />
@@ -29,6 +29,8 @@
           <blog-search-input :lang="this.$i18n.locale" class="" />
 
           <language-switcher class="" />
+
+          <dark-mode-toogle />
         </div>
       </header>
     </transition>

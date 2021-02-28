@@ -28,7 +28,6 @@
   h4,
   h5,
   h6 {
-    @apply text-theme-600;
     font-family: $montserrat-font-family;
   }
 
@@ -46,7 +45,7 @@
   }
 
   p {
-    @apply text-theme-p;
+    @apply text-theme-p dark:text-theme-200;
 
     font-size: 22px;
     line-height: 1.4285em;

@@ -53,6 +53,8 @@ export default {
 
     '@nuxtjs/fontawesome',
 
+    '@nuxtjs/color-mode',
+
     // SITEMAP MUST BE ON THE END - https://www.npmjs.com/package/@nuxtjs/sitemap
     '@nuxtjs/sitemap',
   ],
@@ -60,6 +62,10 @@ export default {
     exposeConfig: false,
     cssPath: '@/assets/sass/main.scss',
     configPath: './tailwind.config.js',
+  },
+  colorMode: {
+    preference: 'light',
+    fallback: 'dark',
   },
   fontawesome: {
     component: 'fa',

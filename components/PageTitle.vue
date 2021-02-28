@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative header-bg bg-theme-100 mt-0 margin-title-bg flex items-center"
+    class="relative header-bg bg-theme-100 dark:bg-theme-700 mt-0 margin-title-bg flex items-center"
   >
     <div class="title-box ml-4 sm:ml-8 xl:ml-16">
       <h1 class="my-0 font-bold text-xl">
@@ -16,7 +16,7 @@
     <transition name="page">
       <div
         v-show="title !== null"
-        class="header-line bg-theme-500 opacity-10"
+        class="header-line bg-theme-500 dark:bg-theme-100 opacity-10"
       ></div>
     </transition>
   </div>
