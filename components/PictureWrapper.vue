@@ -14,7 +14,9 @@
       :data-src="require(`@/assets/images/${src}`)"
       :alt="alt"
       class="img lazyload"
+      :class="imgClass"
     />
+    <slot></slot>
   </picture>
 </template>
 <script lang="ts">
@@ -27,6 +29,10 @@ export default Vue.extend({
       required: true,
     },
     alt: {
+      type: String,
+      default: '',
+    },
+    'img-class': {
       type: String,
       default: '',
     },
