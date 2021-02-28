@@ -1,6 +1,5 @@
 <template>
-  <page>
-    <template #title>Home</template>
+  <page page-title="Home">
     <div class="flex flex-col items-center justify-center">
       <section
         class="section-hi flex flex-col sm:flex-row items-center my-auto px-4 sm:px-0"
@@ -33,11 +32,6 @@ import Vue from 'vue'
 import { getHtmlHead } from '~/utils/headUtils'
 
 export default Vue.extend({
-  data() {
-    return {
-      year: new Date().getFullYear(),
-    }
-  },
   head() {
     return { ...getHtmlHead.call(this) }
   },
@@ -46,7 +40,6 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .section-hi {
-  margin-top: 8vh;
   .hi-box {
     left: 4.9rem;
     top: 1.5rem;
@@ -74,19 +67,12 @@ export default Vue.extend({
 
 @screen sm {
   .section-hi {
-    margin-top: 20vh;
     .avatar {
       height: 130px;
       width: 130px;
     }
     .hi-box {
       left: 6.5rem;
-
-      .hi-bubble {
-      }
-
-      .hi-text {
-      }
     }
   }
 }
