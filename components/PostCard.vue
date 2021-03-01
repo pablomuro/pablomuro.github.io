@@ -1,6 +1,6 @@
 <template>
   <article
-    class="max-w-md min-h-full rounded overflow-hidden shadow-md flex flex-col hover:shadow-2xl mb-4 bg-white dark:bg-theme-700"
+    class="max-w-md min-h-full rounded overflow-hidden flex-col shadow-md flex hover:shadow-2xl dark:shadow-md-light dark-hover:shadow-xl-light mb-4 bg-white dark:bg-theme-700"
   >
     <figure>
       <picture-wrapper
