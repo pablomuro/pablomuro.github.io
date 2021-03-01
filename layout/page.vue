@@ -15,7 +15,19 @@ export default Vue.extend({
     },
   },
   created() {
-    this.$store.dispatch('pages/changeTitle', this.pageTitle)
+    this.changeTitle(this.pageTitle)
+  },
+  watch: {
+    pageTitle(newTitle, oldTitle) {
+      if (newTitle !== oldTitle) {
+        this.changeTitle(newTitle)
+      }
+    },
+  },
+  methods: {
+    changeTitle(title: string) {
+      this.$store.commit('pages/changeTitle', title)
+    },
   },
 })
 </script>

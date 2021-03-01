@@ -3,6 +3,10 @@ import { BASE_URL, getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
 import { defaultLocale, i18nLocale } from './nuxt.default.config'
 import myData from './myData.json'
 
+import enI18nFile from './lang/en'
+import esI18nFile from './lang/es'
+import ptBrI18nFile from './lang/pt-br'
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -92,11 +96,16 @@ export default {
   i18n: {
     baseUrl: BASE_URL,
     locales: i18nLocale,
-    lazy: true,
-    langDir: 'lang/',
+    // lazy: true,
+    // langDir: 'lang/',
     defaultLocale: defaultLocale,
     vueI18n: {
       fallbackLocale: defaultLocale,
+      messages: {
+        en: { ...enI18nFile },
+        es: { ...esI18nFile },
+        'pt-br': { ...ptBrI18nFile }
+      },
     },
     seo: false, // initialize on the default layout
     detectBrowserLanguage: false,

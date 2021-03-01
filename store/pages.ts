@@ -11,16 +11,16 @@ export const getters: GetterTree<PageState, PageState> = {
 }
 
 export const mutations: MutationTree<PageState> = {
-  CHANGE_TITLE: (state, newTitle: string) => {
+  changeTitle: (state, newTitle: string) => {
     state.title = newTitle
   },
 }
 
 export const actions: ActionTree<PageState, PageState> = {
   changeTitle({ commit }, title) {
-    commit('CHANGE_TITLE', title)
+    commit('changeTitle', title)
   },
   clearTitle({ commit }) {
-    commit('CHANGE_TITLE', null)
+    commit('changeTitle', null)
   }
 }
