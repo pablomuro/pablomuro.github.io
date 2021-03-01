@@ -67,7 +67,7 @@
     "postcss-scss": "^3.0.4",
     "prettier": "^2.1.2",
     "sass": "^1.32.7",
-    "sass-loader": "^10.1.1",
+    "sass-loader": "^11.0.1",
     "tailwindcss": "^2.0.3",
     "tailwindcss-dark-mode": "^1.1.7",
     "ts-jest": "^26.5.1",
