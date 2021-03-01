@@ -20,8 +20,7 @@
     background-color: inherit;
   }
 
-  ::placeholder {
-    @apply dark:text-theme-200;
-    color: red;
-  }
+  // ::placeholder {
+  //   @apply dark:text-theme-200;
+  // }
 }

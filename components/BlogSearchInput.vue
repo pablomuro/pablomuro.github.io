@@ -15,7 +15,7 @@
           type="search"
           autocomplete="off"
           :placeholder="$t('blog-search-placeholder')"
-          class="search-input max-w-0 max-h-0 sm:max-w-full sm:max-h-full sm:ml-3 focus:outline-none"
+          class="search-input max-w-0 max-h-0 sm:max-w-full sm:max-h-full sm:ml-3 focus:outline-none placeholder-theme-400 dark:placeholder-theme-200 placeholder-opacity-75"
         />
       </span>
 
