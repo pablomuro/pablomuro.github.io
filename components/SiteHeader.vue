@@ -10,12 +10,7 @@
             class="inline-flex pr-3 border-r border-black dark:border-gray-600 mr-3 items-center hover:underline"
           >
             <div class="logo">
-              <picture-wrapper
-                src="icon.png"
-                width="46.5"
-                height="29"
-                alt="logo"
-              />
+              <picture-wrapper src="icon.png" alt="logo" />
             </div>
             <p class="m-0 ml-3">{{ brand }}</p>
           </nuxt-link>

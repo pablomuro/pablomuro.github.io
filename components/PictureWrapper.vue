@@ -1,41 +1,39 @@
 <template>
   <picture class="picture">
+    <source :data-srcset="imgWebp.srcSet" type="image/webp" class="source" />
     <source
-      :data-srcset="require(`@/assets/images/${src}?webp`)"
-      type="image/webp"
-      class="source"
-    />
-    <source
-      :data-srcset="require(`@/assets/images/${src}`)"
+      :data-srcset="defaultImg.srcSet"
       :type="`image/${imgtype}`"
       class="source"
     />
     <img
-      :data-src="require(`@/assets/images/${src}`)"
+      :data-src="defaultImg.src"
       :alt="alt"
       class="img lazyload"
       :class="imgClass"
-      :height="height"
-      :width="width"
-      loading="lazy"
+      :height="defaultImg.height"
+      :width="defaultImg.width"
     />
     <slot></slot>
   </picture>
 </template>
 <script lang="ts">
 import Vue from 'vue'
+
+interface Img {
+  srcSet: any
+  src: any
+  images: any
+  width: number
+  height: number
+}
+
+const sizes = 'sizes[]=45&sizes[]=375&sizes[]=448&sizes[]=600&sizes[]=960'
+
 export default Vue.extend({
   name: 'PictureWrapper',
   props: {
     src: {
-      type: String,
-      required: true,
-    },
-    width: {
-      type: String,
-      required: true,
-    },
-    height: {
       type: String,
       required: true,
     },
@@ -53,6 +51,12 @@ export default Vue.extend({
       let extension = this.src.split('.')[1]
       extension = extension === 'jpg' ? 'jpeg' : extension
       return extension
+    },
+    imgWebp(): Img {
+      return require(`@/assets/images/${this.src}?resize&sizes[]=45&sizes[]=375&sizes[]=448&sizes[]=600&sizes[]=960&format=webp`) as Img
+    },
+    defaultImg(): Img {
+      return require(`@/assets/images/${this.src}?resize&sizes[]=45&sizes[]=375&sizes[]=448&sizes[]=600&sizes[]=960`) as Img
     },
   },
 })
