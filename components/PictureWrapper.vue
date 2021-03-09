@@ -15,6 +15,8 @@
       :alt="alt"
       class="img lazyload"
       :class="imgClass"
+      :height="height"
+      :width="width"
       loading="lazy"
     />
     <slot></slot>
@@ -26,6 +28,14 @@ export default Vue.extend({
   name: 'PictureWrapper',
   props: {
     src: {
+      type: String,
+      required: true,
+    },
+    width: {
+      type: String,
+      required: true,
+    },
+    height: {
       type: String,
       required: true,
     },

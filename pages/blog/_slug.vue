@@ -7,6 +7,8 @@
         <picture-wrapper
           :src="`cover-images/${post.coverImage}`"
           alt="Post comer image"
+          width="960"
+          height="384"
         />
       </figure>
 

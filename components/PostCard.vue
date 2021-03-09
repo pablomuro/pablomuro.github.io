@@ -6,6 +6,8 @@
       <picture-wrapper
         :src="`cover-images/${post.coverImage}`"
         alt="Post comer image"
+        width="448"
+        height="208"
       />
     </figure>
     <div class="px-6 py-4 pb-2 flex-grow">
