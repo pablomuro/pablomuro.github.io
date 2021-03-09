@@ -14,6 +14,10 @@ const siteHeader = {
 }
 
 // === Pages =
+const indexPage = {
+  'hi': 'Oi',
+  'my-name-is': "Meu nome é Pablo e eu sou um Desenvolvedor Fullstack"
+}
 const blogPage = {
   'blog-title': 'Posts do Blog',
 }
@@ -37,6 +41,7 @@ const readingTimeComponent = {
 export default {
   ...metaTags,
   ...siteHeader,
+  ...indexPage,
   ...TagPage,
   ...blogPage,
   ...blogSearchComponent,

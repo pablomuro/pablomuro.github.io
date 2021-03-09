@@ -14,6 +14,11 @@ const siteHeader = {
 }
 
 // === Pages ===
+const indexPage = {
+  'hi': 'Hi',
+  'my-name-is': "My name is Pablo and I'm a Fullstack Developer"
+}
+
 const blogPage = {
   'blog-title': 'Blog Posts',
 }
@@ -37,6 +42,7 @@ const readingTimeComponent = {
 export default {
   ...metaTags,
   ...siteHeader,
+  ...indexPage,
   ...TagPage,
   ...blogPage,
   ...blogSearchComponent,

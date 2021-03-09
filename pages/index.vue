@@ -14,13 +14,18 @@
           <div class="hi-box absolute">
             <fa
               :icon="['far', 'comment']"
-              class="absolute fill-current text-theme-500 hi-bubble text-6xl sm:text-7xl"
+              class="absolute fill-current text-theme-500 hi-bubble text-7xl sm:text-8xl"
             />
-            <h1 class="absolute hi hi-text text-xl sm:text-3xl">Hi!</h1>
+            <h1
+              class="absolute hi hi-text text-xl sm:text-3xl"
+              :class="{ big: $i18nGuard.getLocale() == 'es' }"
+            >
+              {{ $t('hi') }}!
+            </h1>
           </div>
         </div>
         <div class="text-center text-lg">
-          <h1>My name is Pablo and I'm a Fullstack Developer</h1>
+          <h1>{{ $t('my-name-is') }}</h1>
         </div>
       </section>
       <div class="mt-14">
@@ -61,19 +66,21 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .section-hi {
   .hi-box {
     left: 4.9rem;
-    top: 1.5rem;
+    top: 0.5rem;
 
     .hi-bubble {
       transform: rotate(8deg);
     }
 
     .hi-text {
-      left: 1rem;
-      margin: 0.9rem 0 0 0;
+      margin: 1.3rem 0 0 1.3rem;
+      &.big {
+        margin: 1.3rem 0 0 0.65rem;
+      }
     }
   }
 
@@ -87,6 +94,10 @@ export default Vue.extend({
   }
 }
 
+pre {
+  @apply p-2 !important;
+}
+
 @screen sm {
   .section-hi {
     .avatar {
@@ -95,7 +106,17 @@ export default Vue.extend({
     }
     .hi-box {
       left: 6.5rem;
+      .hi-text {
+        margin: 1.7rem 0 0 1.7rem;
+        &.big {
+          margin: 1.65rem 0 0 0.85rem;
+          font-size: 1.675rem;
+        }
+      }
     }
+  }
+  pre {
+    @apply p-4 !important;
   }
 }
 </style>
