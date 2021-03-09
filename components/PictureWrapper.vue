@@ -15,6 +15,7 @@
       :alt="alt"
       class="img lazyload"
       :class="imgClass"
+      loading="lazy"
     />
     <slot></slot>
   </picture>
