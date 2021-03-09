@@ -163,7 +163,7 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     standalone: true,
-    analyze: true,
+    // analyze: true,
     postcss: {
       syntax: 'postcss-scss',
       plugins: {
