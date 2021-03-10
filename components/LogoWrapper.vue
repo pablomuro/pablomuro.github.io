@@ -29,7 +29,7 @@ interface Img {
 }
 
 export default Vue.extend({
-  name: 'PictureWrapper',
+  name: 'LogoWrapper',
   props: {
     src: {
       type: String,
@@ -51,10 +51,10 @@ export default Vue.extend({
       return extension
     },
     imgWebp(): Img {
-      return require(`@/assets/images/${this.src}?resize&sizes[]=375&sizes[]=448&sizes[]=600&sizes[]=960&format=webp`) as Img
+      return require(`@/assets/images/${this.src}?resize&sizes[]=45&format=webp`) as Img
     },
     defaultImg(): Img {
-      return require(`@/assets/images/${this.src}?resize&sizes[]=375&sizes[]=448&sizes[]=600&sizes[]=960`) as Img
+      return require(`@/assets/images/${this.src}?resize&sizes[]=45`) as Img
     },
   },
 })
