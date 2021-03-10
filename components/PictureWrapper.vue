@@ -1,10 +1,16 @@
 <template>
   <picture class="picture">
-    <source :data-srcset="imgWebp.srcSet" type="image/webp" class="source" />
+    <source
+      :data-srcset="imgWebp.srcSet"
+      type="image/webp"
+      class="source"
+      sizes="(max-width: 480px) 100vw, (max-width: 1024px) 448px, 960px"
+    />
     <source
       :data-srcset="defaultImg.srcSet"
       :type="`image/${imgtype}`"
       class="source"
+      sizes="(max-width: 480px) 100vw, (max-width: 1024px) 448px, 960px"
     />
     <img
       :data-src="defaultImg.src"
@@ -13,6 +19,7 @@
       :class="imgClass"
       :height="defaultImg.height"
       :width="defaultImg.width"
+      sizes="(max-width: 480px) 100vw, (max-width: 1024px) 448px, 960px"
     />
     <slot></slot>
   </picture>
