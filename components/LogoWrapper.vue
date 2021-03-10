@@ -51,10 +51,10 @@ export default Vue.extend({
       return extension
     },
     imgWebp(): Img {
-      return require(`@/assets/images/${this.src}?resize&sizes[]=45&format=webp`) as Img
+      return require(`@/assets/images/${this.src}?resize&sizes[]=90&format=webp`) as Img
     },
     defaultImg(): Img {
-      return require(`@/assets/images/${this.src}?resize&sizes[]=45`) as Img
+      return require(`@/assets/images/${this.src}?resize&sizes[]=90`) as Img
     },
   },
 })
