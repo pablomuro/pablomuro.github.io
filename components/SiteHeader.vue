@@ -51,6 +51,7 @@ export default Vue.extend({
   },
   computed: {
     resumeLink(): string {
+      return ''
       return `/resumes/pablo-resume-${this.$i18nGuard.getLocale()}.pdf`
     },
   },

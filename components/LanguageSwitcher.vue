@@ -10,7 +10,6 @@
         type="button"
         aria-haspopup="listbox"
         aria-expanded="true"
-        aria-labelledby="listbox-label"
         class="language-btn custom-select"
         @click="openDropdown"
       >

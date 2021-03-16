@@ -34,11 +34,11 @@
           <fa :icon="['fab', 'instagram']" />
         </a>
         <a :href="twitterLink" target="_blank" rel="noopener noreferrer">
-          <fa :icon="['fab', 'twitter']" />
+          <fa :icon="['fab', 'twitter']" alt="twitter link" />
         </a>
-        <a :href="resumeLink" target="_blank" rel="noopener noreferrer">
+        <!-- <a :href="resumeLink" target="_blank" rel="noopener noreferrer">
           <fa :icon="['fas', 'file']" />
-        </a>
+        </a> -->
       </div>
       <div class="my-2 sm:mt-4">Copyright © {{ year }} {{ brand }}</div>
     </div>
