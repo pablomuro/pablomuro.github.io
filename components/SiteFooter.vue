@@ -34,7 +34,7 @@
           <fa :icon="['fab', 'instagram']" />
         </a>
         <a :href="twitterLink" target="_blank" rel="noopener noreferrer">
-          <fa :icon="['fab', 'twitter']" alt="link to Twitter profile" />
+          <fa :icon="['fab', 'twitter']" />
         </a>
         <!-- <a :href="resumeLink" target="_blank" rel="noopener noreferrer">
           <fa :icon="['fas', 'file']" />
