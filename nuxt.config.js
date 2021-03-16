@@ -59,9 +59,12 @@ export default {
 
     '@nuxtjs/color-mode',
 
+    'nuxt-helmet',
+
     // SITEMAP MUST BE ON THE END - https://www.npmjs.com/package/@nuxtjs/sitemap
     '@nuxtjs/sitemap',
   ],
+  helmet: {},
   tailwindcss: {
     exposeConfig: false,
     cssPath: '@/assets/sass/main.scss',
