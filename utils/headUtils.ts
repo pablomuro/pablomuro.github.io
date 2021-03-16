@@ -3,15 +3,16 @@ import { TranslateResult } from 'vue-i18n'
 export const BASE_URL = 'https://www.pablomuro.dev'
 
 // TODO - imagem default de todos os cards, FAZER IMAGEM DEFAULT DO SITE
-const DEFAULT_CARD_IMG = '/icon.png'
+const DEFAULT_CARD_IMG = '/pablo-card-dark.png'
 
 export const getHeadMetaTags = (data: any) => {
+  console.log(data)
   const {
     post = null,
     description = null,
     title = null,
     path = null,
-    img = null,
+    image = null,
     tags = null,
   } = {
     ...data,
@@ -22,8 +23,8 @@ export const getHeadMetaTags = (data: any) => {
     description,
     title,
     post,
-    path,
-    img,
+    path: path ? path.path : null,
+    image,
   })
   const otherMetaTags = createOtherMetaTags({ description, tags })
   const postMetaTags = createPostMetaTags(post)
@@ -96,13 +97,13 @@ function createOpenGraphMetaTags({
   title,
   post,
   path,
-  img,
+  image,
 }: {
   description: string
   title: string
   post: string | null
   path: string | null
-  img: string | null
+  image: string | null
 }) {
   return [
     {
@@ -128,7 +129,7 @@ function createOpenGraphMetaTags({
     {
       hid: 'og:image',
       property: 'og:image',
-      content: img ?? DEFAULT_CARD_IMG,
+      content: image ?? DEFAULT_CARD_IMG,
     },
     {
       hid: 'og:locale',
@@ -243,7 +244,7 @@ export function getHtmlHead(this: Vue): any {
           description: post.description,
           title: post.title,
           path: this.$route,
-          image: post.coverImage,
+          image: post.ogImage || null,
           tags: post.tags,
         }),
       ],

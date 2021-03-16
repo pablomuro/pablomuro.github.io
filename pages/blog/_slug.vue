@@ -67,6 +67,7 @@ export default Vue.extend({
   },
 
   head() {
+    this.$data.post.ogImage = require(`@/assets/images/cover-images/${this.$data.post.coverImage}`)
     return { ...getHtmlHead.call(this) }
   },
 })

@@ -198,7 +198,7 @@ export default {
         name: 'author',
         content: myData.fullName,
       },
-      ...getHeadMetaTags(),
+      ...getHeadMetaTags(null),
     ],
     link: [...getHeadFavicons()],
   },
