@@ -10,7 +10,8 @@ const metaTags = {
 }
 
 const siteHeader = {
-  resume: 'Currículo'
+  resume: 'Currículo',
+  'blog-coming-soon': 'Blog (em desenvolvimento)'
 }
 
 // === Pages =
