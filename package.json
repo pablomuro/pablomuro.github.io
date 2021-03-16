@@ -12,7 +12,8 @@
     "lint": "npm run lint:js",
     "test": "jest",
     "remove:dist": "git clean -f -q dist/ ; git checkout -q dist/",
-    "publish": "git subtree push --prefix dist origin website",
+    "publish": "git subtree push --force --prefix dist origin website",
+    "deploy": "push-dir --dir=dist --branch=website --cleanup",
     "social": "ts-node ./social-publish/publish.ts",
     "postinstall": "./cleanModules.sh"
   },
@@ -63,6 +64,7 @@
     "postcss": "^8.2.8",
     "postcss-scss": "^3.0.5",
     "prettier": "^2.2.1",
+    "push-dir": "^0.4.1",
     "responsive-loader": "^2.3.0",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1",
