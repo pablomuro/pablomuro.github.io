@@ -1,15 +1,22 @@
 <template>
   <div>
-    <div class="container mx-auto px-4 pt-20">
-      <div class="flex flex-wrap items-center justify-between">
-        <icon-404 v-if="error.statusCode === 404" />
+    <div
+      class="container mx-auto px-4 flex flex-wrap items-center justify-evenly"
+    >
+      <div class="">
+        <span v-if="error.statusCode === 404">
+          <icon-404
+            class="error-svg fill-current text-theme-600 dark:text-theme-200"
+          />
+        </span>
         <h1
-          class="w-full text-3xl xl:text-4xltext-center font-medium leading-normal"
+          class="w-full text-3xl xl:text-4xl text-center font-medium leading-normal mt-0"
         >
-          <span v-if="error.statusCode === 404">Page not found</span>
-          <span v-else>An error occurred</span>
+          <span v-if="error.statusCode === 404" class="block -mt-5"
+            >Page not found</span
+          >
+          <span v-else>Server ERROR</span>
         </h1>
-        <div class="w-full lg:w-2/3 mx-auto">Cara</div>
       </div>
     </div>
   </div>
@@ -26,3 +33,8 @@ export default Vue.extend({
   layout: 'error', // you can set a custom layout for the error page
 })
 </script>
+<style lang="postcss" scoped>
+.error-svg {
+  width: 25rem;
+}
+</style>
