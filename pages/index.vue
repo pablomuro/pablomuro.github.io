@@ -24,7 +24,7 @@
             </h1>
           </div>
         </div>
-        <div class="text-center text-lg">
+        <div class="text-center text-lg leading-10">
           <h1>{{ $t('my-name-is') }}</h1>
         </div>
       </section>
