@@ -15,12 +15,7 @@
             <p class="m-0 ml-3">{{ brand }}</p>
           </nuxt-link>
           <nav class="inline-flex space-x-3 items-center">
-            <nuxt-link :to="localePath('/blog')" class="hover:underline"
-              >Blog</nuxt-link
-            >
-            <a :href="resumeLink" class="hover:underline" target="_blank">
-              {{ $t('resume') }}
-            </a>
+            {{ $t('blog-coming-soon') }}
           </nav>
         </div>
         <div

@@ -10,7 +10,8 @@ const metaTags = {
 }
 
 const siteHeader = {
-  resume: 'Resume'
+  resume: 'Resume',
+  'blog-coming-soon': 'Blog (under development)'
 }
 
 // === Pages ===
