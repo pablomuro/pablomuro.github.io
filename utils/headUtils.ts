@@ -5,8 +5,46 @@ export const BASE_URL = 'https://www.pablomuro.dev'
 // TODO - imagem default de todos os cards, FAZER IMAGEM DEFAULT DO SITE
 const DEFAULT_CARD_IMG = '/pablo-card-dark.png'
 
+export function getHtmlHead(this: Vue): any {
+  const { post = null } = this.$data
+
+  if (post != null) {
+    return {
+      title: post.title,
+      meta: [
+        ...getHeadMetaTags({
+          post,
+          description: post.description,
+          title: post.title,
+          path: this.$route,
+          image: post.ogImage ?? null,
+          tags: post.tags,
+        }),
+      ],
+    }
+  }
+
+  let title: TranslateResult = this.$i18n.t('root-meta-title')
+  let description: TranslateResult = this.$i18n.t('root-meta-description')
+
+  if (this.$route.fullPath !== '/') {
+    title = title.toString().replace('|', 'Blog |')
+    description = this.$i18n.t('blog-meta-description')
+  }
+
+  return {
+    title: title.toString(),
+    meta: [
+      ...getHeadMetaTags({
+        description,
+        title,
+        path: this.$route,
+      }),
+    ],
+  }
+}
+
 export const getHeadMetaTags = (data: any) => {
-  console.log(data)
   const {
     post = null,
     description = null,
@@ -55,10 +93,11 @@ function createPostMetaTags(post: any) {
       property: 'article:author',
       content: 'pablomuro',
     },
-    // {
-    //   hid: 'article:tag',
-    //   property: 'article:tag',
-    //   content: post.tags.toString(),
+    {
+      hid: 'article:tag',
+      property: 'article:tag',
+      content: post?.tags?.toString() ?? '',
+    }
   ]
 }
 
@@ -83,7 +122,7 @@ function createOtherMetaTags({
   ]
 }
 
-// https://cards-dev.twitter.com/validator
+// TODO - https://cards-dev.twitter.com/validator
 function createTwitterCardMetaTags() {
   return [
     { name: 'twitter:site', content: '@pablomurodev' },
@@ -233,40 +272,3 @@ export const getHeadFavicons = () => {
   ]
 }
 
-export function getHtmlHead(this: Vue): any {
-  const { post = null } = this.$data
-
-  if (post != null) {
-    return {
-      title: post.title,
-      meta: [
-        ...getHeadMetaTags({
-          description: post.description,
-          title: post.title,
-          path: this.$route,
-          image: post.ogImage || null,
-          tags: post.tags,
-        }),
-      ],
-    }
-  }
-
-  let title: TranslateResult = this.$i18n.t('root-meta-title')
-  let description: TranslateResult = this.$i18n.t('root-meta-description')
-
-  if (this.$route.fullPath !== '/') {
-    title = title.toString().replace('|', 'Blog |')
-    description = this.$i18n.t('blog-meta-description')
-  }
-
-  return {
-    title: title.toString(),
-    meta: [
-      ...getHeadMetaTags({
-        description,
-        title,
-        path: this.$route,
-      }),
-    ],
-  }
-}
