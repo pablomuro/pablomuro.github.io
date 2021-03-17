@@ -17,7 +17,8 @@ export default {
   },
 
   render: {
-    csp: true
+    csp: true,
+    resourceHints: true,
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
