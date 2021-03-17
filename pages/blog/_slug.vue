@@ -14,7 +14,9 @@
         <header>
           <h1 class="post-title mb-2 mt-8">{{ post.title }}</h1>
 
-          <div class="post-info text-sm mb-4 flex flex-wrap justify-between">
+          <div
+            class="post-info text-sm mb-4 flex flex-col sm:flex-row flex-wrap justify-between"
+          >
             <div>
               <time class="text-center" :datetime="post.createdAt">{{
                 i18nFormatDate(post.createdAt)
@@ -22,7 +24,7 @@
               •
               <reading-time :reading-time="post.readingTime"></reading-time>
             </div>
-            <tags :tags="post.tags"></tags>
+            <tags :tags="post.tags" class="mt-2 sm:mt-0"></tags>
           </div>
           <div class="post-info text-sm mb-8 flex flex-wrap justify-between">
             Posted from: {{ post.postedFrom }}
