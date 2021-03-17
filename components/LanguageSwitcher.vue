@@ -215,12 +215,15 @@ export default Vue.extend({
   .language-name {
     transition: max-width 0.5s ease-in-out, margin-left 0.6s ease-in-out,
       max-height 0.6s ease-in-out;
+    transition-delay: 300ms;
   }
   .arrows {
     transition: max-width 0.6s ease, max-height 0.3s ease;
+    transition-delay: 300ms;
   }
   .language-btn {
     transition: padding-right 0.6s ease-in-out;
+    transition-delay: 300ms;
   }
 }
 </style>

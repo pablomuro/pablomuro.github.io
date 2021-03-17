@@ -138,6 +138,7 @@ export default Vue.extend({
   .search-input {
     transition: max-width 0.5s ease-in-out, margin-left 0.6s ease-in-out,
       max-height 0.6s ease-in-out;
+    transition-delay: 125ms;
   }
   &:hover {
     .search-input {
