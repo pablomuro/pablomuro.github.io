@@ -64,7 +64,7 @@ export const getHeadMetaTags = (data: any) => {
     path: path ? path.path : null,
     image,
   })
-  const otherMetaTags = createOtherMetaTags({ description, tags })
+  const otherMetaTags = createOtherMetaTags({ title, description, tags })
   const postMetaTags = createPostMetaTags(post)
   return [
     ...otherMetaTags,
@@ -102,13 +102,20 @@ function createPostMetaTags(post: any) {
 }
 
 function createOtherMetaTags({
+  title,
   description,
   tags,
 }: {
+  title: string | null
   description: string | null
   tags: string[] | null
 }) {
   return [
+    {
+      hid: 'title',
+      name: 'title',
+      content: title,
+    },
     {
       hid: 'description',
       name: 'description',
