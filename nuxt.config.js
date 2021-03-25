@@ -57,8 +57,6 @@ export default {
     '@nuxt/content',
     // https://i18n.nuxtjs.org/
     'nuxt-i18n',
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
 
     'cookie-universal-nuxt',
 
@@ -150,9 +148,6 @@ export default {
     gzip: true,
     routes: getSiteXmlRoutes,
   },
-
-  // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
 
   /* Layout Transitions */
   layoutTransition: {
