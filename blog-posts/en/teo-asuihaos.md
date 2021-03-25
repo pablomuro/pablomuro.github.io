@@ -1,8 +1,8 @@
 ---
 title: Getting started on blogging
 description: 'Empower your NuxtJS application with  acting as a Git-based Headless CMS.'
-coverImage: '#coverImage'
-openGraphImage: '#openGraphImage'
+coverImage: 'cover-teo-asuihaos.png'
+openGraphImage: 'open-graph/cover-teo-asuihaos.png'
 postedFrom: Brasília, Brazil 🇧🇷
 publish_date: '12/02/2021'
 mainTag: 'JavaScript'

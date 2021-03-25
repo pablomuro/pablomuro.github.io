@@ -1,8 +1,8 @@
 ---
 title: Começando no blog
 description: 'Teste de post do blog em Português.'
-coverImage: '#coverImage'
-openGraphImage: '#openGraphImage'
+coverImage: 'cover-eai.png'
+openGraphImage: 'open-graph/cover-eai.png'
 postedFrom: Brasília, Brasil 🇧🇷
 mainTag: 'No Começo'
 tags:
