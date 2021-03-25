@@ -1,8 +1,10 @@
 ---
 title:
 description:
-cover_image: post-cover-image.jpg
+coverImage: '#coverImage'
+openGraphImage: '#openGraphImage'
 postedFrom: Brasília, Brazil 🇧🇷
+mainTag: 'JS'
 tags:
   - tag1
   - tag2
