@@ -1,0 +1,20 @@
+<main :style="containerStyle">
+  <div class="overlay">
+    <div v-if="coverTitle" class="items-center flex mx-16">
+      <div class="block avatar" :style="avatar"></div>
+      <div class="ml-10">
+        <h1 class="text-theme-100 font-bold text-center mb-10 text-5xl">
+          {{ coverTitle }}
+        </h1>
+        <h2 class="text-theme-100 text-center text-3xl">{{ coverSubtitle }}</h2>
+      </div>
+    </div>
+    <div v-else-if="mainTag" class="items-center flex">
+      <div class="mainTagOverlay p-8 bg-theme-500 mx-auto">
+        <h1 class="text-theme-100 font-bold text-center m-0 text-5xl mainTag">
+          {{ mainTag }}
+        </h1>
+      </div>
+    </div>
+  </div>
+</main>
