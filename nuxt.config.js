@@ -1,6 +1,7 @@
 import { getSiteXmlRoutes } from './utils/routesUtils'
 import { BASE_URL, getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
 import { defaultLocale, i18nLocale } from './nuxt.default.config'
+import { coverGenerate, coverImagePlaceholder, openGraphImagePlaceholder } from './post-cover-create/index'
 import myData from './myData.json'
 
 import enI18nFile from './lang/en'
@@ -23,6 +24,7 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
+  corejs: '3',
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
@@ -95,6 +97,7 @@ export default {
     },
   },
 
+  hardSource: true,
 
 
   // I18n module configuration (https://i18n.nuxtjs.org/)
@@ -117,6 +120,10 @@ export default {
     skipSettingLocaleOnNavigate: true,
   },
 
+  generate: {
+    exclude: ['/cover']
+  },
+
   optimizedImages: {
     handleImages: ['jpeg', 'png', 'webp', 'gif'],
     optimizeImages: true,
@@ -124,11 +131,15 @@ export default {
   },
 
   hooks: {
-    'content:file:beforeInsert': (document) => {
+    'content:file:beforeInsert': async (document) => {
       if (document.extension === '.md') {
         const { minutes } = require('reading-time')(document.text)
 
         document.readingTime = minutes
+      }
+
+      if (document.coverImage?.includes(coverImagePlaceholder) || document.openGraphImage?.includes(openGraphImagePlaceholder)) {
+        await coverGenerate(document)
       }
     },
   },
