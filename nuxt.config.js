@@ -10,7 +10,7 @@ import ptBrI18nFile from './lang/pt-br'
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
-  target: 'static',
+  target: 'server',
   ssr: true,
 
   publicRuntimeConfig: {
