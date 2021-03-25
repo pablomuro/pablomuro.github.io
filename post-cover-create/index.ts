@@ -8,7 +8,7 @@ import { makeScreenshot } from './screenshot'
 // @ts-ignore
 import paths from './paths.json'
 
-import { ICoverData, parseCoverTemplate, ReturnParse } from './parseCoverTemplate'
+import { ICoverData, parseCoverTemplate } from './parseCoverTemplate'
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
@@ -39,11 +39,12 @@ interface IFile {
 export const coverImagePlaceholder = '#coverImage'
 export const openGraphImagePlaceholder = '#openGraphImage'
 
+const DEFAULT_WIDTH = 1200
+const DEFAULT_HEIGHT = 630
+
 export async function coverGenerate(document: any) {
   const { slug, extension, title, description, mainTag } = document
   const docPath = document.path
-
-  consola.info(`Generating Image cover for ${slug}${extension}`)
 
   document.coverImage = `cover-${slug}.png`
   document.openGraphImage = `open-graph/cover-${slug}.png`
@@ -51,7 +52,8 @@ export async function coverGenerate(document: any) {
   const randomIndex = (max: number) => Math.floor(Math.random() * (max));
 
   const bgTemplate = bgTemplates[randomIndex(bgTemplates.length)]
-  consola.info(`With Background template: ${bgTemplate}`)
+
+  consola.info(`Generating Image cover for ${slug}${extension} \t template: ${bgTemplate}`)
 
   const input: IInput[] = [
     {
@@ -81,7 +83,7 @@ export async function coverGenerate(document: any) {
     fileContent = fileContent.replace('#coverImage', document.coverImage)
     fileContent = fileContent.replace('#openGraphImage', document.openGraphImage)
 
-    // writeFile(filePath, fileContent)
+    writeFile(filePath, fileContent)
     consola.success(`MD File ${filePath} saved`)
   })
 }
@@ -89,8 +91,8 @@ export async function coverGenerate(document: any) {
 const createImages = async function (options: any) {
   const {
     input,
-    width,
-    height
+    width = DEFAULT_WIDTH,
+    height = DEFAULT_HEIGHT
   }: IOptions = options
 
   if (!input) {
@@ -100,37 +102,30 @@ const createImages = async function (options: any) {
   const cluster = await Cluster.launch({
     concurrency: Cluster.CONCURRENCY_CONTEXT,
     maxConcurrency: 2,
-    retryLimit: 10,
-    retryDelay: 5000
   });
 
   let buffers: string[] = []
 
-  cluster.on('taskerror', (err, data) => {
-    console.log(`Errosasar crawling ${data}: ${err.message}`);
-  });
-
   try {
-    await cluster.task(async ({ page, data: { imgPath }, worker }) => {
+    await cluster.task(async ({ page, data: { imgPath } }) => {
       const buffer = await makeScreenshot(page, { imgPath, width, height })
       if (buffer) consola.success(`Image ${imgPath} created`)
 
       buffers.push(buffer);
     });
 
-    input.forEach(async _input => {
-      const { imgPath, coverData } = _input
+    for (let i in input) {
+      const { imgPath, coverData } = input[i]
       if (coverData) {
-        await parseCoverTemplate(coverData, width, height, imgPath)
-        await cluster.execute({ ..._input })
+        const tempFilesClean = await parseCoverTemplate(coverData, width, height, imgPath)
+        await cluster.execute({ imgPath })
+        if (tempFilesClean) tempFilesClean()
       }
-
-    })
+    }
 
     await cluster.idle();
     await cluster.close();
   } catch (error) {
-    consola.error("In index")
     consola.error(error)
   }
 

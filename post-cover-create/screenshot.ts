@@ -24,8 +24,8 @@ export const makeScreenshot = async function (page: any, {
   quality,
   encoding,
   transparent = false,
-  width = 1200,
-  height = 630
+  width,
+  height
 }: IScreenShot) {
   let screenshotArgs: any = {
     type,
@@ -45,10 +45,9 @@ export const makeScreenshot = async function (page: any, {
 
     const element = await page.$('body')
 
-    const path__ = path.join(process.cwd(), paths.coversFolder, imgPath)
-    console.log(path__)
+    const coversFolderPath = path.join(process.cwd(), paths.coversFolder, imgPath)
 
-    const image = await element?.screenshot({ path: path__, ...screenshotArgs })
+    const image = await element?.screenshot({ path: coversFolderPath, ...screenshotArgs })
 
     return image
   } catch (error) {
