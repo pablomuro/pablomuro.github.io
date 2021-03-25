@@ -1,9 +1,11 @@
 ---
 title: Getting started on blogging
 description: 'Description of the blog post - resume of the content in 144 characters top, to post on twitter'
-coverImage: post-cover-image.jpg
+coverImage: '#coverImage'
+openGraphImage: '#openGraphImage'
 postedFrom: Brasília, Brazil 🇧🇷
 publish_date: '12/02/2021'
+mainTag: 'Web Development'
 tags:
   - javascript
   - webdev

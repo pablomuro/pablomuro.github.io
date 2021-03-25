@@ -1,8 +1,10 @@
 ---
 title: Começando no blog
 description: 'Teste de post do blog em Português.'
-coverImage: post-cover-image.jpg
+coverImage: '#coverImage'
+openGraphImage: '#openGraphImage'
 postedFrom: Brasília, Brasil 🇧🇷
+mainTag: 'No Começo'
 tags:
   - javascript
   - webdev

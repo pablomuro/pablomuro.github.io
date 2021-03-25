@@ -1,9 +1,11 @@
 ---
-title: Getting started on blogging
-description: 'Empower your NuxtJS application with @nuxt/content module: write in a content/ directory and fetch your Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.'
-coverImage: post-cover-image.jpg
+title: Empezando en la programación
+description: 'Passos de como yo empeze a programar'
+coverImage: '#coverImage'
+openGraphImage: '#openGraphImage'
 postedFrom: Brasília, Brasil 🇧🇷
 publish_date: '12/02/2021'
+mainTag: 'Vida de un Dev'
 tags:
   - javascript
   - webdev
