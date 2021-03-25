@@ -78,7 +78,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import I18nGuardInterface from '~/plugins/i18n-guard'
-import { NuxtVueI18n } from 'nuxt-i18n'
+import { LocaleObject, NuxtVueI18n } from 'nuxt-i18n'
 // @ts-ignore
 import ClickOutside from 'vue-click-outside'
 
@@ -109,7 +109,7 @@ export default Vue.extend({
   computed: {
     filterLocales(): Array<unknown> {
       if (!this.$i18n.locales) return []
-      return this.$i18n.locales.filter((locale: any) => {
+      return (this.$i18n.locales as LocaleObject[]).filter((locale: any) => {
         if (locale && this.selectedLocale) {
           return locale.code !== this.selectedLocale.code
         }
