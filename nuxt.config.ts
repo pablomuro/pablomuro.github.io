@@ -2,6 +2,8 @@ import { getSiteXmlRoutes } from './utils/routesUtils'
 import { BASE_URL, getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
 import { defaultLocale, i18nLocale } from './nuxt.default.config'
 import { coverGenerate, coverImagePlaceholder, openGraphImagePlaceholder } from './post-cover-create/index'
+
+// @ts-ignore
 import myData from './myData.json'
 
 import enI18nFile from './lang/en'
@@ -129,7 +131,7 @@ export default {
   },
 
   hooks: {
-    'content:file:beforeInsert': async (document) => {
+    'content:file:beforeInsert': async (document: any) => {
       if (document.extension === '.md') {
         const { minutes } = require('reading-time')(document.text)
 
@@ -188,7 +190,7 @@ export default {
     },
     transpile: ['vue-flag-icon'],
 
-    extend(config, { isDev, isClient, loaders: { vue } }) {
+    extend(config: any, { isDev, isClient, loaders: { vue } }: { isDev: boolean, isClient: boolean, loaders: { vue: any } }) {
       if (isDev) {
         config.devtool = isClient ? 'source-map' : 'inline-source-map'
       }
