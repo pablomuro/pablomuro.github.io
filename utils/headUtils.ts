@@ -110,23 +110,28 @@ function createOtherMetaTags({
   description: string | null
   tags: string[] | null
 }) {
-  return [
-    {
-      hid: 'title',
-      name: 'title',
-      content: title,
-    },
-    {
-      hid: 'description',
-      name: 'description',
-      content: description,
-    },
-    {
-      hid: 'keywords',
-      name: 'keywords',
-      content: tags?.toString() ?? '', // data.tags
-    },
-  ]
+  const _tags = []
+
+  if (title) _tags.push({
+    hid: 'title',
+    name: 'title',
+    content: title,
+  })
+
+  if (description) _tags.push({
+    hid: 'description',
+    name: 'description',
+    content: description,
+  })
+
+
+  if (tags) _tags.push({
+    hid: 'keywords',
+    name: 'keywords',
+    content: tags?.toString() ?? '', // data.tags
+  })
+
+  return _tags
 }
 
 // TODO - https://cards-dev.twitter.com/validator
@@ -151,7 +156,7 @@ function createOpenGraphMetaTags({
   path: string | null
   image: string | null
 }) {
-  return [
+  let tags: any[] = [
     {
       hid: 'og:type',
       property: 'og:type',
@@ -161,16 +166,6 @@ function createOpenGraphMetaTags({
       hid: 'og:url',
       property: 'og:url',
       content: path ? `${BASE_URL}${path}` : BASE_URL,
-    },
-    {
-      hid: 'og:title',
-      property: 'og:title',
-      content: title,
-    },
-    {
-      hid: 'og:description',
-      property: 'og:description',
-      content: description,
     },
     {
       hid: 'og:image',
@@ -193,6 +188,23 @@ function createOpenGraphMetaTags({
       content: 'es_ES',
     },
   ]
+
+  if (title && description) {
+    tags = [
+      ...tags,
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: title,
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: description,
+      }
+    ]
+  }
+  return tags
 }
 
 export const getHeadFavicons = () => {
