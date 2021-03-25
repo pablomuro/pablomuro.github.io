@@ -51,7 +51,11 @@ export default Vue.extend({
       post = await $content(lang, params.slug).fetch()
     } catch (error) {
       lang = i18n.defaultLocale as string
-      post = await $content(lang, params.slug).fetch()
+      post = await $content(lang, params.slug)
+        .fetch()
+        .catch((err) => {
+          error({ statusCode: 404, message: 'Page not found' })
+        })
     }
 
     const [prev = null, next = null] = (await $content(lang)
