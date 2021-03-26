@@ -11,8 +11,7 @@
     "test": "jest",
     "remove:dist": "git clean -f -q dist/ ; git checkout -q dist/",
     "social": "ts-node ./social-publish/publish.ts",
-    "print": "ts-node ./post-cover-create/print.ts",
-    "postinstall": "./cleanModules.sh"
+    "print": "ts-node ./post-cover-create/print.ts"
   },
   "dependencies": {
     "nuxt": "^2.15.3",
