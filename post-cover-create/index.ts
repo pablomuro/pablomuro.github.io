@@ -5,7 +5,6 @@ import consola from 'consola'
 import { Cluster } from 'puppeteer-cluster'
 import { makeScreenshot } from './screenshot'
 
-// @ts-ignore
 import paths from './paths.json'
 
 import { ICoverData, parseCoverTemplate } from './parseCoverTemplate'

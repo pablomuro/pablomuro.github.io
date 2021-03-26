@@ -6,11 +6,11 @@
       "use": "@nuxtjs/vercel-builder",
       "config": {
         "serverFiles": [
-          "post-cover-create/**",
           "lang/**",
           "utils/**",
           "myData.json",
-          "nuxt.default.config.js"
+          "nuxt.default.config.js",
+          "post-cover-create/**"
         ],
         "tscOptions": {
           "skipLibCheck": true

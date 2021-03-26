@@ -3,7 +3,6 @@ import { BASE_URL, getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
 import { defaultLocale, i18nLocale } from './nuxt.default.config'
 import { coverGenerate, coverImagePlaceholder, openGraphImagePlaceholder } from './post-cover-create/index'
 
-// @ts-ignore
 import myData from './myData.json'
 
 import enI18nFile from './lang/en'

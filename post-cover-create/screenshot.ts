@@ -2,9 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import consola from 'consola'
 
-
-
-// @ts-ignore
 import paths from './paths.json'
 
 const tempFolder = path.join(__dirname, paths.tempFolder)
