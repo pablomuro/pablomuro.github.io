@@ -11,7 +11,10 @@
           "utils/**",
           "myData.json",
           "nuxt.default.config.js"
-        ]
+        ],
+        "tscOptions": {
+          "ignoreBuildErrors": true
+        }
       }
     }
   ]
