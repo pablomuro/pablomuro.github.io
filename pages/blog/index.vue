@@ -13,25 +13,31 @@ export default Vue.extend({
   async asyncData({ $content, app: { $i18nGuard } }) {
     const lang: string = $i18nGuard.getLocale()
 
-    let blogPosts: IContentDocument | IContentDocument[] = await $content(lang)
-      .only([
-        'title',
-        'description',
-        'coverImage',
-        'slug',
-        'tags',
-        'publish_date',
-        'readingTime',
-        'createdAt',
-      ])
-      .sortBy('createdAt', 'desc')
-      .fetch()
-    if (!Array.isArray(blogPosts)) {
-      blogPosts = [blogPosts]
-    }
-    return {
-      blogPosts,
-      lang,
+    try {
+      let blogPosts: IContentDocument | IContentDocument[] = await $content(
+        lang
+      )
+        .only([
+          'title',
+          'description',
+          'coverImage',
+          'slug',
+          'tags',
+          'publish_date',
+          'readingTime',
+          'createdAt',
+        ])
+        .sortBy('createdAt', 'desc')
+        .fetch()
+      if (!Array.isArray(blogPosts)) {
+        blogPosts = [blogPosts]
+      }
+      return {
+        blogPosts,
+        lang,
+      }
+    } catch (error) {
+      error({ statusCode: 404, message: 'Page not found' })
     }
   },
   head() {

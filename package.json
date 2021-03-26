@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nuxt --max_old_space_size=4096 --optimize_for_size",
     "start": "nuxt start",
+    "build": "nuxt build --modern",
     "generate": "nuxt generate --modern",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js",
