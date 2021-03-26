@@ -9,8 +9,7 @@
           "lang/**",
           "utils/**",
           "myData.json",
-          "nuxt.default.config.js",
-          "post-cover-create/**"
+          "nuxt.default.config.js"
         ],
         "tscOptions": {
           "skipLibCheck": true
