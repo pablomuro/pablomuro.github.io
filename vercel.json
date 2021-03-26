@@ -10,6 +10,7 @@
           "utils/**",
           "myData.json",
           "nuxt.default.config.js",
+          "node.tsconfig.json",
           "assets/images/**"
         ],
         "tscOptions": {
