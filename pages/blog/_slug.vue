@@ -44,12 +44,12 @@ import { IContentDocument } from '@nuxt/content/types/content'
 import { getHtmlHead } from '@/utils/headUtils'
 
 export default Vue.extend({
-  async asyncData({ $content, params, app: { $i18nGuard, i18n } }) {
+  async asyncData({ $content, params, error, app: { $i18nGuard, i18n } }) {
     let lang: string = $i18nGuard.getLocale()
     let post
     try {
       post = await $content(lang, params.slug).fetch()
-    } catch (error) {
+    } catch (err) {
       lang = i18n.defaultLocale as string
       post = await $content(lang, params.slug)
         .fetch()

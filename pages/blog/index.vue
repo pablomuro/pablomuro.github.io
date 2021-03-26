@@ -10,7 +10,7 @@ import { IContentDocument } from '@nuxt/content/types/content'
 import { getHtmlHead } from '@/utils/headUtils'
 
 export default Vue.extend({
-  async asyncData({ $content, app: { $i18nGuard } }) {
+  async asyncData({ $content, error, app: { $i18nGuard } }) {
     const lang: string = $i18nGuard.getLocale()
 
     try {
@@ -36,7 +36,7 @@ export default Vue.extend({
         blogPosts,
         lang,
       }
-    } catch (error) {
+    } catch (err) {
       error({ statusCode: 404, message: 'Page not found' })
     }
   },
