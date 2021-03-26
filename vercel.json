@@ -11,7 +11,8 @@
           "myData.json",
           "nuxt.default.config.js",
           "node.tsconfig.json",
-          "assets/images/**"
+          "assets/images/**",
+          "blog-posts/**"
         ],
         "tscOptions": {
           "skipLibCheck": true
