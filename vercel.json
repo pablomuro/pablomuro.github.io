@@ -9,7 +9,8 @@
           "lang/**",
           "utils/**",
           "myData.json",
-          "nuxt.default.config.js"
+          "nuxt.default.config.js",
+          "assets/images/**"
         ],
         "tscOptions": {
           "skipLibCheck": true
