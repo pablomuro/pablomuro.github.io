@@ -20,7 +20,8 @@
     "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/sitemap": "^2.4.0",
     "cookie-universal-nuxt": "^2.1.4",
-    "nuxt-i18n": "^6.22.1"
+    "nuxt-i18n": "^6.22.1",
+    "esm": "^3.2.25"
   },
   "devDependencies": {
     "@aceforth/nuxt-optimized-images": "^1.4.0",
@@ -75,6 +76,7 @@
   },
   "volta": {
     "node": "14.16.0",
-    "npm": "7.6.3"
+    "npm": "7.6.3",
+    "yarn": "1.22.10"
   }
 }
