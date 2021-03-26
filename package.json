@@ -21,7 +21,8 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "cookie-universal-nuxt": "^2.1.4",
     "nuxt-i18n": "^6.22.1",
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "puppeteer-cluster": "pablomuro/puppeteer-cluster"
   },
   "devDependencies": {
     "@aceforth/nuxt-optimized-images": "^1.4.0",
@@ -57,7 +58,6 @@
     "postcss-scss": "^3.0.5",
     "prettier": "^2.2.1",
     "puppeteer": "^8.0.0",
-    "puppeteer-cluster": "pablomuro/puppeteer-cluster",
     "reading-time": "^1.3.0",
     "remark-emoji": "^2.1.0",
     "responsive-loader": "^2.3.0",
