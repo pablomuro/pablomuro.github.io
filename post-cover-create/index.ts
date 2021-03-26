@@ -11,9 +11,8 @@ import { ICoverData, parseCoverTemplate } from './parseCoverTemplate'
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
-
-let bgTemplates = fs.readdirSync(path.resolve(__dirname, '../' + paths.bgTemplatesFolder))
-bgTemplates = bgTemplates.filter(file => path.extname(file) == ".jpg" || path.extname(file) == ".png")
+const readdir = promisify(fs.readdir);
+const exists = promisify(fs.exists);
 
 interface IInput {
   imgPath: string;
@@ -43,6 +42,12 @@ const DEFAULT_HEIGHT = 630
 
 export async function coverGenerate(document: any) {
   const { slug, extension, title, description, mainTag } = document
+
+  if (!await exists(path.resolve(__dirname, '../' + paths.bgTemplatesFolder))) return
+
+  let bgTemplates = fs.readdirSync(path.resolve(__dirname, '../' + paths.bgTemplatesFolder))
+  bgTemplates = bgTemplates.filter(file => path.extname(file) == ".jpg" || path.extname(file) == ".png")
+
   const docPath = document.path
 
   document.coverImage = `cover-${slug}.png`
