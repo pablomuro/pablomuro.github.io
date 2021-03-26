@@ -13,7 +13,9 @@
           "nuxt.default.config.js"
         ],
         "tscOptions": {
-          "ignoreBuildErrors": true
+          "compilerOptions": {
+            "skipLibCheck": true
+          }
         }
       }
     }
