@@ -61,6 +61,7 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/typescript
+    '@nuxtjs/color-mode',
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
     '@aceforth/nuxt-optimized-images',
@@ -76,10 +77,8 @@ export default {
     'nuxt-i18n',
 
     'cookie-universal-nuxt',
-
     '@nuxtjs/fontawesome',
 
-    '@nuxtjs/color-mode',
 
     // SITEMAP MUST BE ON THE END - https://www.npmjs.com/package/@nuxtjs/sitemap
     '@nuxtjs/sitemap',

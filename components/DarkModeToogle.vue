@@ -1,10 +1,16 @@
 <template>
   <div>
     <div @click="switchColorMode" class="cursor-pointer custom-select">
-      <transition name="page">
-        <sun v-if="mode == 'light'" />
-        <moon v-if="mode == 'dark'" class="fill-current text-theme-200" />
-      </transition>
+      <client-only>
+        <sun slot="placeholder" />
+        <transition name="page">
+          <sun v-if="mode.preference == 'light'" />
+          <moon
+            v-if="mode.preference == 'dark'"
+            class="fill-current text-theme-200"
+          />
+        </transition>
+      </client-only>
     </div>
   </div>
 </template>
@@ -21,13 +27,12 @@ export default Vue.extend({
   components: { Sun, Moon },
   data() {
     return {
-      mode: this.$colorMode.preference,
+      mode: this.$colorMode,
     }
   },
   methods: {
     switchColorMode() {
-      this.mode = this.mode == 'light' ? 'dark' : 'light'
-      this.$colorMode.preference = this.mode
+      this.mode.preference = this.mode.preference == 'light' ? 'dark' : 'light'
     },
   },
 })
