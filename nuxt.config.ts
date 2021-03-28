@@ -1,3 +1,5 @@
+import readingTime from 'reading-time'
+
 import { getSiteXmlRoutes } from './utils/routesUtils'
 import { BASE_URL, getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
 import { defaultLocale, i18nLocale } from './nuxt.default.config'
@@ -147,7 +149,7 @@ export default {
   hooks: {
     'content:file:beforeInsert': async (document: any) => {
       if (document.extension === '.md') {
-        const { minutes } = require('reading-time')(document.text)
+        const { minutes } = readingTime(document.text)
 
         document.readingTime = minutes
       }
