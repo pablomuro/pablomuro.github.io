@@ -63,6 +63,7 @@ export default {
   components: [
     '~/components', // shortcut to { path: '~/components' }
     { path: '~/layout/' },
+    { path: 'vue-lazy-hydration' }
   ],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
