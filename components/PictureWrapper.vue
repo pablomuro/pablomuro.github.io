@@ -1,22 +1,25 @@
 <template>
   <picture class="picture">
     <source
-      :data-srcset="imgWebp.srcSet"
+      :data-srcset="lazyload ? imgWebp.srcSet : false"
+      :srcset="!lazyload ? imgWebp.srcSet : false"
       type="image/webp"
       class="source"
       sizes="(max-width: 480px) 100vw, (max-width: 1024px) 448px, 960px"
     />
     <source
-      :data-srcset="defaultImg.srcSet"
+      :data-srcset="lazyload ? defaultImg.srcSet : false"
+      :srcset="!lazyload ? defaultImg.srcSet : false"
       :type="`image/${imgtype}`"
       class="source"
       sizes="(max-width: 480px) 100vw, (max-width: 1024px) 448px, 960px"
     />
     <img
-      :data-src="defaultImg.src"
+      :data-src="lazyload ? defaultImg.src : false"
+      :src="!lazyload ? defaultImg.src : false"
       :alt="alt"
-      class="img lazyload"
-      :class="imgClass"
+      class="img"
+      :class="extendedImgClass"
       :height="defaultImg.height"
       :width="defaultImg.width"
       sizes="(max-width: 480px) 100vw, (max-width: 1024px) 448px, 960px"
@@ -38,6 +41,10 @@ interface Img {
 export default Vue.extend({
   name: 'PictureWrapper',
   props: {
+    lazyload: {
+      type: Boolean,
+      default: true,
+    },
     src: {
       type: String,
       required: true,
@@ -52,6 +59,10 @@ export default Vue.extend({
     },
   },
   computed: {
+    extendedImgClass() {
+      let imgClass = this.imgClass as string
+      return this.lazyload ? `${imgClass} lazyload` : imgClass
+    },
     imgtype() {
       let extension = this.src.split('.')[1]
       extension = extension === 'jpg' ? 'jpeg' : extension

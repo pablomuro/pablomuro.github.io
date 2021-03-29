@@ -25,9 +25,9 @@ export default {
 
   render: {
     bundleRenderer: {
-      shouldPreload: (file: string, type: string) => {
-        return ['script', 'style'].includes(type) || file.includes('woff2')
-      }
+      // shouldPreload: (file: string, type: string) => {
+      //   return ['script', 'style'].includes(type) || file.includes('woff2')
+      // }
     },
     csp: {
       hashAlgorithm: 'sha256',

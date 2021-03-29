@@ -7,6 +7,7 @@
         <picture-wrapper
           :src="`cover-images/${post.coverImage}`"
           alt="Post comer image"
+          :lazyload="false"
         />
       </figure>
 
