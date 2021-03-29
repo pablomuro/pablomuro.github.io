@@ -26,9 +26,9 @@
         <div
           class="flex justify-between items-center flex-row w-full sm:w-auto sm:space-x-3 mt-4 mb-2 sm:my-0"
         >
-          <blog-search-input :lang="this.$i18n.locale" class="" />
+          <lazy-blog-search-input :lang="this.$i18n.locale" class="" />
           <div class="flex items-center flex-row space-x-1">
-            <language-switcher class="" />
+            <lazy-language-switcher class="" />
 
             <dark-mode-toogle />
           </div>

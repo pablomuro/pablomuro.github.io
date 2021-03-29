@@ -6,7 +6,7 @@
       :to="{ name: `blog-slug___${lang}`, params: { slug: post.slug } }"
       class="has-text-dark"
     >
-      <post-card :post="post" :lang="lang"></post-card>
+      <lazy-post-card :post="post" :lang="lang"></lazy-post-card>
     </NuxtLink>
   </div>
 </template>

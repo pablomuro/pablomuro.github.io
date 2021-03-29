@@ -62,7 +62,7 @@ import { IContentDocument } from '@nuxt/content/types/content'
 import ClickOutside from 'vue-click-outside'
 
 // @ts-ignore
-import SearchIcon from '~/assets/icons/search.svg?inline'
+const SearchIcon = () => import('~/assets/icons/search.svg?inline')
 
 interface IData {
   searchQuery: string

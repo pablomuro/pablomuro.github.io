@@ -54,7 +54,7 @@
 <script lang="ts">
 import Vue from 'vue'
 // @ts-ignore
-import NuxtJs from '~/assets/icons/nuxt-js.svg?inline'
+const NuxtJs = () => import('~/assets/icons/nuxt-js.svg?inline')
 
 import { getHtmlHead } from '~/utils/headUtils'
 

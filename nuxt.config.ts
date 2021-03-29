@@ -204,6 +204,14 @@ export default {
         },
       },
     },
+    splitChunks: {
+      layouts: true
+    },
+    optimization: {
+      splitChunks: {
+        name: true
+      }
+    },
 
     extend(config: any, { isDev, isClient, loaders: { vue } }: { isDev: boolean, isClient: boolean, loaders: { vue: any } }) {
       if (isDev) {

@@ -18,9 +18,9 @@
 <script lang="ts">
 import Vue from 'vue'
 // @ts-ignore
-import Sun from '~/assets/icons/sun.svg?inline'
+const Sun = () => import('~/assets/icons/sun.svg?inline')
 // @ts-ignore
-import Moon from '~/assets/icons/moon.svg?inline'
+const Moon = () => import('~/assets/icons/moon.svg?inline')
 
 export default Vue.extend({
   name: 'DarkModeToogle',

@@ -25,12 +25,12 @@
 <script>
 import Vue from 'vue'
 // @ts-ignore
-import Icon404 from '~/assets/icons/404.svg?inline'
+const Icon404 = () => import('~/assets/icons/404.svg?inline')
 
 export default Vue.extend({
   components: { Icon404 },
   props: ['error'],
-  layout: 'error', // you can set a custom layout for the error page
+  layout: 'error',
 })
 </script>
 <style lang="postcss" scoped>
