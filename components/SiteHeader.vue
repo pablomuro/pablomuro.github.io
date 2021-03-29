@@ -26,11 +26,16 @@
         <div
           class="flex justify-between items-center flex-row w-full sm:w-auto sm:space-x-3 mt-4 mb-2 sm:my-0"
         >
-          <lazy-blog-search-input :lang="this.$i18n.locale" class="" />
+          <lazy-hydrate when-idle>
+            <lazy-blog-search-input :lang="this.$i18n.locale" class="" />
+          </lazy-hydrate>
           <div class="flex items-center flex-row space-x-1">
-            <lazy-language-switcher class="" />
-
-            <dark-mode-toogle />
+            <lazy-hydrate when-idle>
+              <lazy-language-switcher class="" />
+            </lazy-hydrate>
+            <lazy-hydrate when-idle>
+              <dark-mode-toogle />
+            </lazy-hydrate>
           </div>
         </div>
       </header>

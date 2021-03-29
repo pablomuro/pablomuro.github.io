@@ -1,10 +1,14 @@
 <template>
   <div class="site-body min-h-screen flex flex-col justify-between">
-    <site-header />
+    <lazy-hydrate when-idle>
+      <site-header />
+    </lazy-hydrate>
     <main class="items-stretch">
       <Nuxt />
     </main>
-    <site-footer />
+    <lazy-hydrate when-visible>
+      <site-footer />
+    </lazy-hydrate>
   </div>
 </template>
 

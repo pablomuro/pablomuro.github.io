@@ -1,39 +1,41 @@
 <template>
   <page page-title="">
-    <article
-      class="-mt-8 mx-auto max-w-full min-h-full rounded overflow-hidden flex flex-col card-shadow bg-white dark:bg-theme-700"
-    >
-      <figure>
-        <picture-wrapper
-          :src="`cover-images/${post.coverImage}`"
-          alt="Post comer image"
-          :lazyload="false"
-        />
-      </figure>
+    <LazyHydrate ssr-only>
+      <article
+        class="-mt-8 mx-auto max-w-full min-h-full rounded overflow-hidden flex flex-col card-shadow bg-white dark:bg-theme-700"
+      >
+        <figure>
+          <picture-wrapper
+            :src="`cover-images/${post.coverImage}`"
+            alt="Post comer image"
+            :lazyload="false"
+          />
+        </figure>
 
-      <div class="px-4 sm:px-10 pb-8 flex-grow w-full">
-        <header>
-          <h1 class="post-title mb-2 mt-8">{{ post.title }}</h1>
+        <div class="px-4 sm:px-10 pb-8 flex-grow w-full">
+          <header>
+            <h1 class="post-title mb-2 mt-8">{{ post.title }}</h1>
 
-          <div
-            class="post-info text-sm mb-4 flex flex-col sm:flex-row flex-wrap justify-between"
-          >
-            <div>
-              <time class="text-center" :datetime="post.createdAt">{{
-                i18nFormatDate(post.createdAt)
-              }}</time>
-              •
-              <reading-time :reading-time="post.readingTime"></reading-time>
+            <div
+              class="post-info text-sm mb-4 flex flex-col sm:flex-row flex-wrap justify-between"
+            >
+              <div>
+                <time class="text-center" :datetime="post.createdAt">{{
+                  i18nFormatDate(post.createdAt)
+                }}</time>
+                •
+                <reading-time :reading-time="post.readingTime"></reading-time>
+              </div>
+              <tags :tags="post.tags" class="mt-2 sm:mt-0"></tags>
             </div>
-            <tags :tags="post.tags" class="mt-2 sm:mt-0"></tags>
-          </div>
-          <div class="post-info text-sm mb-8 flex flex-wrap justify-between">
-            Posted from: {{ post.postedFrom }}
-          </div>
-        </header>
-        <nuxt-content :document="post" />
-      </div>
-    </article>
+            <div class="post-info text-sm mb-8 flex flex-wrap justify-between">
+              Posted from: {{ post.postedFrom }}
+            </div>
+          </header>
+          <nuxt-content :document="post" />
+        </div>
+      </article>
+    </LazyHydrate>
 
     <prev-next :prev="prev" :next="next" :lang="lang" />
   </page>
