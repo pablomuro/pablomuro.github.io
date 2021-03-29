@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import { TranslateResult } from 'vue-i18n'
-export const BASE_URL = 'https://www.pablomuro.dev'
+
+// export const BASE_URL = 'https://www.pablomuro.dev'
+
+export const BASE_URL = 'https://pablomuro-blog.vercel.app'
 
 // TODO - imagem default de todos os cards, FAZER IMAGEM DEFAULT DO SITE
 const DEFAULT_CARD_IMG = '/pablo-card-dark.png'
@@ -140,7 +143,9 @@ function createTwitterCardMetaTags(image: string | null) {
     { hid: 'twitter:site', name: 'twitter:site', content: '@pablomurodev' },
     { hid: 'twitter:creator', name: 'twitter:creator', content: '@pablomurodev' },
     { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
-    { hid: 'twitter:image', name: 'twitter:image', content: image ?? DEFAULT_CARD_IMG, },
+    {
+      hid: 'twitter:image', name: 'twitter:image', content: `${BASE_URL}${image}` ?? `${BASE_URL}${DEFAULT_CARD_IMG}`,
+    },
   ]
 }
 
