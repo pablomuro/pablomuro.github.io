@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import { TranslateResult } from 'vue-i18n'
 
-// export const BASE_URL = 'https://www.pablomuro.dev'
+require('dotenv').config()
 
-export const BASE_URL = 'https://pablomuro-blog.vercel.app'
+
+export const BASE_URL = process.env.DEV_BASE_URL ? process.env.DEV_BASE_URL : process.env.BASE_URL || 'http://localhost:3000'
 
 // TODO - imagem default de todos os cards, FAZER IMAGEM DEFAULT DO SITE
 const DEFAULT_CARD_IMG = '/pablo-card-dark.png'

@@ -20,6 +20,10 @@ export default {
     myData: { ...myData }
   },
 
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
+
   render: {
     csp: {
       hashAlgorithm: 'sha256',
@@ -68,6 +72,7 @@ export default {
     '@nuxtjs/tailwindcss',
     '@aceforth/nuxt-optimized-images',
     '@nuxtjs/svg',
+    '@nuxtjs/dotenv',
 
   ],
 
