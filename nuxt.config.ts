@@ -26,7 +26,7 @@ export default {
   render: {
     bundleRenderer: {
       shouldPreload: (file: any, type: string) => {
-        return ['script', 'style', 'font'].includes(type)
+        return ['style', 'font'].includes(type)
       }
     },
     csp: {
@@ -46,7 +46,6 @@ export default {
         'object-src': ["'self'"],
       }
     },
-    resourceHints: true,
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
