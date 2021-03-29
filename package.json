@@ -15,18 +15,17 @@
     "print": "ts-node ./post-cover-create/print.ts"
   },
   "dependencies": {
-    "nuxt": "^2.15.3",
     "@nuxt/content": "^1.14.0",
     "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/sitemap": "^2.4.0",
     "cookie-universal-nuxt": "^2.1.4",
-    "nuxt-i18n": "^6.22.1",
     "esm": "^3.2.25",
-    "reading-time": "^1.3.0",
-    "puppeteer-cluster": "pablomuro/puppeteer-cluster"
+    "nuxt": "^2.15.3",
+    "nuxt-i18n": "^6.22.1",
+    "puppeteer-cluster": "pablomuro/puppeteer-cluster",
+    "reading-time": "^1.3.0"
   },
   "devDependencies": {
-    "@nuxtjs/color-mode": "^2.0.5",
     "@aceforth/nuxt-optimized-images": "^1.4.0",
     "@babel/core": "^7.13.10",
     "@babel/eslint-parser": "^7.13.10",
@@ -36,6 +35,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "@nuxt/types": "^2.15.3",
     "@nuxt/typescript-build": "^2.1.0",
+    "@nuxtjs/color-mode": "^2.0.5",
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-config-typescript": "^6.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",

@@ -1,7 +1,7 @@
 import { Middleware } from '@nuxt/types'
 
 const customMiddleware: Middleware = async (context) => {
-  const { app: { $i18nGuard, store }, from, route } = context
+  const { app: { $i18nGuard, store }, from, route, i18n } = context
 
   if ($i18nGuard.getLocale() === '') {
     await $i18nGuard.setLocale()
@@ -9,13 +9,12 @@ const customMiddleware: Middleware = async (context) => {
 
   store?.dispatch('pages/clearTitle')
 
-
   if (process.server) {
     if (await $i18nGuard.guard()) {
-      const from = context.i18n.locale
+      const from = i18n.locale
       const to = $i18nGuard.getLocale()
 
-      return context.redirect({ name: route.name?.replace(from, to) })
+      route.name = route.name?.replace(from, to)
     }
   } else {
 
