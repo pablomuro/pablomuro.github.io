@@ -2,18 +2,22 @@
   <main :style="containerStyle">
     <div class="overlay">
       <div v-if="coverTitle" class="items-center flex mx-16">
-        <div class="block avatar" :style="avatar"></div>
-        <div class="ml-10">
-          <h1 class="text-theme-100 font-bold text-center mb-10 text-5xl">
-            {{ coverTitle }}
-          </h1>
-          <h2 class="text-theme-100 text-center text-3xl">
-            {{ coverSubtitle }}
-          </h2>
+        <div class="textOverlay flex w-full p-10">
+          <div class="block avatar" :style="avatar"></div>
+          <div class="ml-10 w-full items-center flex">
+            <div class="w-full">
+              <h1 class="text-theme-100 font-bold text-center mb-10 text-5xl">
+                {{ coverTitle }}
+              </h1>
+              <h2 class="text-theme-100 text-center text-3xl">
+                {{ coverSubtitle }}
+              </h2>
+            </div>
+          </div>
         </div>
       </div>
       <div v-else-if="mainTag" class="items-center flex">
-        <div class="mainTagOverlay p-8 bg-theme-500 mx-auto">
+        <div class="textOverlay p-8 bg-theme-500 mx-auto">
           <h1 class="text-theme-100 font-bold text-center m-0 text-5xl mainTag">
             {{ mainTag }}
           </h1>
@@ -29,17 +33,14 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
-      coverTitle: '',
-      coverSubtitle: '',
-      // coverTitle: "Hello World - Why I'm starting blogging",
-      // coverSubtitle: 'The motives that drive me to start blogging',
-      mainTag: 'JS',
+      coverTitle: 'Hello World',
+      coverSubtitle: 'The motives',
+      // mainTag: 'JS',
 
       containerStyle: {
         width: `1200px`,
         height: `630px`,
-        // backgroundImage: 'url(../assets/images/tag-bg-template/programing-life.jpg)',
-        backgroundImage: `url(${require('@/assets/images/bg-templates/programing-life.jpg')})`,
+        backgroundImage: `url(${require('@/post-cover-create/cover-template/bg-templates/jeff-sheldon-9dI3g8owHiI-unsplash.jpg')})`,
       },
       avatar: {
         backgroundImage: `url(${require('@/assets/images/avatar.png')})`,
@@ -77,7 +78,7 @@ main {
     line-height: 1.25;
   }
 
-  .mainTagOverlay {
+  .textOverlay {
     background-color: rgba(0, 0, 0, 0.4);
   }
 

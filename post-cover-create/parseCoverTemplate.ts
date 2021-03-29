@@ -40,7 +40,7 @@ export const parseCoverTemplate = async function (coverData: ICoverData, width: 
   try {
     const htmlTemplate = (await readFile(path.resolve(__dirname, paths.coverTemplate))).toString()
 
-    const mainSassFile = (await readFile(path.resolve(__dirname, '../' + paths.mainSass))).toString()
+    const sassFile = (await readFile(path.resolve(__dirname, '../' + paths.mainSass))).toString()
     const templateSassFile = (await readFile(path.resolve(__dirname, paths.coverTemplateSass))).toString()
 
     const plugins = [
@@ -55,7 +55,7 @@ export const parseCoverTemplate = async function (coverData: ICoverData, width: 
       syntax: require('postcss-scss'),
     }
 
-    const mainCss = await postcss(plugins).process(mainSassFile, { ...cssOptions, from: path.resolve(__dirname, '../' + paths.mainSass) }).then(result => result)
+    const mainCss = await postcss(plugins).process(sassFile, { ...cssOptions, from: path.resolve(__dirname, '../' + paths.mainSass) }).then(result => result)
     const templateCss = await postcss(plugins).process(templateSassFile, { ...cssOptions, from: path.resolve(__dirname, paths.coverTemplateSass) }).then(result => result)
 
     const templateData: ICoverData = {
@@ -72,7 +72,7 @@ export const parseCoverTemplate = async function (coverData: ICoverData, width: 
         containerStyle: {
           width: `${width}px`,
           height: `${height}px`,
-          backgroundImage: `url(${path.join(process.cwd(), paths.bgTemplatesFolder, templateData.bgTemplate as string)})`
+          backgroundImage: `url(${path.join(__dirname, paths.bgTemplatesFolder, templateData.bgTemplate as string)})`
         },
         avatar: {
           backgroundImage: `url(${path.join(process.cwd(), paths.imagesFolder, 'avatar.png')})`

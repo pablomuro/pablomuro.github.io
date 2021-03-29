@@ -43,9 +43,9 @@ const DEFAULT_HEIGHT = 630
 export async function coverGenerate(document: any) {
   const { slug, extension, title, description, mainTag } = document
 
-  if (!await exists(path.resolve(__dirname, '../' + paths.bgTemplatesFolder))) return
+  if (!await exists(path.resolve(__dirname, paths.bgTemplatesFolder))) return
 
-  let bgTemplates = fs.readdirSync(path.resolve(__dirname, '../' + paths.bgTemplatesFolder))
+  let bgTemplates = fs.readdirSync(path.resolve(__dirname, paths.bgTemplatesFolder))
   bgTemplates = bgTemplates.filter(file => path.extname(file) == ".jpg" || path.extname(file) == ".png")
 
   const docPath = document.path
