@@ -24,6 +24,11 @@ export default {
   },
 
   render: {
+    bundleRenderer: {
+      shouldPreload: (file: any, type: string) => {
+        return ['script', 'style', 'font'].includes(type)
+      }
+    },
     csp: {
       hashAlgorithm: 'sha256',
       policies: {
