@@ -1,0 +1,8 @@
+@import 'flag-icon-css/sass/_variables';
+
+$flag-icon-css-path: 'flag-icon-css/flags';
+
+@import 'flag-icon-css/sass/_flag-icon-base';
+
+$include: es, us, br;
+@import 'flag-icon-css/sass/_flag-icon-list';

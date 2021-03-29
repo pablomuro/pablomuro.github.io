@@ -46,11 +46,9 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
-  corejs: '3',
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/vue-flag-icon',
     '@/plugins/i18n-format-date',
     '@/plugins/vue-lazysizes.client',
     '@/plugins/i18n-guard',
@@ -194,7 +192,7 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     standalone: true,
-    // analyze: true,
+    corejs: '3',
     postcss: {
       syntax: 'postcss-scss',
       plugins: {
@@ -206,7 +204,6 @@ export default {
         },
       },
     },
-    transpile: ['vue-flag-icon'],
 
     extend(config: any, { isDev, isClient, loaders: { vue } }: { isDev: boolean, isClient: boolean, loaders: { vue: any } }) {
       if (isDev) {
