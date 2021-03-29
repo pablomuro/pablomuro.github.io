@@ -1,6 +1,5 @@
 import { Plugin } from '@nuxt/types'
 import { NuxtVueI18n } from 'nuxt-i18n'
-import index from 'cookie-universal-nuxt'
 import { CookieSerializeOptions } from 'cookie'
 import { defaultLocale } from '~/nuxt.default.config'
 
