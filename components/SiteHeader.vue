@@ -35,7 +35,9 @@
         </div>
       </header>
     </transition>
-    <page-title />
+    <client-only>
+      <page-title />
+    </client-only>
   </div>
 </template>
 
