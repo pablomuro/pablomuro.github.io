@@ -25,8 +25,8 @@ export default {
 
   render: {
     bundleRenderer: {
-      shouldPreload: (file: any, type: string) => {
-        return ['style', 'font'].includes(type)
+      shouldPreload: (file: string, type: string) => {
+        return ['script', 'style'].includes(type) || file.includes('woff2')
       }
     },
     csp: {
