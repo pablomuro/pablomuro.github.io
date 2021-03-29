@@ -56,7 +56,7 @@ export const getHeadMetaTags = (data: any) => {
     ...data,
   }
   // const post = null
-  const twitterCardMetaTags = createTwitterCardMetaTags()
+  const twitterCardMetaTags = createTwitterCardMetaTags(image)
   const openGraphMetaTags = createOpenGraphMetaTags({
     description,
     title,
@@ -135,11 +135,12 @@ function createOtherMetaTags({
 }
 
 // TODO - https://cards-dev.twitter.com/validator
-function createTwitterCardMetaTags() {
+function createTwitterCardMetaTags(image: string | null) {
   return [
     { name: 'twitter:site', content: '@pablomurodev' },
     { name: 'twitter:creator', content: '@pablomurodev' },
     { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: image ?? DEFAULT_CARD_IMG, },
   ]
 }
 
