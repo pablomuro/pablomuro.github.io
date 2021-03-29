@@ -136,10 +136,6 @@ export default {
     skipSettingLocaleOnNavigate: true,
   },
 
-  generate: {
-    exclude: ['/cover']
-  },
-
   optimizedImages: {
     handleImages: ['jpeg', 'png', 'webp', 'gif'],
     optimizeImages: true,
