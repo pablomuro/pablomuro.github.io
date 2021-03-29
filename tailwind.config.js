@@ -5,8 +5,7 @@ module.exports = {
     content: ['./**/*.vue',
       'plugins/**/*.ts',
       'nuxt.config.js',
-      'blog-posts/**/*.md',
-      'content/**/*.md', // TODO - add future blog posts folder
+      'blog-posts/**/*.md'
     ],
     options: {
       safelist: ['dark-mode'],

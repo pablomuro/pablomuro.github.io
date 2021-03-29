@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import { TranslateResult } from 'vue-i18n'
 
-// export const BASE_URL = process.env.DEV_BASE_URL ? process.env.DEV_BASE_URL : process.env.BASE_URL || 'http://localhost:3000'
-
 // TODO - imagem default de todos os cards, FAZER IMAGEM DEFAULT DO SITE
 const DEFAULT_CARD_IMG = '/pablo-card-dark.png'
 
@@ -139,7 +137,6 @@ function createOtherMetaTags({
   return _tags
 }
 
-// TODO - https://cards-dev.twitter.com/validator
 function createTwitterCardMetaTags({ image, baseUrl }: { image: string | null, baseUrl: string }) {
   return [
     { hid: 'twitter:site', name: 'twitter:site', content: '@pablomurodev' },
