@@ -137,10 +137,10 @@ function createOtherMetaTags({
 // TODO - https://cards-dev.twitter.com/validator
 function createTwitterCardMetaTags(image: string | null) {
   return [
-    { name: 'twitter:site', content: '@pablomurodev' },
-    { name: 'twitter:creator', content: '@pablomurodev' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:image', content: image ?? DEFAULT_CARD_IMG, },
+    { hid: 'twitter:site', name: 'twitter:site', content: '@pablomurodev' },
+    { hid: 'twitter:creator', name: 'twitter:creator', content: '@pablomurodev' },
+    { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
+    { hid: 'twitter:image', name: 'twitter:image', content: image ?? DEFAULT_CARD_IMG, },
   ]
 }
 
