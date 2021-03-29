@@ -64,7 +64,6 @@ export default Vue.extend({
       .surround(params.slug)
       .fetch()) as Array<IContentDocument>
 
-    console.log(post)
     return {
       post,
       prev,
