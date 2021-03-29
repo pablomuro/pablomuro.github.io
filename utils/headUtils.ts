@@ -1,15 +1,13 @@
 import Vue from 'vue'
 import { TranslateResult } from 'vue-i18n'
 
-require('dotenv').config()
-
-
-export const BASE_URL = process.env.DEV_BASE_URL ? process.env.DEV_BASE_URL : process.env.BASE_URL || 'http://localhost:3000'
+// export const BASE_URL = process.env.DEV_BASE_URL ? process.env.DEV_BASE_URL : process.env.BASE_URL || 'http://localhost:3000'
 
 // TODO - imagem default de todos os cards, FAZER IMAGEM DEFAULT DO SITE
 const DEFAULT_CARD_IMG = '/pablo-card-dark.png'
 
 export function getHtmlHead(this: Vue): any {
+  const baseUrl = this.$config.baseUrl
   const { post = null } = this.$data
 
   if (post != null) {
@@ -17,6 +15,7 @@ export function getHtmlHead(this: Vue): any {
       title: post.title,
       meta: [
         ...getHeadMetaTags({
+          baseUrl,
           post,
           description: post.description,
           title: post.title,
@@ -50,6 +49,7 @@ export function getHtmlHead(this: Vue): any {
 
 export const getHeadMetaTags = (data: any) => {
   const {
+    baseUrl = '',
     post = null,
     description = null,
     title = null,
@@ -60,8 +60,9 @@ export const getHeadMetaTags = (data: any) => {
     ...data,
   }
   // const post = null
-  const twitterCardMetaTags = createTwitterCardMetaTags(image)
+  const twitterCardMetaTags = createTwitterCardMetaTags({ image, baseUrl })
   const openGraphMetaTags = createOpenGraphMetaTags({
+    baseUrl,
     description,
     title,
     post,
@@ -139,24 +140,26 @@ function createOtherMetaTags({
 }
 
 // TODO - https://cards-dev.twitter.com/validator
-function createTwitterCardMetaTags(image: string | null) {
+function createTwitterCardMetaTags({ image, baseUrl }: { image: string | null, baseUrl: string }) {
   return [
     { hid: 'twitter:site', name: 'twitter:site', content: '@pablomurodev' },
     { hid: 'twitter:creator', name: 'twitter:creator', content: '@pablomurodev' },
     { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
     {
-      hid: 'twitter:image', name: 'twitter:image', content: `${BASE_URL}${image}` ?? `${BASE_URL}${DEFAULT_CARD_IMG}`,
+      hid: 'twitter:image', name: 'twitter:image', content: `${baseUrl}${image}` ?? `${baseUrl}${DEFAULT_CARD_IMG}`,
     },
   ]
 }
 
 function createOpenGraphMetaTags({
+  baseUrl,
   description,
   title,
   post,
   path,
   image,
 }: {
+  baseUrl: string
   description: string
   title: string
   post: string | null
@@ -172,7 +175,7 @@ function createOpenGraphMetaTags({
     {
       hid: 'og:url',
       property: 'og:url',
-      content: path ? `${BASE_URL}${path}` : BASE_URL,
+      content: path ? `${baseUrl}${path}` : baseUrl,
     },
     {
       hid: 'og:image',

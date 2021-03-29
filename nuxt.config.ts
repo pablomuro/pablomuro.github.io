@@ -1,7 +1,7 @@
 import readingTime from 'reading-time'
 
 import { getSiteXmlRoutes } from './utils/routesUtils'
-import { BASE_URL, getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
+import { getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
 import { defaultLocale, i18nLocale } from './nuxt.default.config'
 import { coverGenerate, coverImagePlaceholder, openGraphImagePlaceholder } from './post-cover-create/index'
 
@@ -11,17 +11,16 @@ import enI18nFile from './lang/en'
 import esI18nFile from './lang/es'
 import ptBrI18nFile from './lang/pt-br'
 
+const BASE_URL = process.env.DEV_BASE_URL ? process.env.DEV_BASE_URL : process.env.BASE_URL || 'http://localhost:3000'
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'server',
   ssr: true,
 
   publicRuntimeConfig: {
-    myData: { ...myData }
-  },
-
-  env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    myData: { ...myData },
+    baseUrl: BASE_URL
   },
 
   render: {
@@ -72,8 +71,6 @@ export default {
     '@nuxtjs/tailwindcss',
     '@aceforth/nuxt-optimized-images',
     '@nuxtjs/svg',
-    '@nuxtjs/dotenv',
-
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
