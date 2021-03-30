@@ -56,7 +56,7 @@ export default {
     '@/plugins/i18n-format-date',
     '@/plugins/vue-lazysizes.client',
     '@/plugins/i18n-guard',
-    '@/plugins/i18n-route'
+    '@/plugins/i18n-route',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -144,7 +144,7 @@ export default {
   optimizedImages: {
     handleImages: ['jpeg', 'png', 'webp', 'gif'],
     optimizeImages: true,
-    optimizeImagesInDev: true
+    optimizeImagesInDev: false
   },
 
   hooks: {

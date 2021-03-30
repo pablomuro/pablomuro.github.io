@@ -8,6 +8,7 @@
     </NuxtLink>
     <template v-if="blogPosts.length">
       <blog-posts :blog-posts="blogPosts" :lang="lang" class="mt-8" />
+      <infinite-loading-slot @posts="appendPosts" :getPosts="getTagPosts" />
     </template>
     <template v-else>
       <h2 class="mt-4">{{ $t('tag-posts-not-found') }}</h2>
@@ -17,28 +18,25 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { IContentDocument } from '@nuxt/content/types/content'
+
 import { getHtmlHead } from '@/utils/headUtils'
+import { getTagPosts } from '@/utils/getPosts'
+import { IContentDocument } from '@nuxt/content/types/content'
 
 export default Vue.extend({
+  data() {
+    return {
+      blogPosts: [],
+      tag: '',
+    }
+  },
   async asyncData({ $content, params, app: { $i18nGuard }, error }) {
     const lang: string = $i18nGuard.getLocale()
     const tag = params.tag
 
     try {
       if (!tag) throw new Error('No tag')
-
-      let blogPosts: IContentDocument | IContentDocument[] = await $content(
-        lang
-      )
-        .where({ tags: { $contains: tag } })
-        .sortBy('createdAt', 'desc')
-        .fetch()
-
-      if (!Array.isArray(blogPosts)) {
-        blogPosts = [blogPosts]
-      }
-
+      const { blogPosts } = await getTagPosts(lang, $content, tag)
       return {
         blogPosts,
         tag,
@@ -47,6 +45,21 @@ export default Vue.extend({
     } catch (err) {
       return error({ statusCode: 404, message: err.message })
     }
+  },
+  methods: {
+    getTagPosts(): Promise<{ blogPosts: IContentDocument[] }> {
+      const lang: string = this.$i18nGuard.getLocale()
+      return getTagPosts(
+        lang,
+        this.$content,
+        this.tag,
+        this.$data.blogPosts.length
+      )
+    },
+    appendPosts(blogPosts: IContentDocument[]) {
+      if (!blogPosts.length) return
+      this.$data.blogPosts = [...this.$data.blogPosts, ...blogPosts]
+    },
   },
   head() {
     return { ...getHtmlHead.call(this) }
