@@ -1,5 +1,5 @@
 ---
-title: Ola Copy----
+title: Ola Copy
 description: 'Prueba de entrada en el blog en Espanol.'
 coverImage: 'cover-ola copy.png'
 openGraphImage: 'open-graph/cover-ola copy.png'
@@ -10,6 +10,7 @@ tags:
   - javascript
   - webdev
 createdAt: 2021-03-31T12:21:31.510Z
-updatedAt: 2021-03-31T17:24:23.044Z---
+updatedAt: '2021'
+---
 
 # Olá que ta
