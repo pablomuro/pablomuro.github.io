@@ -43,10 +43,12 @@ jobs:
       - name: Get posts MD files
         id: files
         uses: jitterbit/get-changed-files@v1
-        run: |
-          for changed_file in ${{ steps.files.outputs.all }}; do
-            echo "Do something with this ${changed_file}."
-          done
+
+      - name: Change updatedAt Field
+        id: changedFiles
+        uses: './post-update-action/index.ts'
+        with:
+          files: ${{ steps.files.outputs.all }}
 
       # - name: Install dependencies 👨🏻‍💻
       #   run: yarn config && yarn install
