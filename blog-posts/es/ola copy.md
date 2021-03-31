@@ -1,5 +1,5 @@
 ---
-title: Ola Copy-
+title: Ola Copy--
 description: 'Prueba de entrada en el blog en Espanol.'
 coverImage: 'cover-ola copy.png'
 openGraphImage: 'open-graph/cover-ola copy.png'
