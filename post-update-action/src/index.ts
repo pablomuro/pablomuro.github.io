@@ -12,6 +12,8 @@ async function changeUpdatedAt() {
   try {
     const files: string[] = JSON.parse(core.getInput('files', {required: true}))
 
+    core.info(`Running : changeUpdatedAt`)
+
     await Promise.all(
       files.map(async (fileName: string) => {
         const filePath = path.resolve(fileName)
@@ -33,6 +35,7 @@ async function changeUpdatedAt() {
         }
       })
     )
+    core.info(`End : changeUpdatedAt`)
   } catch (error) {
     core.setFailed(error.message)
   }

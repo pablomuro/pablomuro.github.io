@@ -51,6 +51,7 @@ function changeUpdatedAt() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const files = JSON.parse(core.getInput('files', { required: true }));
+            core.info(`Running : changeUpdatedAt`);
             yield Promise.all(files.map((fileName) => __awaiter(this, void 0, void 0, function* () {
                 const filePath = path_1.default.resolve(fileName);
                 core.info(`Path : ${filePath}`);
@@ -64,6 +65,7 @@ function changeUpdatedAt() {
                     yield writeFile(filePath, fileContent);
                 }
             })));
+            core.info(`End : changeUpdatedAt`);
         }
         catch (error) {
             core.setFailed(error.message);
