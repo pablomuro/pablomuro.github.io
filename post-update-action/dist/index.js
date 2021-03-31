@@ -54,18 +54,17 @@ function changeUpdatedAt() {
             core.info(`Running : changeUpdatedAt`);
             yield Promise.all(files.map((fileName) => __awaiter(this, void 0, void 0, function* () {
                 const filePath = path_1.default.resolve(fileName);
-                core.info(`Path : ${filePath}`);
                 if (yield exists(filePath)) {
                     const fileBuffer = yield readFile(filePath);
                     let fileContent = fileBuffer.toString();
                     const updateDate = new Date().toISOString();
-                    const updatedAtField = `updatedAt: ${updateDate}`;
+                    const updatedAtField = `updatedAt: ${updateDate}\n`;
                     const updatedAtFieldRegex = /(updatedAt:.*\n)/gm;
                     fileContent = fileContent.replace(updatedAtFieldRegex, updatedAtField);
                     yield writeFile(filePath, fileContent);
+                    core.info(`Post : ${fileName} updated`);
                 }
             })));
-            core.info(`End : changeUpdatedAt`);
         }
         catch (error) {
             core.setFailed(error.message);
