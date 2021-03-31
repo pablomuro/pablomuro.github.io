@@ -40,6 +40,22 @@ export const openGraphImagePlaceholder = '#openGraphImage'
 const DEFAULT_WIDTH = 1200
 const DEFAULT_HEIGHT = 630
 
+export const addCreatedAtAndUpdatedAt = (fileContent: string): any => {
+  if (!fileContent.includes('createdAt') && !fileContent.includes('updatedAt')) {
+    const postCreateDate = new Date().toISOString()
+    const createdAtField = `createdAt: ${postCreateDate}`
+    const updatedAtField = `updatedAt: ${postCreateDate}`
+
+    const TOCNewField = `\n${createdAtField}\n${updatedAtField}\n---`
+
+    const finalOfTOCRegex = /(\n(---*))/gm
+
+    fileContent = fileContent.replace(finalOfTOCRegex, TOCNewField)
+  }
+
+  return fileContent
+}
+
 export async function coverGenerate(document: any) {
   const { slug, extension, title, description, mainTag } = document
 
@@ -57,7 +73,7 @@ export async function coverGenerate(document: any) {
 
   const bgTemplate = bgTemplates[randomIndex(bgTemplates.length)]
 
-  consola.info(`Generating Image cover for ${slug}${extension} \t template: ${bgTemplate}`)
+  consola.info(`Generating Image cover for ${slug}${extension} \t template: ${bgTemplate} `)
 
   const input: IInput[] = [
     {
@@ -81,15 +97,17 @@ export async function coverGenerate(document: any) {
   const fileName = `${docPath}${extension}`
   const filePath = path.join('./blog-posts', fileName)
 
-  readFile(filePath).then(fileBuffer => {
-    let fileContent = fileBuffer.toString()
+  const fileBuffer = await readFile(filePath)
+  let fileContent = fileBuffer.toString()
 
-    fileContent = fileContent.replace('#coverImage', document.coverImage)
-    fileContent = fileContent.replace('#openGraphImage', document.openGraphImage)
+  fileContent = fileContent.replace('#coverImage', document.coverImage)
+  fileContent = fileContent.replace('#openGraphImage', document.openGraphImage)
 
-    writeFile(filePath, fileContent)
-    consola.success(`MD File ${filePath} saved`)
-  })
+  fileContent = addCreatedAtAndUpdatedAt(fileContent)
+
+  await writeFile(filePath, fileContent)
+  consola.success(`MD File ${filePath} saved`)
+
 }
 
 const createImages = async function (options: any) {
