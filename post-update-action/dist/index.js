@@ -54,8 +54,9 @@ function changeUpdatedAt() {
             yield Promise.all(files.map((fileName) => __awaiter(this, void 0, void 0, function* () {
                 const languages = ['en', 'es', 'pt-br'];
                 for (let language of languages) {
-                    const filePath = `blog-posts/${language}/${fileName}`;
-                    if (yield exists(path_1.default.resolve(filePath))) {
+                    const filePath = path_1.default.resolve(`blog-posts/${language}/${fileName}`);
+                    core.info(`Path : ${filePath}`);
+                    if (yield exists(filePath)) {
                         const fileBuffer = yield readFile(filePath);
                         let fileContent = fileBuffer.toString();
                         const updateDate = new Date().toISOString();
@@ -67,8 +68,6 @@ function changeUpdatedAt() {
                     }
                 }
             })));
-            core.debug(`Changing updatedAt in  ...`); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-            // core.setOutput('time', new Date().toTimeString())
         }
         catch (error) {
             core.setFailed(error.message);

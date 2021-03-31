@@ -17,9 +17,11 @@ async function changeUpdatedAt() {
         const languages = ['en', 'es', 'pt-br']
 
         for (let language of languages) {
-          const filePath = `blog-posts/${language}/${fileName}`
+          const filePath = path.resolve(`blog-posts/${language}/${fileName}`)
 
-          if (await exists(path.resolve(filePath))) {
+          core.info(`Path : ${filePath}`)
+
+          if (await exists(filePath)) {
             const fileBuffer = await readFile(filePath)
             let fileContent = fileBuffer.toString()
 
@@ -40,9 +42,6 @@ async function changeUpdatedAt() {
         }
       })
     )
-    core.debug(`Changing updatedAt in  ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-
-    // core.setOutput('time', new Date().toTimeString())
   } catch (error) {
     core.setFailed(error.message)
   }
