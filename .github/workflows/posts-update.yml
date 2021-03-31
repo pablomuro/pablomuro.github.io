@@ -48,7 +48,7 @@ jobs:
 
       - name: Change updatedAt Field
         id: changedFiles
-        uses: './post-update-action/dist/index.js'
+        uses: './post-update-action/'
         with:
           files: ${{ steps.files.outputs.modified }}
 
