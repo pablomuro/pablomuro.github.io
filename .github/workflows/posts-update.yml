@@ -50,7 +50,7 @@ jobs:
         id: changedFiles
         uses: './post-update-action/index.ts'
         with:
-          files: ${{ steps.files.outputs.all }}
+          files: ${{ steps.files.outputs.modified }}
 
       # - name: Install dependencies 👨🏻‍💻
       #   run: yarn config && yarn install
