@@ -14,31 +14,22 @@ async function changeUpdatedAt() {
 
     await Promise.all(
       files.map(async (fileName: string) => {
-        const languages = ['en', 'es', 'pt-br']
+        const filePath = path.resolve(fileName)
 
-        for (let language of languages) {
-          const filePath = path.resolve(`blog-posts/${language}/${fileName}`)
+        core.info(`Path : ${filePath}`)
 
-          core.info(`Path : ${filePath}`)
+        if (await exists(filePath)) {
+          const fileBuffer = await readFile(filePath)
+          let fileContent = fileBuffer.toString()
 
-          if (await exists(filePath)) {
-            const fileBuffer = await readFile(filePath)
-            let fileContent = fileBuffer.toString()
+          const updateDate = new Date().toISOString()
+          const updatedAtField = `updatedAt: ${updateDate}`
 
-            const updateDate = new Date().toISOString()
-            const updatedAtField = `updatedAt: ${updateDate}`
+          const updatedAtFieldRegex = /(updatedAt:.*\n)/gm
 
-            const updatedAtFieldRegex = /(updatedAt:.*\n)/gm
+          fileContent = fileContent.replace(updatedAtFieldRegex, updatedAtField)
 
-            fileContent = fileContent.replace(
-              updatedAtFieldRegex,
-              updatedAtField
-            )
-
-            await writeFile(filePath, fileContent)
-
-            break
-          }
+          await writeFile(filePath, fileContent)
         }
       })
     )
