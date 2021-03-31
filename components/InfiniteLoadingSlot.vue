@@ -2,14 +2,21 @@
   <div class="pt-10">
     <client-only>
       <template slot="placeholder">
-        <div slot="loading-default"></div>
+        <div slot="spinner"></div>
         <div slot="no-more"></div>
         <div slot="no-results"></div>
         <div slot="error"></div>
       </template>
       <infinite-loading @infinite="infiniteHandler">
-        <p slot="no-more">{{ $t('no-more') }}</p>
-        <p slot="no-results">{{ $t('no-results') }}</p>
+        <p slot="no-more">{{ $t('infinite-no-more') }}</p>
+        <p slot="no-results">{{ $t('infinite-no-results') }}</p>
+        <template slot="error" slot-scope="{ trigger }">
+          <p class="mb-0">{{ $t('infinite-error') }}</p>
+          <br />
+          <button class="btn-try-infinite" @click="trigger">
+            {{ $t('infinite-error-btn') }}
+          </button>
+        </template>
       </infinite-loading>
     </client-only>
   </div>
@@ -36,8 +43,12 @@ export default Vue.extend({
           $state.complete()
         })
         .catch(() => $state.error())
-        .finally(() => $state.complete())
     },
   },
 })
 </script>
+<style lang="postcss" scoped>
+.btn-try-infinite {
+  @apply text-base !important;
+}
+</style>

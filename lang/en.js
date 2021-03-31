@@ -39,8 +39,10 @@ const readingTimeComponent = {
 }
 
 const InfiniteLoadingSlot = {
-  'no-more': 'These are all the posts 😄',
-  'no-results': 'No results'
+  'infinite-no-more': 'These are all the posts 😄',
+  'infinite-no-results': 'No results',
+  'infinite-error': 'Oops, something went wrong 😢',
+  'infinite-error-btn': 'Retry'
 }
 
 // === export ===

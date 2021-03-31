@@ -38,8 +38,10 @@ const readingTimeComponent = {
   'min-read': 'min de lectura',
 }
 const InfiniteLoadingSlot = {
-  'no-more': 'Estas son todos las publicaciones 😄',
-  'no-results': 'Sin resultados'
+  'infinite-no-more': 'Estas son todos las publicaciones 😄',
+  'infinite-no-results': 'Sin resultados',
+  'infinite-error': 'Ups, algo salió mal 😢',
+  'infinite-error-btn': 'Intentar nuevamente'
 }
 
 // === export ===
