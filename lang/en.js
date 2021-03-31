@@ -38,6 +38,11 @@ const readingTimeComponent = {
   'min-read': 'min read',
 }
 
+const InfiniteLoadingSlot = {
+  'no-more': 'These are all the posts 😄',
+  'no-results': 'No results'
+}
+
 // === export ===
 export default {
   ...metaTags,
@@ -46,5 +51,6 @@ export default {
   ...TagPage,
   ...blogPage,
   ...blogSearchComponent,
-  ...readingTimeComponent
+  ...readingTimeComponent,
+  ...InfiniteLoadingSlot
 }

@@ -2,15 +2,14 @@
   <div class="pt-10">
     <client-only>
       <template slot="placeholder">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div slot="loading-default"></div>
+        <div slot="no-more"></div>
+        <div slot="no-results"></div>
+        <div slot="error"></div>
       </template>
       <infinite-loading @infinite="infiniteHandler">
-        <!--  TODO - Translate these 2 -->
-        <p slot="no-more">No more posts</p>
-        <p slot="no-results">No results</p>
+        <p slot="no-more">{{ $t('no-more') }}</p>
+        <p slot="no-results">{{ $t('no-results') }}</p>
       </infinite-loading>
     </client-only>
   </div>

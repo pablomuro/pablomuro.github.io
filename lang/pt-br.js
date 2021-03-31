@@ -36,6 +36,10 @@ const blogSearchComponent = {
 const readingTimeComponent = {
   'min-read': 'min de leitura',
 }
+const InfiniteLoadingSlot = {
+  'no-more': 'Esses são todos os posts 😄',
+  'no-results': 'Sem resultados'
+}
 
 // === export ===
 export default {
@@ -45,5 +49,6 @@ export default {
   ...TagPage,
   ...blogPage,
   ...blogSearchComponent,
-  ...readingTimeComponent
+  ...readingTimeComponent,
+  ...InfiniteLoadingSlot
 }
