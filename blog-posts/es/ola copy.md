@@ -10,7 +10,6 @@ tags:
   - javascript
   - webdev
 createdAt: 2021-03-31T12:21:31.510Z
-updatedAt: 2021-03-31T12:21:31.510Z
----
+updatedAt: 2021-03-31T17:24:23.044Z---
 
 # Olá que ta
