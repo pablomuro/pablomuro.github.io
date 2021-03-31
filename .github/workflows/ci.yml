@@ -28,20 +28,25 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - name: Cache node_modules 📦
         uses: actions/cache@v2.1.4
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-yarn-
 
       - name: Install dependencies 👨🏻‍💻
-        run: npm ci
+        run: yarn config && yarn install
 
       # TODO - fix this CI later
       # - name: Run linter 👀
-      #   run: npm run lint
+      #   run: yarn lint
 
       # - name: Run tests 🧪
-      #   run: npm run test
+      #   run: yarn test
