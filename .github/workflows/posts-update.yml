@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: TEST blog post 🛎
-      run: echo TEST blog post
+        run: echo TEST blog post
       # - name: Checkout 🛎
       #   uses: actions/checkout@master
 
