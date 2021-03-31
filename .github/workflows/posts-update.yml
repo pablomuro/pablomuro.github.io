@@ -43,6 +43,8 @@ jobs:
       - name: Get posts MD files
         id: files
         uses: jitterbit/get-changed-files@v1
+        with:
+          format: json
 
       - name: Change updatedAt Field
         id: changedFiles
