@@ -52,12 +52,7 @@ jobs:
         with:
           files: ${{ steps.files.outputs.modified }}
 
-      # - name: Install dependencies 👨🏻‍💻
-      #   run: yarn config && yarn install
-
-      # TODO - fix this CI later
-      # - name: Run linter 👀
-      #   run: yarn lint
-
-      # - name: Run tests 🧪
-      #   run: yarn test
+      - name: Commit changes 👨🏻‍💻
+        uses: EndBug/add-and-commit@v7
+        with:
+          message: 'Auto update updatedAt field'

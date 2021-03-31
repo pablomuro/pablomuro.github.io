@@ -35,13 +35,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(186));
+const fs_1 = __importDefault(__nccwpck_require__(747));
+const path_1 = __importDefault(__nccwpck_require__(622));
+const util_1 = __nccwpck_require__(669);
+const readFile = util_1.promisify(fs_1.default.readFile);
+const writeFile = util_1.promisify(fs_1.default.writeFile);
+const readdir = util_1.promisify(fs_1.default.readdir);
+const exists = util_1.promisify(fs_1.default.exists);
 function changeUpdatedAt() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const files = core.getInput('files');
-            console.log(files);
+            const files = JSON.parse(core.getInput('files', { required: true }));
+            yield Promise.all(files.map((fileName) => __awaiter(this, void 0, void 0, function* () {
+                const languages = ['en', 'es', 'pt-br'];
+                for (let language of languages) {
+                    const filePath = `blog-posts/${language}/${fileName}`;
+                    if (yield exists(path_1.default.resolve(filePath))) {
+                        const fileBuffer = yield readFile(filePath);
+                        let fileContent = fileBuffer.toString();
+                        const updateDate = new Date().toISOString();
+                        const updatedAtField = `updatedAt: ${updateDate}`;
+                        const updatedAtFieldRegex = /(updatedAt:.*\n)/gm;
+                        fileContent = fileContent.replace(updatedAtFieldRegex, updatedAtField);
+                        yield writeFile(filePath, fileContent);
+                        break;
+                    }
+                }
+            })));
             core.debug(`Changing updatedAt in  ...`); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
             // core.setOutput('time', new Date().toTimeString())
         }
@@ -462,6 +487,13 @@ module.exports = require("os");;
 /***/ ((module) => {
 
 module.exports = require("path");;
+
+/***/ }),
+
+/***/ 669:
+/***/ ((module) => {
+
+module.exports = require("util");;
 
 /***/ })
 
