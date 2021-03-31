@@ -45,7 +45,6 @@ const path_1 = __importDefault(__nccwpck_require__(622));
 const util_1 = __nccwpck_require__(669);
 const readFile = util_1.promisify(fs_1.default.readFile);
 const writeFile = util_1.promisify(fs_1.default.writeFile);
-const readdir = util_1.promisify(fs_1.default.readdir);
 const exists = util_1.promisify(fs_1.default.exists);
 function changeUpdatedAt() {
     return __awaiter(this, void 0, void 0, function* () {

@@ -5,7 +5,6 @@ import {promisify} from 'util'
 
 const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
-const readdir = promisify(fs.readdir)
 const exists = promisify(fs.exists)
 
 async function changeUpdatedAt() {

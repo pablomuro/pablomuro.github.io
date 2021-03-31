@@ -1,5 +1,5 @@
 {
-  "name": "update-posts-updatedAt-field-action",
+  "name": "update-posts-updated-field-action",
   "version": "0.0.1",
   "description": "TypeScript template action",
   "main": "dist/index.js",
@@ -13,6 +13,7 @@
     "all": "npm run build && npm run format && npm run package"
   },
   "author": "Pablo A. Muro Martinez",
+  "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.6"
   },
