@@ -143,7 +143,7 @@ function createTwitterCardMetaTags({ image, baseUrl }: { image: string | null, b
     { hid: 'twitter:creator', name: 'twitter:creator', content: '@pablomurodev' },
     { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
     {
-      hid: 'twitter:image', name: 'twitter:image', content: `${baseUrl}${image}` ?? `${baseUrl}${DEFAULT_CARD_IMG}`,
+      hid: 'twitter:image', name: 'twitter:image', content: image ? `${baseUrl}${image}` : `${baseUrl}${DEFAULT_CARD_IMG}`,
     },
   ]
 }
