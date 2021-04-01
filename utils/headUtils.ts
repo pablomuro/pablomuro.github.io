@@ -5,7 +5,7 @@ import { TranslateResult } from 'vue-i18n'
 const DEFAULT_CARD_IMG = '/pablo-card-dark.png'
 
 export function getHtmlHead(this: Vue): any {
-  const baseUrl = this.$config.baseUrl
+  const { baseUrl = '' } = this.$config
   const { post = null } = this.$data
 
   if (post != null) {
@@ -37,6 +37,7 @@ export function getHtmlHead(this: Vue): any {
     title: title.toString(),
     meta: [
       ...getHeadMetaTags({
+        baseUrl,
         description,
         title,
         path: this.$route,
@@ -57,7 +58,7 @@ export const getHeadMetaTags = (data: any) => {
   } = {
     ...data,
   }
-  // const post = null
+
   const twitterCardMetaTags = createTwitterCardMetaTags({ image, baseUrl })
   const openGraphMetaTags = createOpenGraphMetaTags({
     baseUrl,
