@@ -8,6 +8,7 @@ import consola from 'consola'
 
 import paths from './paths.json'
 
+// TODO - check if folder exist, if not create
 const tempFolder = path.join(__dirname, paths.tempFolder)
 
 const readFile = promisify(fs.readFile)
