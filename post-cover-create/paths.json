@@ -1,9 +1,0 @@
-{
-  "coverTemplate": "cover-template/index.html",
-  "coverTemplateSass": "cover-template/index.scss",
-  "mainSass": "assets/sass/cover-template.scss",
-  "imagesFolder": "assets/images",
-  "bgTemplatesFolder": "cover-template/bg-templates",
-  "coversFolder": "assets/images/cover-images",
-  "tempFolder": "tmp"
-}
