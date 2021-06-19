@@ -17,14 +17,29 @@
           <flag :iso="getCoutry(selectedLocale)" :squared="true" />
           <span
             ref="languageName"
-            class="language-name overflow-clip overflow-hidden max-w-0 max-h-0 ml-0"
+            class="
+              language-name
+              overflow-clip overflow-hidden
+              max-w-0 max-h-0
+              ml-0
+            "
           >
             {{ selectedLocale.name }}
           </span>
         </div>
         <span
           ref="selectArrows"
-          class="arrows absolute inset-y-0 right-0 flex items-center pointer-events-none max-w-0 ml-0"
+          class="
+            arrows
+            absolute
+            inset-y-0
+            right-0
+            flex
+            items-center
+            pointer-events-none
+            max-w-0
+            ml-0
+          "
         >
           <svg
             class="h-5 w-5 text-gray-400"
@@ -52,7 +67,16 @@
         role="listbox"
         aria-labelledby="listbox-label"
         aria-activedescendant="listbox-item-3"
-        class="max-h-56 rounded-md text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
+        class="
+          max-h-56
+          rounded-md
+          text-base
+          leading-6
+          shadow-xs
+          overflow-auto
+          focus:outline-none
+          sm:text-sm sm:leading-5
+        "
       >
         <li
           v-for="locale in filterLocales"
@@ -192,7 +216,7 @@ export default Vue.extend({
 })
 </script>
 
-<style languave="postcss" scoped>
+<style lang="postcss" scoped>
 .flag-icon {
   width: 20px !important;
   height: 20px;

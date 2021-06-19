@@ -7,7 +7,18 @@
     >
       <span class="flex items-center w-full rounded-md shadow-sm custom-select">
         <search-icon
-          class="block z-10 h-4 m-0.5 sm:m-0 fill-current text-theme-300 transition-colors duration-300 ease-linear"
+          class="
+            block
+            z-10
+            h-4
+            m-0.5
+            sm:m-0
+            fill-current
+            text-theme-300
+            transition-colors
+            duration-300
+            ease-linear
+          "
         />
 
         <input
@@ -15,7 +26,15 @@
           type="search"
           autocomplete="off"
           :placeholder="$t('blog-search-placeholder')"
-          class="search-input max-w-0 max-h-0 sm:max-w-full sm:max-h-full sm:ml-3 focus:outline-none placeholder-theme-400 dark:placeholder-theme-200 placeholder-opacity-75"
+          class="
+            search-input
+            max-w-0 max-h-0
+            sm:max-w-full sm:max-h-full sm:ml-3
+            focus:outline-none
+            placeholder-theme-400
+            dark:placeholder-theme-200
+            placeholder-opacity-75
+          "
         />
       </span>
 
@@ -28,7 +47,16 @@
           role="listbox"
           aria-labelledby="listbox-label"
           aria-activedescendant="listbox-item-3"
-          class="max-h-56 rounded-md text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
+          class="
+            max-h-56
+            rounded-md
+            text-base
+            leading-6
+            shadow-xs
+            overflow-auto
+            focus:outline-none
+            sm:text-sm sm:leading-5
+          "
         >
           <li
             v-for="post of blogPosts"
@@ -106,13 +134,12 @@ export default Vue.extend({
 
       const lang = this.$i18n.locale ?? this.$i18n.defaultLocale
 
-      let blogPosts:
-        | IContentDocument
-        | IContentDocument[] = await this.$content(lang)
-        .only(['title', 'slug'])
-        .limit(6)
-        .search(searchQuery)
-        .fetch()
+      let blogPosts: IContentDocument | IContentDocument[] =
+        await this.$content(lang)
+          .only(['title', 'slug'])
+          .limit(6)
+          .search(searchQuery)
+          .fetch()
       if (!Array.isArray(blogPosts)) {
         blogPosts = [blogPosts]
       }
@@ -133,7 +160,7 @@ export default Vue.extend({
   },
 })
 </script>
-<style languave="postcss">
+<style lang="postcss">
 .search-box {
   .search-input {
     transition: max-width 0.5s ease-in-out, margin-left 0.6s ease-in-out,

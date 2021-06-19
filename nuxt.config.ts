@@ -3,7 +3,6 @@ import readingTime from 'reading-time'
 import { getSiteXmlRoutes } from './utils/routesUtils'
 import { getHeadMetaTags, getHeadFavicons } from './utils/headUtils'
 import { defaultLocale, i18nLocale } from './nuxt.default.config'
-import { coverGenerate, coverImagePlaceholder, openGraphImagePlaceholder } from './post-cover-create/index'
 
 import myData from './myData.json'
 
@@ -153,10 +152,6 @@ export default {
         const { minutes } = readingTime(document.text)
 
         document.readingTime = minutes
-      }
-
-      if (document.coverImage?.includes(coverImagePlaceholder) || document.openGraphImage?.includes(openGraphImagePlaceholder)) {
-        await coverGenerate(document)
       }
     },
   },
