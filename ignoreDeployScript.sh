@@ -1,6 +1,8 @@
 #!/bin/bash
 
-LAST_COMMIT_MESSAGE=git log -1 --pretty=%B | cat
+LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B | cat)
+
+echo "$LAST_COMMIT_MESSAGE"
 
 if [[ "$LAST_COMMIT_MESSAGE" != "[pablomuro-blog-manager] - Blog new Post" ]] ; then
   echo "✅ - Build can proceed"
