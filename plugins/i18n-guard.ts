@@ -7,6 +7,7 @@ export interface I18nGuardInterface {
   guard: () => Promise<boolean>
   getLocale: () => string
   setLocale: (locale?: string) => Promise<void>
+  haveToGuard: () => boolean
 }
 
 declare module 'vue/types/vue' {
@@ -68,6 +69,8 @@ const i18nGuardPlugin: Plugin = ({ app, store }, inject) => {
     $cookies.set(cookieName, locale, { ...cookieOptions })
   }
 
+  const haveToGuard = (): boolean => getLocale() !== i18n.locale
+
   const guard = async (): Promise<boolean> => {
     const locale = getLocale()
 
@@ -78,7 +81,7 @@ const i18nGuardPlugin: Plugin = ({ app, store }, inject) => {
     return false;
   }
 
-  inject('i18nGuard', { guard, getLocale, setLocale })
+  inject('i18nGuard', { guard, haveToGuard, getLocale, setLocale })
 }
 
 export default i18nGuardPlugin

@@ -2,7 +2,18 @@
   <page page-title="">
     <LazyHydrate ssr-only>
       <article
-        class="-mt-8 mx-auto max-w-full min-h-full rounded overflow-hidden flex flex-col card-shadow bg-white dark:bg-theme-700"
+        class="
+          -mt-8
+          mx-auto
+          max-w-full
+          min-h-full
+          rounded
+          overflow-hidden
+          flex flex-col
+          card-shadow
+          bg-white
+          dark:bg-theme-700
+        "
       >
         <figure>
           <picture-wrapper
@@ -17,7 +28,15 @@
             <h1 class="post-title mb-2 mt-8">{{ post.title }}</h1>
 
             <div
-              class="post-info text-sm mb-4 flex flex-col sm:flex-row flex-wrap justify-between"
+              class="
+                post-info
+                text-sm
+                mb-4
+                flex flex-col
+                sm:flex-row
+                flex-wrap
+                justify-between
+              "
             >
               <div>
                 <time class="text-center" :datetime="post.createdAt">{{
@@ -49,17 +68,13 @@ import { getHtmlHead } from '@/utils/headUtils'
 export default Vue.extend({
   async asyncData({ $content, params, error, app: { $i18nGuard, i18n } }) {
     let lang: string = $i18nGuard.getLocale()
-    let post
-    try {
-      post = await $content(lang, params.slug).fetch()
-    } catch (err) {
-      lang = i18n.defaultLocale as string
-      post = await $content(lang, params.slug)
-        .fetch()
-        .catch((err) => {
-          error({ statusCode: 404, message: 'Page not found' })
-        })
-    }
+    let post: IContentDocument
+
+    post = (await $content(lang, params.slug)
+      .fetch()
+      .catch((err) => {
+        error({ statusCode: 404, message: 'Page not found' })
+      })) as IContentDocument
 
     const [prev = null, next = null] = (await $content(lang)
       .only(['title', 'slug'])
