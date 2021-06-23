@@ -10,7 +10,15 @@
           />
         </span>
         <h1
-          class="w-full text-3xl xl:text-4xl text-center font-medium leading-normal mt-0"
+          class="
+            w-full
+            text-3xl
+            xl:text-4xl
+            text-center
+            font-medium
+            leading-normal
+            mt-0
+          "
         >
           <span v-if="error.statusCode === 404" class="block -mt-5"
             >Page not found</span
@@ -26,11 +34,15 @@
 import Vue from 'vue'
 // @ts-ignore
 const Icon404 = () => import('~/assets/icons/404.svg?inline')
+import { getHtmlHead } from '@/utils/headUtils'
 
 export default Vue.extend({
   components: { Icon404 },
   props: ['error'],
   layout: 'error',
+  head() {
+    return { ...getHtmlHead.call(this) }
+  },
 })
 </script>
 <style lang="postcss" scoped>
