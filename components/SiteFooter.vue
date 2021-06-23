@@ -1,7 +1,22 @@
 <template>
   <footer class="relative mt-24 sm:mt-32 bg-theme-100 dark:bg-theme-700">
     <div
-      class="created-by bg-theme-600 relative -mt-4 sm:-mt-8 mx-auto text-center rounded-md p-2 sm:p-5 w-4/5 sm:w-1/3 text-xs sm:text-inherit"
+      class="
+        created-by
+        bg-theme-600
+        relative
+        -mt-4
+        sm:-mt-8
+        mx-auto
+        text-center
+        rounded-md
+        p-2
+        sm:p-5
+        w-4/5
+        sm:w-1/3
+        text-xs
+        sm:text-inherit
+      "
     >
       <code class="language-html"
         ><span class="token tag"
@@ -36,9 +51,6 @@
         <a :href="twitterLink" target="_blank" rel="noopener noreferrer">
           <fa :icon="['fab', 'twitter']" />
         </a>
-        <!-- <a :href="resumeLink" target="_blank" rel="noopener noreferrer">
-          <fa :icon="['fas', 'file']" />
-        </a> -->
       </div>
       <div class="my-2 sm:mt-4">Copyright © {{ year }} {{ brand }}</div>
     </div>
@@ -61,11 +73,6 @@ export default Vue.extend({
       twitterLink: this.$config.myData.twitter,
       year: new Date().getFullYear(),
     }
-  },
-  computed: {
-    resumeLink(): string {
-      return `/resumes/pablo-resume-${this.$i18nGuard.getLocale()}.pdf`
-    },
   },
 })
 </script>

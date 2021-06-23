@@ -9,10 +9,6 @@ const metaTags = {
     'Artículos sobre Javascript, Desarrollo Web, Estilo de Vida Dev e Ciencias de la Computación: conceptos básicos, algoritmos y estructuras de datos',
 }
 
-const siteHeader = {
-  resume: 'Currículo'
-}
-
 // === Pages ===
 const indexPage = {
   'hi': 'Oye',
@@ -47,7 +43,6 @@ const InfiniteLoadingSlot = {
 // === export ===
 export default {
   ...metaTags,
-  ...siteHeader,
   ...indexPage,
   ...TagPage,
   ...blogPage,

@@ -2,12 +2,27 @@
   <div>
     <transition name="page">
       <header
-        class="flex flex-col sm:flex-row justify-between p-4 sm:p-8 xl:pl-16 xl:pr-64"
+        class="
+          flex flex-col
+          sm:flex-row
+          justify-between
+          p-4
+          sm:p-8
+          xl:pl-16 xl:pr-64
+        "
       >
         <div class="flex items-center">
           <nuxt-link
             :to="localePath('/')"
-            class="inline-flex pr-3 border-r border-black dark:border-gray-600 mr-3 items-center hover:underline"
+            class="
+              inline-flex
+              pr-3
+              border-r border-black
+              dark:border-gray-600
+              mr-3
+              items-center
+              hover:underline
+            "
           >
             <div class="logo">
               <logo-wrapper src="icon.png" alt="logo" />
@@ -18,13 +33,20 @@
             <nuxt-link :to="localePath('/blog')" class="hover:underline"
               >Blog</nuxt-link
             >
-            <a :href="resumeLink" class="hover:underline" target="_blank">
-              {{ $t('resume') }}
-            </a>
           </nav>
         </div>
         <div
-          class="flex justify-between items-center flex-row w-full sm:w-auto sm:space-x-3 mt-4 mb-2 sm:my-0"
+          class="
+            flex
+            justify-between
+            items-center
+            flex-row
+            w-full
+            sm:w-auto sm:space-x-3
+            mt-4
+            mb-2
+            sm:my-0
+          "
         >
           <lazy-hydrate when-idle>
             <lazy-blog-search-input :lang="this.$i18n.locale" class="" />
@@ -56,12 +78,6 @@ export default Vue.extend({
       brand: this.$config.myData.brand,
       cvHref: '',
     }
-  },
-  computed: {
-    resumeLink(): string {
-      return '#'
-      return `/resumes/pablo-resume-${this.$i18nGuard.getLocale()}.pdf`
-    },
   },
 })
 </script>
