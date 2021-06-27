@@ -8,7 +8,7 @@ mainTag: 'Auto Deploy - EN'
 tags:
   - tag3
 createdAt: 2021-06-20T22:51:36Z
-updatedAt: 2021-06-27T20:48:24.840Z
+updatedAt: 2021-06-27T23:10:26.312Z
 en: 'test-autodeploy-en'
 pt-br: 'test-autodeploy-pt-br'
 es: 'test-autodeploy-es'
