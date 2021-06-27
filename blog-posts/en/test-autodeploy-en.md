@@ -12,9 +12,6 @@ updatedAt: 2021-06-27T20:48:24.840Z
 en: 'test-autodeploy-en'
 pt-br: 'test-autodeploy-pt-br'
 es: 'test-autodeploy-es'
-en: "test-autodeploy-en"
-pt-br: "test-autodeploy-pt-br"
-es: "test-autodeploy-es"
 ---
 
 # template
