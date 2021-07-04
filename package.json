@@ -9,7 +9,7 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "test": "jest",
-    "postinstall": "postinstall.sh"
+    "postinstall": "bash postinstall.sh"
   },
   "dependencies": {
     "@nuxt/content": "^1.14.0",
