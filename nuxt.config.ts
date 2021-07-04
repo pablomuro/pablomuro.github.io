@@ -23,11 +23,6 @@ export default {
   },
 
   render: {
-    bundleRenderer: {
-      // shouldPreload: (file: string, type: string) => {
-      //   return ['script', 'style'].includes(type) || file.includes('woff2')
-      // }
-    },
     csp: {
       hashAlgorithm: 'sha256',
       policies: {
@@ -124,8 +119,6 @@ export default {
   i18n: {
     baseUrl: BASE_URL,
     locales: i18nLocale,
-    // lazy: true,
-    // langDir: 'lang/',
     defaultLocale: defaultLocale,
     vueI18n: {
       fallbackLocale: defaultLocale,
