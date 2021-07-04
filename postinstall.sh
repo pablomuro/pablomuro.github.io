@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "$(ls $PWD/node_modules/flag-icon-css/sass/)"
+
 if [[ "$VERCEL" == 1 ]] ; then
   npm install -g sass-migrator
   sass-migrator division "$PWD"/node_modules/flag-icon-css/sass/*.scss
