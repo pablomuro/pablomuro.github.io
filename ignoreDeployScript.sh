@@ -10,5 +10,3 @@ else
   echo "✅ - Build can proceed"
   exit 1;
 fi
-
-echo $(ls "$PWD"/node_modules/flag-icon-css/sass)
