@@ -54,7 +54,7 @@ export default Vue.extend({
       return extension
     },
     imgWebp(): Img {
-      return require(`@/assets/images/icon.png?webp`) as Img
+      return require(`@/assets/images/icon.png`) as Img
     },
     defaultImg(): Img {
       return require(`@/assets/images/icon.png`) as Img
