@@ -1,10 +1,10 @@
 <template>
   <picture class="picture">
-    <source
-      :data-srcset="require(`@/assets/images/icon.svg?`)"
+    <!-- <source
+      :data-srcset="require(`@/assets/images/icon.svg`)"
       type="image/webp"
       class="source"
-    />
+    /> -->
     <source
       :data-srcset="require(`@/assets/images/icon.svg`)"
       :type="`image/${imgtype}`"
