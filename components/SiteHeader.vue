@@ -14,26 +14,24 @@
         <div class="flex items-center">
           <nuxt-link
             :to="localePath('/')"
-            class="
-              inline-flex
-              pr-3
-              border-r border-black
-              dark:border-gray-600
-              mr-3
-              items-center
-              hover:underline
-            "
+            class="inline-flex mr-3 items-center hover:underline"
           >
             <div class="logo">
-              <logo-wrapper src="icon.png" alt="logo" />
+              <logo-wrapper src="icon.svg" alt="logo" />
             </div>
-            <p class="m-0 ml-3">{{ brand }}</p>
           </nuxt-link>
-          <nav class="inline-flex space-x-3 items-center">
-            <nuxt-link :to="localePath('/blog')" class="hover:underline"
-              >Blog</nuxt-link
-            >
-          </nav>
+          <span class="py-1 ml-3 border-l border-black dark:border-gray-600">
+            <nav class="inline-flex space-x-3 items-center ml-3">
+              <nuxt-link :to="localePath('/')" class="hover:underline"
+                >Home</nuxt-link
+              >
+            </nav>
+            <nav class="inline-flex space-x-3 items-center ml-3">
+              <nuxt-link :to="localePath('/blog')" class="hover:underline"
+                >Blog</nuxt-link
+              >
+            </nav>
+          </span>
         </div>
         <div
           class="
@@ -85,7 +83,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 header {
   .logo {
-    width: 50px;
+    // width: 50%;
     margin-left: 2%;
     margin-top: 2%;
   }

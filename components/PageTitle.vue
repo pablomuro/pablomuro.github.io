@@ -1,6 +1,15 @@
 <template>
   <div
-    class="relative header-bg bg-theme-100 dark:bg-theme-700 mt-0 margin-title-bg flex items-center"
+    class="
+      relative
+      header-bg
+      bg-theme-100
+      dark:bg-theme-700
+      mt-0
+      margin-title-bg
+      flex
+      items-center
+    "
   >
     <div class="title-box ml-4 sm:ml-8 xl:ml-16">
       <h1 class="my-0 font-bold text-xl">
@@ -40,7 +49,7 @@ export default Vue.extend({
 
     h1 {
       .terminal {
-        color: rgb(0, 255, 0);
+        color: rgb(255, 255, 255);
         text-shadow: 0.7px 0px 1px rgb(255, 0, 255),
           -0.7px 0px 1px rgb(0, 255, 255);
       }

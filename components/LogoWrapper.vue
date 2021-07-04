@@ -1,18 +1,21 @@
 <template>
   <picture class="picture">
-    <source :data-srcset="imgWebp.srcSet" type="image/webp" class="source" />
     <source
-      :data-srcset="defaultImg.srcSet"
+      :data-srcset="require(`@/assets/images/icon.svg?`)"
+      type="image/webp"
+      class="source"
+    />
+    <source
+      :data-srcset="require(`@/assets/images/icon.svg`)"
       :type="`image/${imgtype}`"
       class="source"
     />
     <img
-      :data-src="defaultImg.src"
+      :data-src="require(`@/assets/images/icon.svg`)"
       :alt="alt"
       class="img lazyload"
       :class="imgClass"
-      :height="defaultImg.height"
-      :width="defaultImg.width"
+      :width="150"
     />
     <slot></slot>
   </picture>
@@ -51,10 +54,10 @@ export default Vue.extend({
       return extension
     },
     imgWebp(): Img {
-      return require(`@/assets/images/${this.src}?resize&sizes[]=93&format=webp`) as Img
+      return require(`@/assets/images/icon.png?webp`) as Img
     },
     defaultImg(): Img {
-      return require(`@/assets/images/${this.src}?resize&sizes[]=93`) as Img
+      return require(`@/assets/images/icon.png`) as Img
     },
   },
 })
