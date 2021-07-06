@@ -6,12 +6,12 @@
       class="source"
     /> -->
     <source
-      :data-srcset="require(`@/assets/images/icon.svg`)"
+      :data-srcset="require(`@/assets/images/logo/PabloMuroDevPEQUENO.png`)"
       :type="`image/${imgtype}`"
       class="source"
     />
     <img
-      :data-src="require(`@/assets/images/icon.svg`)"
+      :data-src="require(`@/assets/images/logo/PabloMuroDevPEQUENO.png`)"
       :alt="alt"
       class="img lazyload"
       :class="imgClass"
