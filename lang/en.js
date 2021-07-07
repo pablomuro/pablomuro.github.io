@@ -1,6 +1,6 @@
 const metaTags = {
   'root-meta-title':
-    "Pablo Muro's Dev | Javascript Fullstack Software Developer",
+    "Pablo Muro | Fullstack Javascript Software Developer",
 
   'root-meta-description':
     'Welcome to my dev life. Pablo Muro personal portfolio with a blog',

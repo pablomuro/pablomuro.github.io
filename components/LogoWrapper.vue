@@ -23,14 +23,6 @@
 <script lang="ts">
 import Vue from 'vue'
 
-interface Img {
-  srcSet: any
-  src: any
-  images: any
-  width: number
-  height: number
-}
-
 export default Vue.extend({
   name: 'LogoWrapper',
   props: {
