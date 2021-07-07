@@ -35,7 +35,7 @@ const readingTimeComponent = {
 }
 
 const InfiniteLoadingSlot = {
-  'infinite-no-more': 'These are all the posts 😄',
+  'infinite-no-more': 'These are all posts 😄',
   'infinite-no-results': 'No results',
   'infinite-error': 'Oops, something went wrong 😢',
   'infinite-error-btn': 'Retry'
