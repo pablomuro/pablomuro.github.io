@@ -17,7 +17,7 @@
             class="inline-flex mr-3 items-center hover:underline"
           >
             <div class="logo">
-              <logo-wrapper src="icon.svg" alt="logo" />
+              <logo-wrapper alt="logo" />
             </div>
           </nuxt-link>
           <span class="py-1 ml-3 border-l border-black dark:border-gray-600">
@@ -71,12 +71,6 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'SiteHeader',
-  data() {
-    return {
-      brand: this.$config.myData.brand,
-      cvHref: '',
-    }
-  },
 })
 </script>
 

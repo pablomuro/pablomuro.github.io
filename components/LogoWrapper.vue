@@ -1,21 +1,21 @@
 <template>
   <picture class="picture">
-    <!-- <source
-      :data-srcset="require(`@/assets/images/icon.svg`)"
+    <source
+      :srcset="require(`@/assets/images/${logo}.png?webp`)"
       type="image/webp"
       class="source"
-    /> -->
+    />
     <source
-      :data-srcset="require(`@/assets/images/logo/PabloMuroDevPEQUENO.png`)"
-      :type="`image/${imgtype}`"
+      :srcset="require(`@/assets/images/${logo}.png`)"
+      :type="`image/png`"
       class="source"
     />
     <img
-      :data-src="require(`@/assets/images/logo/PabloMuroDevPEQUENO.png`)"
+      :src="require(`@/assets/images/${logo}.png`)"
       :alt="alt"
       class="img lazyload"
       :class="imgClass"
-      :width="150"
+      :width="LOGO_SIZE"
     />
     <slot></slot>
   </picture>
@@ -34,10 +34,6 @@ interface Img {
 export default Vue.extend({
   name: 'LogoWrapper',
   props: {
-    src: {
-      type: String,
-      required: true,
-    },
     alt: {
       type: String,
       default: '',
@@ -47,17 +43,29 @@ export default Vue.extend({
       default: '',
     },
   },
-  computed: {
-    imgtype() {
-      let extension = this.src.split('.')[1]
-      extension = extension === 'jpg' ? 'jpeg' : extension
-      return extension
-    },
-    imgWebp(): Img {
-      return require(`@/assets/images/icon.png`) as Img
-    },
-    defaultImg(): Img {
-      return require(`@/assets/images/icon.png`) as Img
+  data() {
+    return {
+      logo: 'logo',
+      // @ts-ignore
+      colorMode: this.$colorMode.$data,
+      LOGO_SIZE: 150,
+    }
+  },
+  created() {
+    // @ts-ignore
+    this.logo =
+      // @ts-ignore
+      (this.$colorMode as any).value == 'light' ? 'logo' : 'logo-invert'
+  },
+  watch: {
+    colorMode: {
+      handler: function (newValue, oldValue) {
+        // @ts-ignore
+        this.logo =
+          // @ts-ignore
+          (this.$colorMode as any).value == 'light' ? 'logo' : 'logo-invert'
+      },
+      deep: true,
     },
   },
 })
