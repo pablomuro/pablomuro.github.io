@@ -30,17 +30,23 @@ export default Vue.extend({
   name: 'InfiniteLoadingSlot',
   components: { InfiniteLoading },
   props: {
+    postsLength: { type: Number, default: 0, required: true },
     getPosts: { type: Function, required: true },
   },
   methods: {
     infiniteHandler($state: StateChanger) {
+      const postsLength = this.postsLength
       this.getPosts()
         .then(({ blogPosts }: { blogPosts: IContentDocument[] }) => {
-          if (blogPosts.length) {
+          if (postsLength == 0) {
+            $state.complete()
+          } else if (blogPosts.length) {
             this.$emit('posts', blogPosts)
+            $state.loaded()
+          } else {
+            $state.loaded()
+            $state.complete()
           }
-          $state.loaded()
-          $state.complete()
         })
         .catch(() => $state.error())
     },

@@ -1,7 +1,11 @@
 <template>
   <page :page-title="$t('blog-title')">
     <blog-posts :blog-posts="blogPosts" :lang="lang" class="mt-8" />
-    <infinite-loading-slot @posts="appendPosts" :getPosts="getBlogPosts" />
+    <infinite-loading-slot
+      @posts="appendPosts"
+      :getPosts="getBlogPosts"
+      :postsLength="blogPosts.length"
+    />
   </page>
 </template>
 
