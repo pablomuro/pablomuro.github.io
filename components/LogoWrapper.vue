@@ -43,7 +43,7 @@ export default Vue.extend({
       LOGO_SIZE: 150,
     }
   },
-  created() {
+  mounted() {
     // @ts-ignore
     this.logo =
       // @ts-ignore
