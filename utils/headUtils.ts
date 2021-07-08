@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import { TranslateResult } from 'vue-i18n'
 
-// TODO - imagem default de todos os cards, FAZER IMAGEM DEFAULT DO SITE
 const DEFAULT_CARD_IMG = '/pablo-card-dark.png'
 
 export function getHtmlHead(this: Vue): any {
