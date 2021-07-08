@@ -60,7 +60,7 @@
     "remark-emoji": "^2.2.0",
     "responsive-loader": "^2.3.0",
     "sass": "^1.35.1",
-    "sharp": "^0.25.4",
+    "sharp": "^0.28.3",
     "tailwindcss-dark-mode": "^1.1.7",
     "ts-jest": "^27.0.3",
     "vue-click-outside": "^1.1.0",
