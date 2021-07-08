@@ -1,0 +1,19 @@
+:root {
+  // Theme Colors
+  --theme-100: hsl(0, 0%, 96%);
+  --theme-200: hsl(0, 0%, 86%);
+  --theme-300: hsl(0, 0%, 66%);
+  --theme-400: hsl(0, 0%, 46%);
+  --theme-500: hsl(0, 0%, 26%);
+  --theme-600: hsl(0, 0%, 16%);
+  --theme-700: hsl(0, 0%, 6%);
+  --p-color: #444443; // hsl(60, 1%, 26%)
+
+  --lime: hsl(120, 100%, 50%); // lime
+  --magenta: hsl(300, 100%, 50%); // magenta
+  --cyan: hsl(180, 100%, 50%); // cyan
+
+  // Header
+  --header-bg-size: 3.125rem;
+  --header-margin-top: calc(var(--header-bg-size) * -1);
+}

@@ -1,0 +1,64 @@
+/* Montserrat font-faces */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url('../fonts/Montserrat/Montserrat-Regular.woff2') format('woff2'),
+    url('../fonts/Montserrat/Montserrat-Regular.woff') format('woff'),
+    url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: url('../fonts/Montserrat/Montserrat-Bold.woff2') format('woff2'),
+    url('../fonts/Montserrat/Montserrat-Bold.woff') format('woff'),
+    url('../fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+}
+
+/* Quicksand font-faces */
+
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url('../fonts/Quicksand/static/Quicksand-Regular.woff2') format('woff2'),
+    url('../fonts/Quicksand/static/Quicksand-Regular.woff') format('woff'),
+    url('../fonts/Quicksand/static/Quicksand-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: url('../fonts/Quicksand/static/Quicksand-Bold.woff2') format('woff2'),
+    url('../fonts/Quicksand/static/Quicksand-Bold.woff') format('woff'),
+    url('../fonts/Quicksand/static/Quicksand-Bold.ttf') format('truetype');
+}
+
+/* FiraCode font-faces */
+
+@font-face {
+  font-family: 'FiraCode';
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url('../fonts/FiraCode/static/FiraCode-Regular.woff2') format('woff2'),
+    url('../fonts/FiraCode/static/FiraCode-Regular.woff') format('woff'),
+    url('../fonts/FiraCode/static/FiraCode-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'FiraCode';
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: url('../fonts/FiraCode/static/FiraCode-Bold.woff2') format('woff2'),
+    url('../fonts/FiraCode/static/FiraCode-Bold.woff') format('woff'),
+    url('../fonts/FiraCode/static/FiraCode-Bold.ttf') format('truetype');
+}
