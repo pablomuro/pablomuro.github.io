@@ -59,7 +59,7 @@
     "prettier": "^2.3.1",
     "remark-emoji": "^2.2.0",
     "responsive-loader": "^2.3.0",
-    "sass": "^1.35.1",
+    "sass": "^1.35.2",
     "sharp": "^0.25.4",
     "tailwindcss-dark-mode": "^1.1.7",
     "ts-jest": "^27.0.3",
