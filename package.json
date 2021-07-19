@@ -66,7 +66,7 @@
     "vue-click-outside": "^1.1.0",
     "vue-jest": "^3.0.7",
     "webp-loader": "^0.6.0",
-    "webpack": "4.46.0"
+    "webpack": "5.45.1"
   },
   "fixedDependencies": {
     "sharp": "^0.25.4 - Vercel build error on superior",
